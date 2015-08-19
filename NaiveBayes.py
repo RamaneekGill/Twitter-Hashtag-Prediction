@@ -1,6 +1,7 @@
 import csv
 import random
 import math
+import sys
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -9,24 +10,32 @@ def readCsv(filename):
 		dataset[line] = [str(i) for i in dataset[line]]
 	return dataset
 
-def extractTweets(dataset, tweetIndex, maxNumHashtags):
-	copy = list(dataset)
+# Finds hashtags in a tweet
+# Also returns a dataset of tweets that don't contain hashtags
+def extractTweets(corpus, tweetIndex, maxNumHashtags=sys.maxsize):
 	hashtagSet = list()
-	for line in copy:
+	dataset = list()
+
+	for line in corpus:
+		tempHashtagSet = list()
+
 		for word in line[tweetIndex].split():
 			if word.startswith('#'):
-				hashtagSet.insert(-1, [word, copy.index(line)])
-				line[tweetIndex].replace(word, "")
-				if len(hashtagSet) == maxNumHashtags:
-					return hashtagSet, copy
+				tempHashtagSet.append(word)
 
-	return hashtagSet, copy
+		if len(tempHashtagSet) > 0:
+			hashtagSet.append(tempHashtagSet)
+			dataset.append(line[tweetIndex])
 
+	return hashtagSet, dataset
+
+###############################  MAIN  #########################################
 
 def main():
 	filename = 'testdata.manual.2009.06.14.csv'
-	dataset = readCsv(filename)
-	hashtagSet, hashtagExtractedDataset = extractTweets(dataset, -1, 2)
+	corpus = readCsv(filename)
+	hashtagSet, dataset = extractTweets(corpus, -1, 50)
 	print(hashtagSet)
+	print(len(hashtagSet), len(dataset), len(corpus))
 
 main()
