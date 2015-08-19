@@ -94,40 +94,31 @@ def createVocabulary(dataset, hashtagSet, uniqueHashtags):
 	vocabulary = {} # The overall vocabulary word count in our entire dataset
 	hashtagWordMap = {} # The word count for each word that is associated with a hashtag
 
-	For every hashtag in hashtagSet (i.e. the hashtags for the ith tweet)
-		Add the hashtag from the set to the vocabulary
-		Get the wordCount for the ith tweet
-		for each word and count in wordCount
-			add the word to the vocabulary
-			add the count to hashTagWordMap[hashtag for hashtag in hashtagSet][word]
-
-
+	# Generate the keys for the hashtagWordMap
 	for uniqueHashtag in uniqueHashtags:
+		# Add this hashtag to the vocabulary
 		if uniqueHashtag not in vocabulary:
-			vocabulary[word] = 0.0
-		else:
+			vocabulary[uniqueHashtag] = 0.0
+		vocabulary[uniqueHashtag] += 1.0
+
+		# Make this hashtag a key in the map if it does not exist already
+		if uniqueHashtag not in hashtagWordMap:
+			hashtagWordMap[uniqueHashtag] = 0.0
+		hashtagWordMap[uniqueHashtag] += 1.0
+
+	# Map the words in dataset[i] to all the hashtags in the list hashtagSet[i] into hashtagWordMap
+	for i in range(len(dataset)):
+		countWords = countWords(tokenize(dataset[i]))
+		for word, count in list(countWords.items()): # For each word and count in this tweet
+			# Add this word to the vocabulary
+			if word not in vocabulary:
+				vocabulary[word] = 0.0
 			vocabulary[word] += 1.0
-		for i in range(len(dataset)):
-			if (uniqueHashtag in hashtagSet[i]):
-				wordCount = countWords(tokenize(dataset[i]))
-				for word, count in wordCount.items:
-					if word not in vocabulary:
-						vocabulary[word] = 0.0
-					if word not in hashtagWordMap[uniqueHashtag]
 
-
-
-
-	words = tokenize(text)
-    counts = count_words(words)
-    for word, count in counts.items():
-        # if we haven't seen a word yet, let's add it to our dictionaries with a count of 0
-        if word not in vocab:
-            vocab[word] = 0.0 # use 0.0 here so Python does "correct" math
-        if word not in word_counts[category]:
-            word_counts[category][word] = 0.0
-        vocab[word] += count
-        word_counts[category][word] += count
+			for hashtag in hashtagSet[i]: # All the hashtags associated with this tweet
+				if word not in hashtagWordMap[hashtag]: # If this word is not associated with the hashtag
+					hashtagWordMap[hashtag][word] = 0.0  # Initialize it
+				hashtagWordMap[hashtag][word] += 1.0
 
 
 #################################  MAIN  #######################################
