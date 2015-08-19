@@ -72,6 +72,45 @@ def groupByHashtag(dataset, hashtagSet):
 	return uniqueHashtags, separated
 
 
+def removePunctuation(string):
+    table = string.maketrans("","")
+    return string.translate(table, string.punctuation)
+
+
+def tokenize(string):
+    string = remove_punctuation(string)
+    string = string.lower()
+    return re.split("\W+", string)
+
+
+def countWords(words):
+    wordCount = {}
+    for word in words:
+        wordCount[word] = wordCount.get(word, 0.0) + 1.0
+    return wordCount
+
+
+def createVocabulary(dataset, uniqueHashtags):
+	vocabulary = {}
+	for i in range(len(dataset)):
+		wordCount = countWord(tokenize(dataset[i]))
+		for word, count in wordCount.items:
+			if word not in vocabulary:
+				vocabulary[word] = 0.0
+			if word not in wordCount[]
+
+
+	words = tokenize(text)
+    counts = count_words(words)
+    for word, count in counts.items():
+        # if we haven't seen a word yet, let's add it to our dictionaries with a count of 0
+        if word not in vocab:
+            vocab[word] = 0.0 # use 0.0 here so Python does "correct" math
+        if word not in word_counts[category]:
+            word_counts[category][word] = 0.0
+        vocab[word] += count
+        word_counts[category][word] += count
+
 
 #################################  MAIN  #######################################
 
@@ -83,6 +122,9 @@ def main():
 	hashtagSet, dataset = extractTweets(corpus, -1, 50)
 	trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
 	uniqueHashtags, tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
+	vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
+
+
 	print(tweetsMappedToHashtag)
 
 main()
