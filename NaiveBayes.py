@@ -45,7 +45,35 @@ def seperateDatasetInTwo(dataset, ratio):
 	return [trainSet, testSet]
 
 
-###############################  MAIN  #########################################
+def getUniqueHashtags(hashtagSet):
+	uniqueHashtags = list()
+	for i in range(len(hashtagSet)):
+		for j in range(len(hashtagSet[i])):
+			hashtag = hashtagSet[i][j][1:]
+			hashtag = hashtag.lower()
+			if hashtag not in uniqueHashtags:
+				uniqueHashtags.append(hashtag)
+
+	return uniqueHashtags;
+
+
+def groupByHashtag(dataset, hashtagSet):
+	uniqueHashtags = getUniqueHashtags(hashtagSet)
+	separated = {}
+	for i in range(len(dataset)):
+		for uniqueHashtag in uniqueHashtags:
+			if uniqueHashtag not in separated:
+				separated[uniqueHashtag] = []
+
+			# If the uniqueHashtag belongs to the tweet dataset[i]
+			if any(uniqueHashtag in str for str in hashtagSet[i]):
+				separated[uniqueHashtag].append(dataset[i])
+
+	return uniqueHashtags, separated
+
+
+
+#################################  MAIN  #######################################
 
 
 def main():
@@ -54,8 +82,7 @@ def main():
 	corpus = readCsv(filename)
 	hashtagSet, dataset = extractTweets(corpus, -1, 50)
 	trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
-	print(trainSet)
-	print('\n\n\n')
-	print(testSet)
+	uniqueHashtags, tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
+	print(tweetsMappedToHashtag)
 
 main()
