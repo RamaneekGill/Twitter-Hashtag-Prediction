@@ -90,14 +90,32 @@ def countWords(words):
     return wordCount
 
 
-def createVocabulary(dataset, uniqueHashtags):
-	vocabulary = {}
-	for i in range(len(dataset)):
-		wordCount = countWord(tokenize(dataset[i]))
-		for word, count in wordCount.items:
-			if word not in vocabulary:
-				vocabulary[word] = 0.0
-			if word not in wordCount[]
+def createVocabulary(dataset, hashtagSet, uniqueHashtags):
+	vocabulary = {} # The overall vocabulary word count in our entire dataset
+	hashtagWordMap = {} # The word count for each word that is associated with a hashtag
+
+	For every hashtag in hashtagSet (i.e. the hashtags for the ith tweet)
+		Add the hashtag from the set to the vocabulary
+		Get the wordCount for the ith tweet
+		for each word and count in wordCount
+			add the word to the vocabulary
+			add the count to hashTagWordMap[hashtag for hashtag in hashtagSet][word]
+
+
+	for uniqueHashtag in uniqueHashtags:
+		if uniqueHashtag not in vocabulary:
+			vocabulary[word] = 0.0
+		else:
+			vocabulary[word] += 1.0
+		for i in range(len(dataset)):
+			if (uniqueHashtag in hashtagSet[i]):
+				wordCount = countWords(tokenize(dataset[i]))
+				for word, count in wordCount.items:
+					if word not in vocabulary:
+						vocabulary[word] = 0.0
+					if word not in hashtagWordMap[uniqueHashtag]
+
+
 
 
 	words = tokenize(text)
