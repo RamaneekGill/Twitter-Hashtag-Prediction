@@ -13,7 +13,7 @@ def readCsv(filename):
 
 # Finds hashtags in a tweet and extracts them
 # Also returns a dataset of tweets that don't contain hashtags
-def extractTweets(corpus, tweetIndex, maxNumHashtags=sys.maxsize):
+def extractHashtagsFromTweets(corpus, tweetIndex):
 	hashtagSet = list()
 	dataset = list()
 
@@ -27,10 +27,10 @@ def extractTweets(corpus, tweetIndex, maxNumHashtags=sys.maxsize):
 		if len(tempHashtagSet) > 0:
 			hashtagSet.append(tempHashtagSet)
 
-			# Remove the hastag from this tweet
-			for word in tempHashtagSet:
-				line[tweetIndex] = line[tweetIndex].replace(word, "")
-			dataset.append(line[tweetIndex])
+		# Remove the hastag from this tweet
+		for word in tempHashtagSet:
+			line[tweetIndex] = line[tweetIndex].replace(word, "")
+		dataset.append(line[tweetIndex])
 
 	return hashtagSet, dataset
 
@@ -126,14 +126,15 @@ def createVocabulary(dataset, hashtagSet, uniqueHashtags):
 
 def main():
 	filename = 'testdata.manual.2009.06.14.csv'
-	# filename = 'training.1600000.processed.noemoticon.csv'
+	filename = 'training.1600000.processed.noemoticon.csv'
 	corpus = readCsv(filename)
-	hashtagSet, dataset = extractTweets(corpus, -1, 50)
-	trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
+	hashtagSet, dataset = extractHashtagsFromTweets(corpus, -1)
+	# trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
+	print(len(hashtagSet), len(dataset))
 	uniqueHashtags, tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
-	vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
+	print(len(uniqueHashtags))
+	# vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
 
 
-	print(tweetsMappedToHashtag)
 
 main()
