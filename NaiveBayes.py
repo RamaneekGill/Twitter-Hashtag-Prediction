@@ -65,6 +65,7 @@ def groupByHashtag(dataset, hashtagSet):
 
 	for i in range(len(hashtagSet)):
 		for hashtag in hashtagSet[i]:
+			hashtag = removePunctuation(hashtag.lower())
 			# Seed the dictionary with unique hashtags
 			if hashtag not in separated:
 				separated[hashtag] = []
@@ -137,6 +138,14 @@ def main():
 
 	tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
 	print(len(tweetsMappedToHashtag.keys()))
+
+	count = 0
+	for key in sorted(tweetsMappedToHashtag, key=lambda key: len(tweetsMappedToHashtag[key]), reverse=True):
+		count += 1
+		print (key, len(tweetsMappedToHashtag[key]))
+		if count > 24:
+			break
+
 	# vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
 
 
