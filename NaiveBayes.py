@@ -2,6 +2,7 @@ import csv
 import random
 import math
 import sys
+import string
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -20,17 +21,18 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 	for line in corpus:
 		tempHashtagSet = list()
 
-		for word in line[tweetIndex].split():
-			if word.startswith('#'):
-				tempHashtagSet.append(word)
+		if '#' in line[tweetIndex]:
+			for word in line[tweetIndex].split():
+				if word.startswith('#'):
+					tempHashtagSet.append(word)
 
-		if len(tempHashtagSet) > 0:
-			hashtagSet.append(tempHashtagSet)
+			if len(tempHashtagSet) > 0:
+				hashtagSet.append(tempHashtagSet)
 
-		# Remove the hastag from this tweet
-		for word in tempHashtagSet:
-			line[tweetIndex] = line[tweetIndex].replace(word, "")
-		dataset.append(line[tweetIndex])
+			# Remove the hastag from this tweet
+			for word in tempHashtagSet:
+				line[tweetIndex] = line[tweetIndex].replace(word, "")
+			dataset.append(line[tweetIndex])
 
 	return hashtagSet, dataset
 
@@ -51,6 +53,7 @@ def getUniqueHashtags(hashtagSet):
 		for j in range(len(hashtagSet[i])):
 			hashtag = hashtagSet[i][j][1:]
 			hashtag = hashtag.lower()
+			hashtag = removePunctuation(hashtag)
 			if hashtag not in uniqueHashtags:
 				uniqueHashtags.append(hashtag)
 
@@ -58,23 +61,21 @@ def getUniqueHashtags(hashtagSet):
 
 
 def groupByHashtag(dataset, hashtagSet):
-	uniqueHashtags = getUniqueHashtags(hashtagSet)
 	separated = {}
-	for i in range(len(dataset)):
-		for uniqueHashtag in uniqueHashtags:
-			if uniqueHashtag not in separated:
-				separated[uniqueHashtag] = []
 
-			# If the uniqueHashtag belongs to the tweet dataset[i]
-			if any(uniqueHashtag in str for str in hashtagSet[i]):
-				separated[uniqueHashtag].append(dataset[i])
+	for i in range(len(hashtagSet)):
+		for hashtag in hashtagSet[i]:
+			# Seed the dictionary with unique hashtags
+			if hashtag not in separated:
+				separated[hashtag] = []
 
-	return uniqueHashtags, separated
+			separated[hashtag].append(removePunctuation(dataset[i]).lower())
+
+	return separated
 
 
-def removePunctuation(string):
-    table = string.maketrans("","")
-    return string.translate(table, string.punctuation)
+def removePunctuation(myString):
+	return myString.translate(string.maketrans("",""), string.punctuation)
 
 
 def tokenize(string):
@@ -127,12 +128,15 @@ def createVocabulary(dataset, hashtagSet, uniqueHashtags):
 def main():
 	filename = 'testdata.manual.2009.06.14.csv'
 	filename = 'training.1600000.processed.noemoticon.csv'
+
 	corpus = readCsv(filename)
+
 	hashtagSet, dataset = extractHashtagsFromTweets(corpus, -1)
 	# trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
 	print(len(hashtagSet), len(dataset))
-	uniqueHashtags, tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
-	print(len(uniqueHashtags))
+
+	tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
+	print(len(tweetsMappedToHashtag.keys()))
 	# vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
 
 
