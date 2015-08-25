@@ -3,6 +3,7 @@ import random
 import math
 import sys
 import string
+import re
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -28,6 +29,10 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 
 			if len(tempHashtagSet) > 0:
 				hashtagSet.append(tempHashtagSet)
+				line[tweetIndex] = re.sub(r"http\S+", "", line[tweetIndex]) # Remove URLs
+				if word.startswith('@'): # Remove @ mentions
+					line[tweetIndex] = line[tweetIndex].replace(word, "")
+
 
 			# Remove the hastag from this tweet
 			for word in tempHashtagSet:
@@ -67,9 +72,9 @@ def removePunctuation(myString):
 
 
 def tokenize(string):
-    string = remove_punctuation(string)
+    string = removePunctuation(string)
     string = string.lower()
-    return re.split("\W+", string)
+    return string.split()
 
 def isNumber(string):
 	try:
@@ -100,7 +105,7 @@ def createVocabulary(tweetsMappedToHashtags):
 			hashtagSpecificVocabulary[hashtag] = {}
 
 		for tweet in tweetsMappedToHashtags[hashtag]:
-			for word in tweet:
+			for word in tokenize(tweet):
 				# Add word to global vocabulary
 				if word not in vocabulary:
 					vocabulary[word] = 0.0
@@ -141,11 +146,16 @@ def main():
 
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 
-	print(vocabulary.keys())
+	# count = 0
+	# for hashtag in tweetsMappedToPopularHashtags.keys():
+	# 	count += 1
+	# 	if count < 10:
+	# 		print(hashtag, tweetsMappedToPopularHashtags[hashtag])
+
+
 	print(len(vocabulary.keys()), len(hashtagSpecificVocabulary))
 	print('sdfkdjsfbsdfk')
 	for key in hashtagSpecificVocabulary.keys():
 		print(key, len(hashtagSpecificVocabulary[key]))
-
 
 main()
