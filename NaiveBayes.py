@@ -85,35 +85,34 @@ def countWords(words):
     return wordCount
 
 
-def createVocabulary(dataset, hashtagSet, uniqueHashtags):
+def createVocabulary(tweetsMappedToHashtags):
 	vocabulary = {} # The overall vocabulary word count in our entire dataset
-	hashtagWordMap = {} # The word count for each word that is associated with a hashtag
+	hashtagSpecificVocabulary = {} # The words from tweets that are associated with the hashtag (key of dict)
 
-	# Generate the keys for the hashtagWordMap
-	for uniqueHashtag in uniqueHashtags:
+	for hashtag in tweetsMappedToHashtags.keys():
 		# Add this hashtag to the vocabulary
-		if uniqueHashtag not in vocabulary:
-			vocabulary[uniqueHashtag] = 0.0
-		vocabulary[uniqueHashtag] += 1.0
+		if hashtag not in vocabulary:
+			vocabulary[hashtag] = 0.0
+		vocabulary[hashtag] += 1.0
 
-		# Make this hashtag a key in the map if it does not exist already
-		if uniqueHashtag not in hashtagWordMap:
-			hashtagWordMap[uniqueHashtag] = 0.0
-		hashtagWordMap[uniqueHashtag] += 1.0
+		# Initialize the dictionary for a vocabulary associated with this hashtag
+		if hashtag not in hashtagSpecificVocabulary:
+			hashtagSpecificVocabulary[hashtag] = {}
 
-	# Map the words in dataset[i] to all the hashtags in the list hashtagSet[i] into hashtagWordMap
-	for i in range(len(dataset)):
-		countWords = countWords(tokenize(dataset[i]))
-		for word, count in list(countWords.items()): # For each word and count in this tweet
-			# Add this word to the vocabulary
-			if word not in vocabulary:
-				vocabulary[word] = 0.0
-			vocabulary[word] += 1.0
+		for tweet in tweetsMappedToHashtags[hashtag]:
+			for word in tweet:
+				# Add word to global vocabulary
+				if word not in vocabulary:
+					vocabulary[word] = 0.0
+				vocabulary[word] += 1.0
 
-			for hashtag in hashtagSet[i]: # All the hashtags associated with this tweet
-				if word not in hashtagWordMap[hashtag]: # If this word is not associated with the hashtag
-					hashtagWordMap[hashtag][word] = 0.0  # Initialize it
-				hashtagWordMap[hashtag][word] += 1.0
+				# Add word to this hashtag's vocabulary
+				if word not in hashtagSpecificVocabulary[hashtag]:
+					hashtagSpecificVocabulary[hashtag][word] = 0.0
+				hashtagSpecificVocabulary[hashtag][word] += 1.0
+
+	return vocabulary, hashtagSpecificVocabulary
+
 
 def keepNMostPopularHashtags(dictionary, upperLimit):
 	count = 0
@@ -136,17 +135,17 @@ def main():
 
 	hashtagSet, dataset = extractHashtagsFromTweets(corpus, -1)
 	# trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
-	print(len(hashtagSet), len(dataset))
 
 	tweetsMappedToHashtags = groupByHashtag(dataset, hashtagSet)
-
 	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 10)
-	print(len(tweetsMappedToPopularHashtags))
-	print('sdfkdjsfbsdfk')
-	for key in tweetsMappedToPopularHashtags.keys():
-		print(key, len(tweetsMappedToPopularHashtags[key]))
-	# vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
 
+	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
+
+	print(vocabulary.keys())
+	print(len(vocabulary.keys()), len(hashtagSpecificVocabulary))
+	print('sdfkdjsfbsdfk')
+	for key in hashtagSpecificVocabulary.keys():
+		print(key, len(hashtagSpecificVocabulary[key]))
 
 
 main()
