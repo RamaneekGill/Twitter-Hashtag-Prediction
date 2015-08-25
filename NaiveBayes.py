@@ -23,7 +23,7 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 
 		if '#' in line[tweetIndex]:
 			for word in line[tweetIndex].split():
-				if word.startswith('#'):
+				if word.startswith('#') and len(word) > 1 and not isNumber(word[1:]):
 					tempHashtagSet.append(word)
 
 			if len(tempHashtagSet) > 0:
@@ -45,19 +45,6 @@ def seperateDatasetInTwo(dataset, ratio):
 		index = random.randrange(len(testSet))
 		trainSet.append(testSet.pop(index))
 	return [trainSet, testSet]
-
-
-def getUniqueHashtags(hashtagSet):
-	uniqueHashtags = list()
-	for i in range(len(hashtagSet)):
-		for j in range(len(hashtagSet[i])):
-			hashtag = hashtagSet[i][j][1:]
-			hashtag = hashtag.lower()
-			hashtag = removePunctuation(hashtag)
-			if hashtag not in uniqueHashtags:
-				uniqueHashtags.append(hashtag)
-
-	return uniqueHashtags;
 
 
 def groupByHashtag(dataset, hashtagSet):
@@ -84,6 +71,12 @@ def tokenize(string):
     string = string.lower()
     return re.split("\W+", string)
 
+def isNumber(string):
+	try:
+		float(string)
+		return True
+	except ValueError:
+		return False
 
 def countWords(words):
     wordCount = {}
@@ -122,6 +115,15 @@ def createVocabulary(dataset, hashtagSet, uniqueHashtags):
 					hashtagWordMap[hashtag][word] = 0.0  # Initialize it
 				hashtagWordMap[hashtag][word] += 1.0
 
+def keepNMostPopularHashtags(dictionary, upperLimit):
+	count = 0
+	for key in sorted(dictionary, key=lambda key: len(dictionary[key]), reverse=True):
+		count += 1
+		if count > upperLimit:
+			del dictionary[key]
+
+	return dictionary
+
 
 #################################  MAIN  #######################################
 
@@ -136,16 +138,13 @@ def main():
 	# trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
 	print(len(hashtagSet), len(dataset))
 
-	tweetsMappedToHashtag = groupByHashtag(dataset, hashtagSet)
-	print(len(tweetsMappedToHashtag.keys()))
+	tweetsMappedToHashtags = groupByHashtag(dataset, hashtagSet)
 
-	count = 0
-	for key in sorted(tweetsMappedToHashtag, key=lambda key: len(tweetsMappedToHashtag[key]), reverse=True):
-		count += 1
-		print (key, len(tweetsMappedToHashtag[key]))
-		if count > 24:
-			break
-
+	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 10)
+	print(len(tweetsMappedToPopularHashtags))
+	print('sdfkdjsfbsdfk')
+	for key in tweetsMappedToPopularHashtags.keys():
+		print(key, len(tweetsMappedToPopularHashtags[key]))
 	# vocabularyFrequency = createVocabulary(dataset, uniqueHastags);
 
 
