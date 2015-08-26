@@ -128,6 +128,34 @@ def keepNMostPopularHashtags(dictionary, upperLimit):
 
 	return dictionary
 
+def countWordOccursInDict(word, dictionary):
+	return dictionary[word]
+
+def countHashtagOccurrence(hashtag, dictionary):
+	return len(dictionary[hashtag])
+
+def probWordOccursInDict(word, dictionary):
+	return countWordOccursInDict(word, dictionary) / sum(dictionary.values())
+
+# Returns P(w|h)
+def probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
+	# return P(w,h) / P(h)
+	p_w_occurs_with_h = probWordOccursWithHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary)
+	p_h = countHashtagOccurrence(hashtag, tweetsMappedToHashtags)
+	return p_w_occurs_with_h / p_h
+
+# Returns P(w,h)
+def probWordOccursWithHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary):
+	return hashtagSpecificVocabulary[hashtag][word] / vocabulary[word]
+
+# Returns P(h|w)
+def probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
+	# return P(w|h) * P(h) / P(w)
+	p_w_given_h = probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags)
+	p_h = countHashtagOccurrence(hashtag, tweetsMappedToHashtags)
+	p_w = countWordOccursInDict(word, vocabulary)
+	return p_w_occurs_with_h * p_h / p_w
+
 
 #################################  MAIN  #######################################
 
@@ -157,5 +185,7 @@ def main():
 	print('sdfkdjsfbsdfk')
 	for key in hashtagSpecificVocabulary.keys():
 		print(key, len(hashtagSpecificVocabulary[key]))
+
+	print(hashtagSpecificVocabulary['fail']['office'])
 
 main()
