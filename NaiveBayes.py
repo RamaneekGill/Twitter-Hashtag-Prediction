@@ -42,14 +42,20 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 	return hashtagSet, dataset
 
 
-def seperateDatasetInTwo(dataset, ratio):
-	trainSize = int(len(dataset) * ratio)
+def seperateDatasetInTwo(corpus, ratio):
+	trainSize = int(len(corpus) * ratio)
+	random.seed(10)
+	random.shuffle(corpus)
+	trainSet = corpus[:trainSize]
+	testSet = corpus[trainSize:]
+	return trainSet, testSet
+
 	trainSet = list()
-	testSet = list(dataset)
+	testSet = corpus
 	while len(trainSet) < trainSize:
 		index = random.randrange(len(testSet))
 		trainSet.append(testSet.pop(index))
-	return [trainSet, testSet]
+	return trainSet, testSet
 
 
 def groupByHashtag(dataset, hashtagSet):
@@ -146,7 +152,7 @@ def probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, t
 	# return P(w,h) / P(h)
 	p_w_occurs_with_h = probWordOccursWithHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary)
 	p_h = countHashtagOccurrence(hashtag, tweetsMappedToHashtags)
-	return p_w_occurs_with_h / p_h
+	return p_w_occurs_with_h / p_h # add 0.0000001 to numerator before dividing
 
 # Returns P(h|w)
 def probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
@@ -164,15 +170,34 @@ def main():
 	filename = 'testdata.manual.2009.06.14.csv'
 	filename = 'training.1600000.processed.noemoticon.csv'
 
+	# Read the CSV
 	corpus = readCsv(filename)
 
-	hashtagSet, dataset = extractHashtagsFromTweets(corpus, -1)
-	# trainSet, testSet = seperateDatasetInTwo(dataset, 0.8)
+	# Seperate the CSV into a train and test set
+	trainSet, testSet = seperateDatasetInTwo(corpus, 0.5)
 
-	tweetsMappedToHashtags = groupByHashtag(dataset, hashtagSet)
+	# Get only the tweets from the set passed in
+	# Also extract (which means remove as well) the hashtags from the tweet
+	train_hashtagSet, train_tweets = extractHashtagsFromTweets(trainSet, -1)
+	test_hashtagSet, test_tweets = extractHashtagsFromTweets(testSet, -1)
+
+	# Process the trainSet and get the data necessary for calculating probabilities
+	tweetsMappedToHashtags = groupByHashtag(train_tweets, train_hashtagSet)
 	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 10)
-
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
+
+
+	for i in range(len(test_tweets)):
+		logProbHashtag = 0
+		for word in test_tweets[i].split():
+			# for hashtag in test_hashtagSet[i]:
+			first_hashtag = test_hashtagSet[i][0][1:] # since the hashtag starts with '#', remove it
+			if first_hashtag in hashtagSpecificVocabulary.keys() and word in vocabulary.keys() and word in hashtagSpecificVocabulary[first_hashtag].keys():
+				logProbHashtag += probHashtagGivenWord(first_hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+			print (logProbHashtag, i, test_tweets[i], first_hashtag)
+		if i > 10:
+			break
+
 
 	# count = 0
 	# for hashtag in tweetsMappedToPopularHashtags.keys():
@@ -180,16 +205,14 @@ def main():
 	# 	if count < 10:
 	# 		print(hashtag, tweetsMappedToPopularHashtags[hashtag])
 
-
-	print(len(vocabulary.keys()), len(hashtagSpecificVocabulary))
-	print('sdfkdjsfbsdfk')
-	for key in hashtagSpecificVocabulary.keys():
-		print(key, len(hashtagSpecificVocabulary[key]))
-
-	print(hashtagSpecificVocabulary['fail']['office'])
-
-	print(probWordGivenHashtag('office', 'fail', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
-	print(probHashtagGivenWord('fail', 'office', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
-
+	# print(len(vocabulary.keys()), len(hashtagSpecificVocabulary))
+	# print('sdfkdjsfbsdfk')
+	# for key in hashtagSpecificVocabulary.keys():
+	# 	print(key, len(hashtagSpecificVocabulary[key]))
+	#
+	# print(hashtagSpecificVocabulary['fail']['office'])
+	#
+	# print(probWordGivenHashtag('office', 'fail', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
+	# print(probHashtagGivenWord('fail', 'office', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
 
 main()
