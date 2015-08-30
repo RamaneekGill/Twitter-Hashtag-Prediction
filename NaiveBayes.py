@@ -194,51 +194,28 @@ def main():
 	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys()
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 
-
+	probPerTweetPerWordPerHashtag = {}
 	for i in range(len(test_tweets)): # for every tweet
-
 		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
 		if doesTweetHaveAPredictableHashtag(i, test_hashtagSet, uniquePopularHashtags) == False:
 			continue # Since this tweet can't be predicted skip it
 
-		print(test_tweets[i])
-
-		logProbPerWordPerHashtag = {}
-
+		probPerWordPerHashtag = {}
 		for word in test_tweets[i].split(): # for every word in the tweet
-			if word not in logProbPerWordPerHashtag:
-				logProbPerWordPerHashtag[word] = {} # Initialize the P(h|w) storage
 
+			probPerHashtag = {}
 			for hashtag in uniquePopularHashtags: # For every unique hashtag in the training set
-				if hashtag not in logProbPerWordPerHashtag[word]:
-					logProbPerWordPerHashtag[word][hashtag] = 0.0
+				probPerHashtag[hashtag] = 0.0
+
 				if word in vocabulary and hashtag in hashtagSpecificVocabulary:
-					if word in hashtagSpecificVocabulary[hashtag]: # Calculate P(h|w) value, otherwise it is 0
-						logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+					if word in hashtagSpecificVocabulary[hashtag]: # Make sure the word and hashtag exist in the training data
+						# Calculate P(h|w) value, otherwise it is 0
+						probPerHashtag[hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
 
-			print(max(logProbPerWordPerHashtag[word], key=logProbPerWordPerHashtag[word].get),
-				logProbPerWordPerHashtag[word][max(logProbPerWordPerHashtag[word], key=logProbPerWordPerHashtag[word].get)])
+			probPerWordPerHashtag[word] = probPerHashtag # associate prob per hashtag to the word
+		probPerTweetPerWordPerHashtag[test_tweets[i]] = probPerWordPerHashtag # associate prob per word per hashtag to the tweet
 
-		print(test_tweets[i], test_hashtagSet[i])
 		break
 
-	# print(logProbPerWordPerHashtag)
-
-
-	# count = 0
-	# for hashtag in tweetsMappedToPopularHashtags.keys():
-	# 	count += 1
-	# 	if count < 10:
-	# 		print(hashtag, tweetsMappedToPopularHashtags[hashtag])
-
-	# print(len(vocabulary.keys()), len(hashtagSpecificVocabulary))
-	# print('sdfkdjsfbsdfk')
-	# for key in hashtagSpecificVocabulary.keys():
-	# 	print(key, len(hashtagSpecificVocabulary[key]))
-	#
-	# print(hashtagSpecificVocabulary['fail']['office'])
-	#
-	# print(probWordGivenHashtag('office', 'fail', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
-	# print(probHashtagGivenWord('fail', 'office', vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags))
 
 main()
