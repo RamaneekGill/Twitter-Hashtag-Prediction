@@ -41,6 +41,16 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 	return hashtagSet, dataset
 
 
+def uniqueHashtagsFrom(hashtagSet):
+	uniqueHashtags = []
+	for hashtags in hashtagSet:
+		for hashtag in hashtags:
+			if hashtag not in uniqueHashtags:
+				uniqueHashtags.append(hashtag[1:]) # Insert hashtag with the '#'
+
+	return uniqueHashtags
+
+
 def seperateDatasetInTwo(corpus, ratio):
 	trainSize = int(len(corpus) * ratio)
 	random.seed(10)
@@ -180,21 +190,26 @@ def main():
 	train_hashtagSet, train_tweets = extractHashtagsFromTweets(trainSet, -1)
 	test_hashtagSet, test_tweets = extractHashtagsFromTweets(testSet, -1)
 
+	# Get all the unique hashtags in the training set with the '#' stripped
+	uniqueTrainHashtags = uniqueHashtagsFrom(train_hashtagSet)
+
 	# Process the trainSet and get the data necessary for calculating probabilities
 	tweetsMappedToHashtags = groupByHashtag(train_tweets, train_hashtagSet)
 	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 10)
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 
 
-	for i in range(len(test_tweets)):
+	print(uniqueTrainHashtags)
+
+	for i in range(len(test_tweets)): # for every tweet
 		logProbPerWordPerHashtag = {}
-		for word in test_tweets[i].split():
+		for word in test_tweets[i].split(): # for every word in the tweet
 			if word not in logProbPerWordPerHashtag:
 				logProbPerWordPerHashtag[word] = {}
-			# for hashtag in train_hashtagSet:
-			# 	if hashtag not in logProbPerWordPerHashtag[word]:
-			# 		logProbPerWordPerHashtag[word][hashtag] = 0.0
-			# 	logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+			for hashtag in train_hashtagSet[i]:
+				if hashtag not in logProbPerWordPerHashtag[word]:
+					logProbPerWordPerHashtag[word][hashtag] = 0.0
+				logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
 		break
 
 	print(logProbPerWordPerHashtag)
