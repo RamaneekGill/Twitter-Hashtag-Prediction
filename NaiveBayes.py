@@ -26,13 +26,12 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 			for word in line[tweetIndex].split():
 				if word.startswith('#') and len(word) > 1 and not isNumber(word[1:]):
 					tempHashtagSet.append(word)
+				if word.startswith('@'): # Remove @ mentions
+					line[tweetIndex] = line[tweetIndex].replace(word, "")
 
 			if len(tempHashtagSet) > 0:
 				hashtagSet.append(tempHashtagSet)
 				line[tweetIndex] = re.sub(r"http\S+", "", line[tweetIndex]) # Remove URLs
-				if word.startswith('@'): # Remove @ mentions
-					line[tweetIndex] = line[tweetIndex].replace(word, "")
-
 
 			# Remove the hastag from this tweet
 			for word in tempHashtagSet:
@@ -188,15 +187,17 @@ def main():
 
 
 	for i in range(len(test_tweets)):
-		logProbHashtag = 0
+		logProbPerWordPerHashtag = {}
 		for word in test_tweets[i].split():
-			# for hashtag in test_hashtagSet[i]:
-			first_hashtag = test_hashtagSet[i][0][1:] # since the hashtag starts with '#', remove it
-			if first_hashtag in hashtagSpecificVocabulary.keys() and word in vocabulary.keys() and word in hashtagSpecificVocabulary[first_hashtag].keys():
-				logProbHashtag += probHashtagGivenWord(first_hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
-			print (logProbHashtag, i, test_tweets[i], first_hashtag)
-		if i > 10:
-			break
+			if word not in logProbPerWordPerHashtag:
+				logProbPerWordPerHashtag[word] = {}
+			# for hashtag in train_hashtagSet:
+			# 	if hashtag not in logProbPerWordPerHashtag[word]:
+			# 		logProbPerWordPerHashtag[word][hashtag] = 0.0
+			# 	logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+		break
+
+	print(logProbPerWordPerHashtag)
 
 
 	# count = 0
