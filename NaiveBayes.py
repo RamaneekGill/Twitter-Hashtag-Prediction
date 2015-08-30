@@ -16,15 +16,18 @@ def readCsv(filename):
 # Finds hashtags in a tweet and extracts them
 # Also returns a dataset of tweets that don't contain hashtags
 def extractHashtagsFromTweets(corpus, tweetIndex):
-	hashtagSet = list()
-	dataset = list()
+	hashtagSet = []
+	dataset = []
 
 	for line in corpus:
-		tempHashtagSet = list()
+		tempHashtagSet = []
 
 		if '#' in line[tweetIndex]:
 			for word in line[tweetIndex].split():
-				if word.startswith('#') and len(word) > 1 and not isNumber(word[1:]):
+				if len(word) < 3 : # Skip words that are less than 3 characters
+					continue
+
+				if word.startswith('#') and not isNumber(word[1:]):
 					tempHashtagSet.append(word)
 				if word.startswith('@'): # Remove @ mentions
 					line[tweetIndex] = line[tweetIndex].replace(word, "")
@@ -33,10 +36,10 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 				hashtagSet.append(tempHashtagSet)
 				line[tweetIndex] = re.sub(r"http\S+", "", line[tweetIndex]) # Remove URLs
 
-			# Remove the hastag from this tweet
-			for word in tempHashtagSet:
-				line[tweetIndex] = line[tweetIndex].replace(word, "")
-			dataset.append(line[tweetIndex])
+				# Remove the hastag from this tweet
+				for word in tempHashtagSet:
+					line[tweetIndex] = line[tweetIndex].replace(word, "")
+				dataset.append(line[tweetIndex])
 
 	return hashtagSet, dataset
 
@@ -190,9 +193,11 @@ def main():
 	# Process the trainSet and get the data necessary for calculating probabilities
 	tweetsMappedToHashtags = groupByHashtag(train_tweets, train_hashtagSet)
 	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 56)
-	# Get all the unique hashtags in the training set with the '#' stripped
-	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys()
+	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys() # Get all the unique hashtags in the training set with the '#' stripped
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
+
+	print(len(test_tweets), len(test_hashtagSet), len(train_tweets), len(train_hashtagSet))
+	print(test_tweets[1], test_hashtagSet[1])
 
 	probPerTweetPerWordPerHashtag = {}
 	for i in range(len(test_tweets)): # for every tweet
@@ -204,7 +209,7 @@ def main():
 		for word in test_tweets[i].split(): # for every word in the tweet
 
 			probPerHashtag = {}
-			for hashtag in uniquePopularHashtags: # For every unique hashtag in the training set
+			for hashtag in uniquePopularHashtags: # For every unique hashtag in the filtered training set
 				probPerHashtag[hashtag] = 0.0
 
 				if word in vocabulary and hashtag in hashtagSpecificVocabulary:
@@ -215,7 +220,7 @@ def main():
 			probPerWordPerHashtag[word] = probPerHashtag # associate prob per hashtag to the word
 		probPerTweetPerWordPerHashtag[test_tweets[i]] = probPerWordPerHashtag # associate prob per word per hashtag to the tweet
 
-		break
 
+	print(len(probPerTweetPerWordPerHashtag.keys()), len(test_tweets))
 
 main()
