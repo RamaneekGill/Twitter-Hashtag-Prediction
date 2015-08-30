@@ -41,16 +41,6 @@ def extractHashtagsFromTweets(corpus, tweetIndex):
 	return hashtagSet, dataset
 
 
-def uniqueHashtagsFrom(hashtagSet):
-	uniqueHashtags = []
-	for hashtags in hashtagSet:
-		for hashtag in hashtags:
-			if hashtag not in uniqueHashtags:
-				uniqueHashtags.append(hashtag[1:]) # Insert hashtag with the '#'
-
-	return uniqueHashtags
-
-
 def seperateDatasetInTwo(corpus, ratio):
 	trainSize = int(len(corpus) * ratio)
 	random.seed(10)
@@ -104,6 +94,12 @@ def countWords(words):
         wordCount[word] = wordCount.get(word, 0.0) + 1.0
     return wordCount
 
+def doesTweetHaveAPredictableHashtag(tweetIndex, test_hashtagSet, uniquePopularHashtags):
+	shouldProcess = False
+	for hashtag in test_hashtagSet[tweetIndex]:
+		if hashtag[1:] in uniquePopularHashtags:
+			shouldProcess = True
+	return shouldProcess
 
 def createVocabulary(tweetsMappedToHashtags):
 	vocabulary = {} # The overall vocabulary word count in our entire dataset
@@ -190,29 +186,43 @@ def main():
 	train_hashtagSet, train_tweets = extractHashtagsFromTweets(trainSet, -1)
 	test_hashtagSet, test_tweets = extractHashtagsFromTweets(testSet, -1)
 
-	# Get all the unique hashtags in the training set with the '#' stripped
-	uniqueTrainHashtags = uniqueHashtagsFrom(train_hashtagSet)
 
 	# Process the trainSet and get the data necessary for calculating probabilities
 	tweetsMappedToHashtags = groupByHashtag(train_tweets, train_hashtagSet)
-	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 10)
+	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, 56)
+	# Get all the unique hashtags in the training set with the '#' stripped
+	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys()
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 
 
-	print(uniqueTrainHashtags)
-
 	for i in range(len(test_tweets)): # for every tweet
+
+		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
+		if doesTweetHaveAPredictableHashtag(i, test_hashtagSet, uniquePopularHashtags) == False:
+			continue # Since this tweet can't be predicted skip it
+
+		print(test_tweets[i])
+
 		logProbPerWordPerHashtag = {}
+
 		for word in test_tweets[i].split(): # for every word in the tweet
 			if word not in logProbPerWordPerHashtag:
-				logProbPerWordPerHashtag[word] = {}
-			for hashtag in train_hashtagSet[i]:
+				logProbPerWordPerHashtag[word] = {} # Initialize the P(h|w) storage
+
+			for hashtag in uniquePopularHashtags: # For every unique hashtag in the training set
 				if hashtag not in logProbPerWordPerHashtag[word]:
 					logProbPerWordPerHashtag[word][hashtag] = 0.0
-				logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+				if word in vocabulary and hashtag in hashtagSpecificVocabulary:
+					if word in hashtagSpecificVocabulary[hashtag]: # Calculate P(h|w) value, otherwise it is 0
+						logProbPerWordPerHashtag[word][hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+
+			print(max(logProbPerWordPerHashtag[word], key=logProbPerWordPerHashtag[word].get),
+				logProbPerWordPerHashtag[word][max(logProbPerWordPerHashtag[word], key=logProbPerWordPerHashtag[word].get)])
+
+		print(test_tweets[i], test_hashtagSet[i])
 		break
 
-	print(logProbPerWordPerHashtag)
+	# print(logProbPerWordPerHashtag)
 
 
 	# count = 0
