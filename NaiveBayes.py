@@ -164,12 +164,16 @@ def probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, t
 
 # Returns P(h|w)
 def probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
-	# return P(w|h) * P(h) / P(w)
-	p_w_given_h = probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags)
-	p_h = countHashtagOccurrence(hashtag, tweetsMappedToHashtags)
-	p_w = countWordOccursInDict(word, vocabulary)
-	return p_w_given_h * p_h / p_w
+	# return P(w|h) * P(h) / P(w) if we have the data to compute it, otherwise return 0.0
 
+	if word in vocabulary and hashtag in hashtagSpecificVocabulary:
+		if word in hashtagSpecificVocabulary[hashtag]:
+			p_w_given_h = probWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags)
+			p_h = countHashtagOccurrence(hashtag, tweetsMappedToHashtags)
+			p_w = countWordOccursInDict(word, vocabulary)
+			return p_w_given_h * p_h / p_w
+
+	return 0.0
 
 #################################  MAIN  #######################################
 
@@ -196,9 +200,6 @@ def main():
 	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys() # Get all the unique hashtags in the training set with the '#' stripped
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 
-	print(len(test_tweets), len(test_hashtagSet), len(train_tweets), len(train_hashtagSet))
-	print(test_tweets[1], test_hashtagSet[1])
-
 	probPerTweetPerWordPerHashtag = {}
 	for i in range(len(test_tweets)): # for every tweet
 		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
@@ -212,10 +213,8 @@ def main():
 			for hashtag in uniquePopularHashtags: # For every unique hashtag in the filtered training set
 				probPerHashtag[hashtag] = 0.0
 
-				if word in vocabulary and hashtag in hashtagSpecificVocabulary:
-					if word in hashtagSpecificVocabulary[hashtag]: # Make sure the word and hashtag exist in the training data
-						# Calculate P(h|w) value, otherwise it is 0
-						probPerHashtag[hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
+				# Calculate P(h|w) value, otherwise it is 0
+				probPerHashtag[hashtag] += probHashtagGivenWord(hashtag, word, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags)
 
 			probPerWordPerHashtag[word] = probPerHashtag # associate prob per hashtag to the word
 		probPerTweetPerWordPerHashtag[test_tweets[i]] = probPerWordPerHashtag # associate prob per word per hashtag to the tweet
