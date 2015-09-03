@@ -217,6 +217,8 @@ def main():
 ############################################################################################################################################################
 
 	tweetsMappedToHashtagsProbabilities = {}
+	countHashtagPredictedInTopTwenty = 0
+	countHashtagNotPredictedInTopTwenty = 0
 	for i in range(len(test_tweets)): # for every tweet
 		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
 		if doesTweetHaveAPredictableHashtag(i, test_hashtagSet, uniquePopularHashtags) == False:
@@ -226,12 +228,21 @@ def main():
 		for hashtag in uniquePopularHashtags:
 			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
 
-		tweetsMappedToHashtagsProbabilities[test_tweets[i]] = probHashtagGivenTweet
-		print(tweetsMappedToHashtagsProbabilities, test_tweets[i], test_hashtagSet[i])
-		break
+		# Only keep the top 20 recommended hashtags
+		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:20]
+
+		# If at least one of the actual hashtags associated with the tweet was in top 20 recommended, increment counter
+		countHashtagNotPredictedInTopTwenty += 1
+		for hashtag in test_hashtagSet[i]:
+			if hashtag[1:] in tweetsMappedToHashtagsProbabilities[i]:
+				countHashtagPredictedInTopTwenty += 1
+				countHashtagNotPredictedInTopTwenty -= 1
+				break
+
 ############################################################################################################################################################
 ############################################################################################################################################################
 
+	print(countHashtagPredictedInTopTwenty, countHashtagNotPredictedInTopTwenty)
 	# print(len(tweetsMappedToHashtags.keys()), len(test_tweets))
 
 main()
