@@ -8,12 +8,13 @@ import re
 import time
 import pickle
 
-CONST_EPSILON = 0.000000001
+BEST_EPSILON = 0.000000001
 CONST_NUM_HASHTAGS = 56
 CONST_PREDICT_TOP_N_HASHTAGS = 20
 CONST_USE_USAGE_PRIORS = 1 # 1 for yes, 0 for no
 CONST_SPLIT_TRAIN_TEST_RATIO = 0.8 # Percentage the training set should be
 CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
+CONST_EPSILON_INTERVALS = [1000, 100, 10, 1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001]
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -164,15 +165,15 @@ def countHashtagOccurrence(hashtag, dictionary):
 
 
 # Returns P(w,h), i.e. probability word occurs when associated with the hashag
-def countWordAndHashtagOccursTogether(word, hashtag, vocabulary, hashtagSpecificVocabulary):
-	return hashtagSpecificVocabulary[hashtag][word] + CONST_EPSILON
+def countWordAndHashtagOccursTogether(epsilon, word, hashtag, vocabulary, hashtagSpecificVocabulary):
+	return hashtagSpecificVocabulary[hashtag][word] + epsilon
 
 # Returns P(w|h)
-def logProbWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
+def logProbWordGivenHashtag(epsilon, word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags):
 	# return P(w,h) / P(h)
 	if word in vocabulary and hashtag in hashtagSpecificVocabulary:
 		if word in hashtagSpecificVocabulary[hashtag]:
-			log_p_w_occurs_with_h = math.log(countWordAndHashtagOccursTogether(word, hashtag, vocabulary, hashtagSpecificVocabulary))
+			log_p_w_occurs_with_h = math.log(countWordAndHashtagOccursTogether(epsilon, word, hashtag, vocabulary, hashtagSpecificVocabulary))
 			log_count_hashtag_occurence = math.log(countHashtagOccurrence(hashtag, tweetsMappedToHashtags))
 			return log_p_w_occurs_with_h - log_count_hashtag_occurence
 
@@ -180,7 +181,7 @@ def logProbWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary
 
 
 # Returns P(h|W)
-def logProbHashtagGivenWord(hashtag, words, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags, trainTweetsLength):
+def logProbHashtagGivenWord(epsilon, hashtag, words, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags, trainTweetsLength):
 	# return P(w|h) * P(h) / P(w) if we have the data to compute it, otherwise return 0.0
 	# log of fract = log(numerator) - log(denominator)
 
@@ -188,14 +189,14 @@ def logProbHashtagGivenWord(hashtag, words, vocabulary, hashtagSpecificVocabular
 	log_p_W = 0
 	if CONST_USE_USAGE_PRIORS:
 		for word in words:
-			log_p_W_given_h += logProbWordGivenHashtag(word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags)
+			log_p_W_given_h += logProbWordGivenHashtag(epsilon, word, hashtag, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags)
 		# log_p_W += math.log(countWordOccursInDict(word, vocabulary)) - math.log(trainTweetsLength)
 
 	log_p_h = math.log(countHashtagOccurrence(hashtag, tweetsMappedToHashtags)) - math.log(trainTweetsLength)
 	return log_p_h + CONST_USE_USAGE_PRIORS * log_p_W_given_h # - log_p_W
 
 
-def testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
+def testTrainSetAgainst(epsilon, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
 	tweetsMappedToHashtagsProbabilities = {}
 	countHashtagPredictedInTopTwenty = 0
 	countHashtagNotPredictedInTopTwenty = 0
@@ -208,7 +209,7 @@ def testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabu
 
 		probHashtagGivenTweet = {}
 		for hashtag in uniquePopularHashtags:
-			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
+			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(epsilon, hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
 
 		# Only keep the top 20 recommended hashtags
 		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:CONST_PREDICT_TOP_N_HASHTAGS]
@@ -223,8 +224,7 @@ def testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabu
 
 	timePassed = time.time() - start
 	percentage = countHashtagPredictedInTopTwenty/(countHashtagPredictedInTopTwenty + countHashtagNotPredictedInTopTwenty)
-	print('Processed ', i, 'tweets, accuracy so far is: {}, time passed so far: {}'.format(percentage, timePassed))
-
+	print('Processed {} tweets, accuracy so far is: {}, time for this test run: {}, Epsilon used {}'.format(i, percentage, timePassed, epsilon))
 	return percentage
 
 #################################  MAIN  #######################################
@@ -236,22 +236,18 @@ def main():
 
 	# Read the CSV
 	corpus = readCsv(filename)
-
-	print('Read the dataset')
+	print('Read the corpus into memory')
 
 	# Seperate the CSV into a train and test set
 	trainSet, testSet = seperateDatasetInTwo(corpus, CONST_SPLIT_TRAIN_TEST_RATIO)
-	validationSet = seperateDatasetInTwo(trainSet, CONST_SPLIT_TRAIN_VALIDATION_RATIO)
-
-	print('Processed the dataset into train and test sets')
+	validationSet, trainSet = seperateDatasetInTwo(trainSet, CONST_SPLIT_TRAIN_VALIDATION_RATIO)
+	print('Processed the corpus into train, test and validation sets')
 
 	# Get only the tweets from the set passed in
 	# Also extract (which means remove as well) the hashtags from the tweet
 	train_hashtagSet, train_tweets = extractHashtagsFromTweets(trainSet, -1)
 	test_hashtagSet, test_tweets = extractHashtagsFromTweets(testSet, -1)
 	validation_hashtagSet, validation_tweets = extractHashtagsFromTweets(validationSet, -1)
-
-
 	print('Processed train, test and validation set and extracted hashtags and tweets')
 
 	# Process the trainSet and get the data necessary for calculating probabilities
@@ -259,20 +255,21 @@ def main():
 	tweetsMappedToPopularHashtags = keepNMostPopularHashtags(tweetsMappedToHashtags, CONST_NUM_HASHTAGS)
 	uniquePopularHashtags = tweetsMappedToPopularHashtags.keys() # Get all the unique hashtags in the training set with the '#' stripped
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
-
 	print('Generated vocabularies and kept tweets only with the top {} hashtags').format(CONST_NUM_HASHTAGS)
 
+	print('Performing cross validation to find the best epsilon value')
+	accuracies = []
+	for epsilon in CONST_EPSILON_INTERVALS:
+		accuracy = testTrainSetAgainst(epsilon, validation_tweets, validation_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		accuracies.append(accuracy)
 
-############################################################################################################################################################
-############################################################################################################################################################
+	BEST_EPSILON = CONST_EPSILON_INTERVALS[accuracies.index(max(accuracies))]
+	print('Validation tests have shown that the best epsilon value to use is: {}'.format(BEST_EPSILON))
+
 
 	print('Testing the test set')
- 	accuracy = testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-	print(accuracy)
-
-
-############################################################################################################################################################
-############################################################################################################################################################
+	accuracy = testTrainSetAgainst(BEST_EPSILON, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+	print('Test set accuracy is: {}'.format(accuracy))
 
 
 main()
