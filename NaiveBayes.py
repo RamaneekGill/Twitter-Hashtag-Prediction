@@ -6,11 +6,14 @@ import sys
 import string
 import re
 import time
+import pickle
 
 CONST_EPSILON = 0.000000001
-CONST_NUM_HASHTAGS = 6
-CONST_PREDICT_TOP_N_HASHTAGS = 1
+CONST_NUM_HASHTAGS = 56
+CONST_PREDICT_TOP_N_HASHTAGS = 20
 CONST_USE_USAGE_PRIORS = 1 # 1 for yes, 0 for no
+CONST_SPLIT_TRAIN_TEST_RATIO = 0.8 # Percentage the training set should be
+CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -192,6 +195,38 @@ def logProbHashtagGivenWord(hashtag, words, vocabulary, hashtagSpecificVocabular
 	return log_p_h + CONST_USE_USAGE_PRIORS * log_p_W_given_h # - log_p_W
 
 
+def testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
+	tweetsMappedToHashtagsProbabilities = {}
+	countHashtagPredictedInTopTwenty = 0
+	countHashtagNotPredictedInTopTwenty = 0
+	start = time.time()
+
+	for i in range(len(test_tweets)): # for every tweet
+		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
+		if doesTweetHaveAPredictableHashtag(i, test_hashtagSet, uniquePopularHashtags) == False:
+			continue # Since this tweet can't be predicted skip it
+
+		probHashtagGivenTweet = {}
+		for hashtag in uniquePopularHashtags:
+			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
+
+		# Only keep the top 20 recommended hashtags
+		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:CONST_PREDICT_TOP_N_HASHTAGS]
+
+		# If at least one of the actual hashtags associated with the tweet was in top 20 recommended, increment counter
+		countHashtagNotPredictedInTopTwenty += 1
+		for hashtag in test_hashtagSet[i]:
+			if hashtag[1:] in tweetsMappedToHashtagsProbabilities[i]:
+				countHashtagPredictedInTopTwenty += 1
+				countHashtagNotPredictedInTopTwenty -= 1
+				break
+
+	timePassed = time.time() - start
+	percentage = countHashtagPredictedInTopTwenty/(countHashtagPredictedInTopTwenty + countHashtagNotPredictedInTopTwenty)
+	print('Processed ', i, 'tweets, accuracy so far is: {}, time passed so far: {}'.format(percentage, timePassed))
+
+	return percentage
+
 #################################  MAIN  #######################################
 
 
@@ -205,7 +240,8 @@ def main():
 	print('Read the dataset')
 
 	# Seperate the CSV into a train and test set
-	trainSet, testSet = seperateDatasetInTwo(corpus, 0.5)
+	trainSet, testSet = seperateDatasetInTwo(corpus, CONST_SPLIT_TRAIN_TEST_RATIO)
+	validationSet = seperateDatasetInTwo(trainSet, CONST_SPLIT_TRAIN_VALIDATION_RATIO)
 
 	print('Processed the dataset into train and test sets')
 
@@ -213,8 +249,10 @@ def main():
 	# Also extract (which means remove as well) the hashtags from the tweet
 	train_hashtagSet, train_tweets = extractHashtagsFromTweets(trainSet, -1)
 	test_hashtagSet, test_tweets = extractHashtagsFromTweets(testSet, -1)
+	validation_hashtagSet, validation_tweets = extractHashtagsFromTweets(validationSet, -1)
 
-	print('Processed test and train set and extracted hashtags and tweets')
+
+	print('Processed train, test and validation set and extracted hashtags and tweets')
 
 	# Process the trainSet and get the data necessary for calculating probabilities
 	tweetsMappedToHashtags = groupByHashtag(train_tweets, train_hashtagSet)
@@ -229,43 +267,12 @@ def main():
 ############################################################################################################################################################
 
 	print('Testing the test set')
+ 	accuracy = testWithTrainSet(test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+	print(accuracy)
 
-	tweetsMappedToHashtagsProbabilities = {}
-	countHashtagPredictedInTopTwenty = 0
-	countHashtagNotPredictedInTopTwenty = 0
-	start = time.time()
-
-	for i in range(len(test_tweets)): # for every tweet
-		if i > 0:
-			if i % 100 == 0:
-				timePassed = time.time() - start
-				percentage = countHashtagPredictedInTopTwenty/(countHashtagPredictedInTopTwenty + countHashtagNotPredictedInTopTwenty)
-				print('Processed ', i, 'tweets, accuracy so far is: {}, time passed so far: {}'.format(percentage, timePassed))
-				print(countHashtagPredictedInTopTwenty, countHashtagNotPredictedInTopTwenty)
-
-		# Check if this test_tweet actually has a hashtag that we've seen in the filtered training set
-		if doesTweetHaveAPredictableHashtag(i, test_hashtagSet, uniquePopularHashtags) == False:
-			continue # Since this tweet can't be predicted skip it
-
-		probHashtagGivenTweet = {}
-		for hashtag in uniquePopularHashtags:
-			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-
-		# Only keep the top 20 recommended hashtags
-		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:CONST_PREDICT_TOP_N_HASHTAGS]
-
-		# If at least one of the actual hashtags associated with the tweet was in top 20 recommended, increment counter
-		countHashtagNotPredictedInTopTwenty += 1
-		for hashtag in test_hashtagSet[i]:
-			if hashtag[1:] in tweetsMappedToHashtagsProbabilities[i]:
-				countHashtagPredictedInTopTwenty += 1
-				countHashtagNotPredictedInTopTwenty -= 1
-				break
 
 ############################################################################################################################################################
 ############################################################################################################################################################
 
-	print(countHashtagPredictedInTopTwenty, countHashtagNotPredictedInTopTwenty)
-	# print(len(tweetsMappedToHashtags.keys()), len(test_tweets))
 
 main()
