@@ -14,7 +14,8 @@ CONST_PREDICT_TOP_N_HASHTAGS = 20
 CONST_USE_USAGE_PRIORS = 1 # 1 for yes, 0 for no
 CONST_SPLIT_TRAIN_TEST_RATIO = 0.8 # Percentage the training set should be
 CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
-CONST_EPSILON_INTERVALS = [1000, 100, 10, 1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001]
+CONST_EPSILON_INTERVALS = [1000, 100, 10, 1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001]
+CONST_ALPHA_INTERVALS = [0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5]
 
 def readCsv(filename):
 	lines = csv.reader(open(filename, "rb"))
@@ -181,7 +182,7 @@ def logProbWordGivenHashtag(epsilon, word, hashtag, vocabulary, hashtagSpecificV
 
 
 # Returns P(h|W)
-def logProbHashtagGivenWord(epsilon, hashtag, words, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags, trainTweetsLength):
+def logProbHashtagGivenWord(epsilon, alpha, hashtag, words, vocabulary, hashtagSpecificVocabulary, tweetsMappedToHashtags, trainTweetsLength):
 	# return P(w|h) * P(h) / P(w) if we have the data to compute it, otherwise return 0.0
 	# log of fract = log(numerator) - log(denominator)
 
@@ -193,10 +194,10 @@ def logProbHashtagGivenWord(epsilon, hashtag, words, vocabulary, hashtagSpecific
 		# log_p_W += math.log(countWordOccursInDict(word, vocabulary)) - math.log(trainTweetsLength)
 
 	log_p_h = math.log(countHashtagOccurrence(hashtag, tweetsMappedToHashtags)) - math.log(trainTweetsLength)
-	return log_p_h + CONST_USE_USAGE_PRIORS * log_p_W_given_h # - log_p_W
+	return alpha*log_p_h + CONST_USE_USAGE_PRIORS * log_p_W_given_h # - log_p_W
 
 
-def testTrainSetAgainst(epsilon, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
+def testTrainSetAgainst(epsilon, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
 	tweetsMappedToHashtagsProbabilities = {}
 	countHashtagPredictedInTopTwenty = 0
 	countHashtagNotPredictedInTopTwenty = 0
@@ -209,7 +210,7 @@ def testTrainSetAgainst(epsilon, test_tweets, test_hashtagSet, uniquePopularHash
 
 		probHashtagGivenTweet = {}
 		for hashtag in uniquePopularHashtags:
-			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(epsilon, hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
+			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(epsilon, alpha, hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
 
 		# Only keep the top 20 recommended hashtags
 		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:CONST_PREDICT_TOP_N_HASHTAGS]
@@ -224,13 +225,14 @@ def testTrainSetAgainst(epsilon, test_tweets, test_hashtagSet, uniquePopularHash
 
 	timePassed = time.time() - start
 	percentage = countHashtagPredictedInTopTwenty/(countHashtagPredictedInTopTwenty + countHashtagNotPredictedInTopTwenty)
-	print('Processed {} tweets, accuracy so far is: {}, time for this test run: {}, Epsilon used {}'.format(i, percentage, timePassed, epsilon))
+	print('Processed {} tweets, accuracy so far is: {}, time for this test run: {}, Epsilon used {}, Alpha used {}'.format(i, percentage, timePassed, epsilon, alpha))
 	return percentage
 
 #################################  MAIN  #######################################
 
 
 def main():
+	start = time.time()
 	filename = 'testdata.manual.2009.06.14.csv'
 	filename = 'training.1600000.processed.noemoticon.csv'
 
@@ -257,19 +259,25 @@ def main():
 	vocabulary, hashtagSpecificVocabulary = createVocabulary(tweetsMappedToPopularHashtags)
 	print('Generated vocabularies and kept tweets only with the top {} hashtags').format(CONST_NUM_HASHTAGS)
 
-	print('Performing cross validation to find the best epsilon value')
-	accuracies = []
-	for epsilon in CONST_EPSILON_INTERVALS:
-		accuracy = testTrainSetAgainst(epsilon, validation_tweets, validation_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-		accuracies.append(accuracy)
+	print('Performing cross validation to find the best epsilon and alhpa values')
 
-	BEST_EPSILON = CONST_EPSILON_INTERVALS[accuracies.index(max(accuracies))]
-	print('Validation tests have shown that the best epsilon value to use is: {}'.format(BEST_EPSILON))
+	accuracies = []
+	maxAccuracy = 0
+	for epsilon in CONST_EPSILON_INTERVALS:
+		for alpha in CONST_ALPHA_INTERVALS:
+			accuracy = testTrainSetAgainst(epsilon, alpha, validation_tweets, validation_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+			accuracies.append(accuracy)
+			if max(accuracies) > maxAccuracy:
+				BEST_EPSILON = epsilon
+				BEST_ALPHA = alpha
+				maxAccuracy = max(accuracies)
+
+	print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
 
 
 	print('Testing the test set')
-	accuracy = testTrainSetAgainst(BEST_EPSILON, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-	print('Test set accuracy is: {}'.format(accuracy))
+	accuracy = testTrainSetAgainst(BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+	print('Test set accuracy is: {}, this all took {} seconds to run'.format(accuracy, time.time() - start))
 
 
 main()
