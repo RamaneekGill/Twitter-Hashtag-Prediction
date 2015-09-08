@@ -311,16 +311,16 @@ def main():
 	# plt.show()
 	#
 	#
-	print('Testing the test set with the best epsilon and alpha against number of recommended hashtags')
-	accuracies = []
-	for hashtagPredictionLimit in CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS:
-		accuracy = testTrainSetAgainst(hashtagPredictionLimit, BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-		accuracies.append(accuracy)
-	plt.plot(CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS, accuracies)
-	plt.xlabel('Number Of Hashtags Recommended')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy on Test Set')
-	plt.show()
+	# print('Testing the test set with the best epsilon and alpha against number of recommended hashtags')
+	# accuracies = []
+	# for hashtagPredictionLimit in CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS:
+	# 	accuracy = testTrainSetAgainst(hashtagPredictionLimit, BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS, accuracies)
+	# plt.xlabel('Number Of Hashtags Recommended')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set')
+	# plt.show()
 
 	print('Testing the test set with epslion: {} and alpha: {}'.format(BEST_EPSILON, BEST_ALPHA))
 	accuracy = testTrainSetAgainst(CONST_PREDICT_TOP_N_HASHTAGS, BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
