@@ -7,6 +7,7 @@ import string
 import re
 import time
 import pickle
+import matplotlib.pyplot as plt
 
 BEST_EPSILON = 0.000000001
 CONST_NUM_HASHTAGS = 56
@@ -260,7 +261,6 @@ def main():
 	print('Generated vocabularies and kept tweets only with the top {} hashtags').format(CONST_NUM_HASHTAGS)
 
 	print('Performing cross validation to find the best epsilon and alhpa values')
-
 	accuracies = []
 	maxAccuracy = 0
 	for epsilon in CONST_EPSILON_INTERVALS:
@@ -271,11 +271,34 @@ def main():
 				BEST_EPSILON = epsilon
 				BEST_ALPHA = alpha
 				maxAccuracy = max(accuracies)
-
 	print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
 
 
-	print('Testing the test set')
+	print('Generating graph for epsilon accuracies')
+	epsilonAccuracies = []
+	for epsilon in CONST_EPSILON_INTERVALS:
+		accuracy = testTrainSetAgainst(epsilon, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		epsilonAccuracies.append(accuracy)
+	plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
+	plt.xlabel('Epsilon')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy on Test Set Using Alpha = {}'.format(BEST_ALPHA))
+	plt.show()
+
+
+	print('Generating graph for alpha accuracies')
+	alphaAccuracies = []
+	for alpha in CONST_ALPHA_INTERVALS:
+		accuracy = testTrainSetAgainst(BEST_EPSILON, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		alphaAccuracies.append(accuracy)
+	plt.plot(CONST_ALPHA_INTERVALS, alphaAccuracies)
+	plt.xlabel('Alpha')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy on Test Set Using Epsilon = {}'.format(BEST_EPSILON))
+	plt.show()
+
+
+	print('Testing the test set with the best epsilon and alpha')
 	accuracy = testTrainSetAgainst(BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
 	print('Test set accuracy is: {}, this all took {} seconds to run'.format(accuracy, time.time() - start))
 
