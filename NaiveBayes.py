@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 BEST_EPSILON = 0.000000001
 CONST_NUM_HASHTAGS = 56
 CONST_PREDICT_TOP_N_HASHTAGS = 20
+CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS = [1, 3, 5, 10, 15, 20, 25]
 CONST_USE_USAGE_PRIORS = 1 # 1 for yes, 0 for no
 CONST_SPLIT_TRAIN_TEST_RATIO = 0.8 # Percentage the training set should be
 CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
@@ -198,7 +199,7 @@ def logProbHashtagGivenWord(epsilon, alpha, hashtag, words, vocabulary, hashtagS
 	return alpha*log_p_h + CONST_USE_USAGE_PRIORS * log_p_W_given_h # - log_p_W
 
 
-def testTrainSetAgainst(epsilon, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
+def testTrainSetAgainst(predictionLimit, epsilon, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength):
 	tweetsMappedToHashtagsProbabilities = {}
 	countHashtagPredictedInTopTwenty = 0
 	countHashtagNotPredictedInTopTwenty = 0
@@ -214,7 +215,7 @@ def testTrainSetAgainst(epsilon, alpha, test_tweets, test_hashtagSet, uniquePopu
 			probHashtagGivenTweet[hashtag] = logProbHashtagGivenWord(epsilon, alpha, hashtag, test_tweets[i], vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, train_tweetsLength)
 
 		# Only keep the top 20 recommended hashtags
-		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:CONST_PREDICT_TOP_N_HASHTAGS]
+		tweetsMappedToHashtagsProbabilities[i] = sorted(probHashtagGivenTweet, key=probHashtagGivenTweet.get, reverse=False)[:predictionLimit]
 
 		# If at least one of the actual hashtags associated with the tweet was in top 20 recommended, increment counter
 		countHashtagNotPredictedInTopTwenty += 1
@@ -265,7 +266,7 @@ def main():
 	maxAccuracy = 0
 	for epsilon in CONST_EPSILON_INTERVALS:
 		for alpha in CONST_ALPHA_INTERVALS:
-			accuracy = testTrainSetAgainst(epsilon, alpha, validation_tweets, validation_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+			accuracy = testTrainSetAgainst(CONST_PREDICT_TOP_N_HASHTAGS, epsilon, alpha, validation_tweets, validation_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
 			accuracies.append(accuracy)
 			if max(accuracies) > maxAccuracy:
 				BEST_EPSILON = epsilon
@@ -277,7 +278,7 @@ def main():
 	print('Generating graph for epsilon accuracies')
 	epsilonAccuracies = []
 	for epsilon in CONST_EPSILON_INTERVALS:
-		accuracy = testTrainSetAgainst(epsilon, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		accuracy = testTrainSetAgainst(CONST_PREDICT_TOP_N_HASHTAGS, epsilon, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
 		epsilonAccuracies.append(accuracy)
 	plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
 	plt.xlabel('Epsilon')
@@ -289,7 +290,7 @@ def main():
 	print('Generating graph for alpha accuracies')
 	alphaAccuracies = []
 	for alpha in CONST_ALPHA_INTERVALS:
-		accuracy = testTrainSetAgainst(BEST_EPSILON, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		accuracy = testTrainSetAgainst(CONST_PREDICT_TOP_N_HASHTAGS, BEST_EPSILON, alpha, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
 		alphaAccuracies.append(accuracy)
 	plt.plot(CONST_ALPHA_INTERVALS, alphaAccuracies)
 	plt.xlabel('Alpha')
@@ -299,8 +300,17 @@ def main():
 
 
 	print('Testing the test set with the best epsilon and alpha')
-	accuracy = testTrainSetAgainst(BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
-	print('Test set accuracy is: {}, this all took {} seconds to run'.format(accuracy, time.time() - start))
+	accuracies = []
+	for hashtagPredictionLimit in CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS:
+		accuracy = testTrainSetAgainst(hashtagPredictionLimit, BEST_EPSILON, BEST_ALPHA, test_tweets, test_hashtagSet, uniquePopularHashtags, vocabulary, hashtagSpecificVocabulary, tweetsMappedToPopularHashtags, len(train_tweets))
+		accuracies.append(accuracy)
+	plt.plot(CONST_PREDICT_TOP_N_HASHTAGS_INTERVALS, accuracies)
+	plt.xlabel('Number Of Hashtags Recommended')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy on Test Set')
+	plt.show()
+
+	print('This all took {} seconds to run'.format(accuracy, time.time() - start))
 
 
 main()
