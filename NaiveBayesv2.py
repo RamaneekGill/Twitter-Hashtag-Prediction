@@ -30,7 +30,7 @@ class NaiveBayes:
 		self.testSet, self.trainSet = self.splitDataset(self.corpus, NaiveBayes.CONST_SPLIT_TRAIN_TEST_RATIO)
 		self.hashtagCounts = self.countHashtags()
 		self.wordCounts = self.countWords()
-		self.wordsMappedToHashtagCounts = self.generateHashtagSepecificVocabulary()
+		self.wordsMappedToHashtagCounts = self.generateHashtagSpecificVocabulary()
 		self.hashtagToPredict = self.getHashtagsToPredict()
 
 	def readCsv(self, filename):
@@ -53,7 +53,8 @@ class NaiveBayes:
 			hashtags = []
 			for word in tweet.split():
 				if word.startswith('#') and not isNumber(word[1:]) and len(word) > 2:
-					hashtags.append(word[1:])
+					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					hashtags.append(word)
 
 			for hashtag in unique(hashtags):
 				if hashtag not in hashtagCounts:
@@ -64,3 +65,22 @@ class NaiveBayes:
 		return hashtagCounts
 
 	def countWords(self):
+		with open('stopwords.txt') as f:
+			stopWords = f.read().splitlines()
+
+		wordCounts = {}
+		for tweet in self.trainSet:
+			for word in tweet.split():
+				if '#' in word or '@' in word or len(word) < 3:
+					continue
+				if word in stopWords:
+					continue
+				word = word.lower()
+				word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+
+				if word not in wordCounts:
+					wordCounts[word] = 1
+				else:
+					wordCounts[word] += 1
+
+		return wordCounts
