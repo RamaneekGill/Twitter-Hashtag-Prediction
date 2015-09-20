@@ -1,0 +1,12 @@
+### Notes:
+
+#### Sept 9 2015:
+	Check if the gains from cross validation is significant.
+	$sd = \sqrt((0.75*(1-0.75))/7000)
+	Binomial Standard Deviation
+	This is good for the report to calculate if gains in algorithm were significant
+
+	TODO:
+	Graphs for varying size of train/test set
+	Why my accuracy is lower
+	Relationship between popularity vs naive bayes

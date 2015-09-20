@@ -28,10 +28,42 @@ class NaiveBayes:
 		filename = 'training.1600000.processed.noemoticon.csv'
 		self.dataset = self.readCsv(filename) # Contains only tweets with hashtags
 		self.testSet, self.trainSet = self.splitDataset(self.corpus, NaiveBayes.CONST_SPLIT_TRAIN_TEST_RATIO)
-		self.hashtagCounts = self.countHashtags()
-		self.wordCounts = self.countWords()
-		self.wordsMappedToHashtagCounts = self.generateHashtagSpecificVocabulary()
+		self.wordCounts, self.hashtagCounts = self.generateCounts()
+		self.wordsMappedToHashtags = self.generateHashtagSpecificVocabulary()
 		self.hashtagToPredict = self.getHashtagsToPredict()
+
+	def generateCounts(self):
+		with open('stopwords.txt') as f:
+			stopWords = f.read().splitlines()
+
+		wordCounts = {}
+		hashtagCounts = {}
+
+		for tweet in self.trainSet:
+			hashtags = []
+			for word in tweet.split():
+				if word.startswith('#') and len(word) > 2:
+					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					hashtags.append(word.lower())
+				else:
+					if '#' in word or '@' in word or len(word) < 3:
+						continue
+					if word in stopWords:
+						continue
+					word = word.lower()
+					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					if word not in wordCounts:
+						wordCounts[word] = 1
+					else:
+						wordCounts[word] += 1
+
+			for hashtag in hashtags:
+				if hashtag not in hashtagCounts:
+					hashtagCounts[hashtag] = 1.0
+				else:
+					hashtagCounts[hashtag] += 1.0
+
+		return wordCounts, hashtagCounts
 
 	def readCsv(self, filename):
 		corpus = read_csv(filename)
@@ -47,40 +79,36 @@ class NaiveBayes:
 		trainSet = array(self.dataset)[idx[:len(idx)/2]]
 		return testSet, trainSet
 
-	def countHashtags(self):
-		hashtagCounts = {}
-		for tweet in self.trainSet:
-			hashtags = []
-			for word in tweet.split():
-				if word.startswith('#') and not isNumber(word[1:]) and len(word) > 2:
-					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
-					hashtags.append(word)
-
-			for hashtag in unique(hashtags):
-				if hashtag not in hashtagCounts:
-					hashtagCounts[hashtag] = 1.0
-				else:
-					hashtagCounts[hashtag] += 1.0
-
-		return hashtagCounts
-
-	def countWords(self):
+	def generateHashtagSpecificVocabulary(self):
 		with open('stopwords.txt') as f:
 			stopWords = f.read().splitlines()
 
-		wordCounts = {}
+		wordsMappedToHashtags = {}
+
 		for tweet in self.trainSet:
+			words = []
+			hashtags = []
 			for word in tweet.split():
-				if '#' in word or '@' in word or len(word) < 3:
-					continue
-				if word in stopWords:
-					continue
-				word = word.lower()
-				word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
-
-				if word not in wordCounts:
-					wordCounts[word] = 1
+				if word.startswith('#') and len(word) > 2:
+					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					hashtags.append(word.lower())
+					words.append(word)
 				else:
-					wordCounts[word] += 1
+					if '#' in word or '@' in word or len(word) < 3:
+						continue
+					if word in stopWords:
+						continue
+					word = word.lower()
+					word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					words.append(word)
 
-		return wordCounts
+			for hashtag in hashtags:
+				if hashtag not in wordsMappedToHashtags:
+					wordsMappedToHashtags[hashtag] = {}
+				for word in words:
+					if word not in wordsMappedToHashtags[hashtag]:
+						wordsMappedToHashtags[hashtag][word] = 1.0
+					else:
+						wordsMappedToHashtags[hashtag][word] += 1.0
+
+		return wordsMappedToHashtags
