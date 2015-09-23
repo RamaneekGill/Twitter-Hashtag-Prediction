@@ -59,8 +59,7 @@ class NaiveBayes:
 			hashtags = []
 			for word in tweet.split():
 				if word.startswith('#') and len(word) > 2:
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
-					word = word.lower().strip('#!,.')
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
 					hashtags.append(word)
 					# if word not in wordCounts:
 					# 	wordCounts[word] = 1
@@ -71,8 +70,7 @@ class NaiveBayes:
 						continue
 					if word in self.stopWords:
 						continue
-					word = word.lower().strip('#!,.')
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
 					if word not in wordCounts:
 						wordCounts[word] = 1
 					else:
@@ -108,8 +106,7 @@ class NaiveBayes:
 			hashtags = []
 			for word in tweet.split():
 				if word.startswith('#') and len(word) > 2:
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
-					word = word.lower().strip('#!,.')
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
 					hashtags.append(word)
 					words.append(word)
 				else:
@@ -117,8 +114,7 @@ class NaiveBayes:
 						continue
 					if word in self.stopWords:
 						continue
-					word = word.lower().strip('#!,.')
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
 					words.append(word)
 
 			for hashtag in hashtags:
@@ -145,8 +141,8 @@ class NaiveBayes:
 
 			for word in tweet.split():
 				if word.startswith('#') and len(word) > 2:
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
-					word = word.lower().strip('#!,.')
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					# word = word.lower().strip('#!,.')
 					hashtags.append(word)
 					# words.append(word)
 				else:
@@ -154,8 +150,8 @@ class NaiveBayes:
 						continue
 					if word in self.stopWords:
 						continue
-					word = word.lower().strip('#!,.')
-					# word = word.translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					# word = word.lower().strip('#!,.')
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
 					words.append(word)
 
 			if len(set(hashtags).intersection(self.hashtagsToPredict)) == 0:
@@ -173,8 +169,7 @@ class NaiveBayes:
 
 			hits += len(set(hashtags).intersection(topProbabilities)) > 0
 
-		print(hits, len(self.testSet))
-		print('Processed {} tweets, accuracy so was: {}'.format(len(self.testSet), hits/i))
+		print('Processed {} tweets, only {} had a predictable hashtag, accuracy was: {}'.format(len(self.testSet), i, hits/i))
 
 
 main()
