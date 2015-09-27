@@ -10,3 +10,15 @@
 	Graphs for varying size of train/test set
 	Why my accuracy is lower
 	Relationship between popularity vs naive bayes
+
+
+### Sept 23 2015
+
+	TODO:
+	Vary size of training set and test set
+	Generate graph of alpha variying
+	Generate graph of epsilon varying
+	Generate graph of hashtags to predict varying
+	Generate graph of hit range varying
+	Install caffee
+	Logistic Regression using caffe
