@@ -28,57 +28,84 @@ import matplotlib.cbook as cbook
 
 def main():
 	CONST_EPSILON_INTERVALS = [1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
-	CONST_ALPHA_INTERVALS = [0.0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7]
 	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-	naiveBayes = NaiveBayes(1, 1)
+	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
+	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
+	naiveBayes = NaiveBayes()
 
-	print('Performing cross validation to find the best epsilon and alpha values')
-	accuracies = []
-	maxAccuracy = 0
-	for epsilon in CONST_EPSILON_INTERVALS:
-		for alpha in CONST_ALPHA_INTERVALS:
-			naiveBayes.setEpsilon(epsilon)
-			naiveBayes.setAlpha(alpha)
-			naiveBayes.testAgainst(naiveBayes.testSet)
-			accuracy = naiveBayes.getAccuracy()
-			accuracies.append(accuracy)
-			if max(accuracies) > maxAccuracy:
-				BEST_EPSILON = epsilon
-				BEST_ALPHA = alpha
-				maxAccuracy = max(accuracies)
-	print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
+	# print('Generating graph for varying number of hashtags predicted contain target')
+	# accuracies = []
+	# for hitRange in CONST_HASHTAG_PREDICTION_RANGE:
+	# 	naiveBayes.setHitRange(hitRange)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_HASHTAG_PREDICTION_RANGE, accuracies)
+	# plt.xlabel('Number Of Hashtags Predicted')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy when Varying Number of Hashtags Predicted Contain Target Hashtag')
+	# plt.show()
 
+	# print('Generating graph for varying number of hashtags to predict')
+	# accuracies = []
+	# for numHashtags in CONST_HASHTAGS_TO_PREDICT:
+	# 	naiveBayes.setHashtagsToPredict(numHashtags)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_HASHTAGS_TO_PREDICT, accuracies)
+	# plt.xlabel('Number Of Hashtags To Predict')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
+	# plt.show()
 
-	print('Generating graph for epsilon accuracies')
-	epsilonAccuracies = []
-	alpha = BEST_ALPHA
-	for epsilon in CONST_EPSILON_INTERVALS:
-		naiveBayes.setEpsilon(epsilon)
-		naiveBayes.setAlpha(alpha)
-		naiveBayes.testAgainst(naiveBayes.testSet)
-		accuracy = naiveBayes.getAccuracy()
-		epsilonAccuracies.append(accuracy)
-	plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
-	plt.xlabel('Epsilon')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
-	plt.show()
-
-
-	print('Generating graph for alpha accuracies')
-	alphaAccuracies = []
-	epsilon = BEST_EPSILON
-	for alpha in CONST_ALPHA_INTERVALS:
-		naiveBayes.setEpsilon(epsilon)
-		naiveBayes.setAlpha(alpha)
-		naiveBayes.testAgainst(naiveBayes.testSet)
-		accuracy = naiveBayes.getAccuracy()
-		alphaAccuracies.append(accuracy)
-	plt.plot(CONST_ALPHA_INTERVALS, alphaAccuracies)
-	plt.xlabel('Alpha')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy on Test Set Using Epsilon = {}'.format(epsilon))
-	plt.show()
+	# print('Performing cross validation to find the best epsilon and alpha values')
+	# accuracies = []
+	# maxAccuracy = 0
+	# for epsilon in CONST_EPSILON_INTERVALS:
+	# 	for alpha in CONST_ALPHA_INTERVALS:
+	# 		naiveBayes.setEpsilon(epsilon)
+	# 		naiveBayes.setAlpha(alpha)
+	# 		naiveBayes.testAgainst(naiveBayes.testSet)
+	# 		accuracy = naiveBayes.getAccuracy()
+	# 		accuracies.append(accuracy)
+	# 		if max(accuracies) > maxAccuracy:
+	# 			BEST_EPSILON = epsilon
+	# 			BEST_ALPHA = alpha
+	# 			maxAccuracy = max(accuracies)
+	# print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
+	#
+	#
+	# print('Generating graph for epsilon accuracies')
+	# epsilonAccuracies = []
+	# alpha = BEST_ALPHA
+	# for epsilon in CONST_EPSILON_INTERVALS:
+	# 	naiveBayes.setEpsilon(epsilon)
+	# 	naiveBayes.setAlpha(alpha)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	epsilonAccuracies.append(accuracy)
+	# plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
+	# plt.xlabel('Epsilon')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
+	# plt.show()
+	#
+	#
+	# print('Generating graph for alpha accuracies')
+	# alphaAccuracies = []
+	# epsilon = BEST_EPSILON
+	# for alpha in CONST_ALPHA_INTERVALS:
+	# 	naiveBayes.setEpsilon(epsilon)
+	# 	naiveBayes.setAlpha(alpha)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	alphaAccuracies.append(accuracy)
+	# plt.plot(CONST_ALPHA_INTERVALS, alphaAccuracies)
+	# plt.xlabel('Alpha')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set Using Epsilon = {}'.format(epsilon))
+	# plt.show()
 
 
 class NaiveBayes:
@@ -92,7 +119,7 @@ class NaiveBayes:
 	CONST_SPLIT_TRAIN_TEST_RATIO = 0.5
 	CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
 
-	def __init__(self, epsilon, alpha):
+	def __init__(self, epsilon = 1e-5, alpha = 0.9):
 		self.epsilon = epsilon
 		self.alpha = alpha
 
@@ -104,6 +131,7 @@ class NaiveBayes:
 		self.wordCounts, self.hashtagCounts = self.generateCounts()
 		self.wordsMappedToHashtags = self.generateHashtagSpecificVocabulary()
 		self.hashtagsToPredict = self.getHashtagsToPredict()
+		self.hitRange = NaiveBayes.CONST_HIT_RANGE
 		self.testAgainst(self.testSet)
 
 	def generateCounts(self):
@@ -219,7 +247,7 @@ class NaiveBayes:
 					prob += log(self.epsilon + self.wordsMappedToHashtags[hashtag].get(word, 0.0)) - log(self.hashtagCounts[hashtag])
 				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
 
-			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-NaiveBayes.CONST_HIT_RANGE:])
+			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
 
 			hits += len(set(hashtags).intersection(topProbabilities)) > 0
 
@@ -244,5 +272,11 @@ class NaiveBayes:
 
 	def getTimePassed(self):
 		return self.time
+
+	def setHashtagsToPredict(self, numHashtags):
+		self.hashtagsToPredict = map(operator.itemgetter(0), sorted(self.hashtagCounts.items(), key=operator.itemgetter(1))[-numHashtags:])
+
+	def setHitRange(self, hitRange):
+		self.hitRange = hitRange
 
 main()
