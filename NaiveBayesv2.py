@@ -27,11 +27,13 @@ import matplotlib.cbook as cbook
 
 
 def main():
-	CONST_EPSILON_INTERVALS = [1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
+	CONST_EPSILON_INTERVALS = [0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
 	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
 	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
 	naiveBayes = NaiveBayes()
+	naiveBayes.testAgainst(naiveBayes.validationSet)
+	naiveBayes.testAgainst(naiveBayes.testSet)
 
 	# print('Generating graph for varying number of hashtags predicted contain target')
 	# accuracies = []
@@ -116,23 +118,28 @@ class NaiveBayes:
 	CONST_RANDOM_SEED = 20150819
 	CONST_TO_PREDICT = 56
 	CONST_HIT_RANGE = 20
-	CONST_SPLIT_TRAIN_TEST_RATIO = 0.5
-	CONST_SPLIT_TRAIN_VALIDATION_RATIO = 0.1
+	CONST_TEST_RATIO = 0.5
+	CONST_VALIDATION_RATIO = 0.1
 
-	def __init__(self, epsilon = 1e-5, alpha = 0.9):
+	def __init__(self, epsilon = 1e-5, alpha = 0.9, validation_ratio = 0.1, test_ratio = 0.5):
 		self.epsilon = epsilon
 		self.alpha = alpha
+		self.validation_ratio = validation_ratio
+		self.test_ratio = test_ratio
 
 		with open('stopwords.txt') as f:
 			self.stopWords = f.read().splitlines()
+
 		filename = 'training.1600000.processed.noemoticon.csv'
 		self.dataset = self.readCsv(filename) # Contains only tweets with hashtags
-		self.testSet, self.trainSet = self.splitDataset(self.CONST_SPLIT_TRAIN_TEST_RATIO)
+
+		self.validationSet, self.dataset = self.splitDataset(self.dataset, self.validation_ratio)
+		self.testSet, self.trainSet = self.splitDataset(self.dataset, self.test_ratio)
+
 		self.wordCounts, self.hashtagCounts = self.generateCounts()
 		self.wordsMappedToHashtags = self.generateHashtagSpecificVocabulary()
 		self.hashtagsToPredict = self.getHashtagsToPredict()
 		self.hitRange = NaiveBayes.CONST_HIT_RANGE
-		self.testAgainst(self.testSet)
 
 	def generateCounts(self):
 		wordCounts = {}
@@ -174,11 +181,18 @@ class NaiveBayes:
 		dataset = [tweet for tweet in corpus if '#' in tweet]
 		return dataset
 
-	def splitDataset(self, ratio):
+	def splitDataset(self, dataset, ratio):
+		idx = int(len(dataset) * ratio)
 		numpy.random.seed(NaiveBayes.CONST_RANDOM_SEED)
-		idx = numpy.random.permutation(len(self.dataset))
-		testSet = array(self.dataset)[idx[len(idx)/2:]]
-		trainSet = array(self.dataset)[idx[:len(idx)/2]]
+		numpy.random.shuffle(dataset)
+		set1 = dataset[:idx]
+		set2 = dataset[idx:]
+		return set1, set2
+
+		numpy.random.seed(NaiveBayes.CONST_RANDOM_SEED)
+		idx = numpy.random.permutation(len(dataset))
+		testSet = array(dataset)[idx[len(idx)/2:]]
+		trainSet = array(dataset)[idx[:len(idx)/2]]
 		return testSet, trainSet
 
 	def generateHashtagSpecificVocabulary(self):
@@ -253,7 +267,7 @@ class NaiveBayes:
 
 		self.accuracy = hits/i
 		self.time = time.time() - self.time
-		print('Processed {} tweets, only {} had a predictable hashtag, accuracy was: {}, this took {} seconds. EPSILON: {} | ALPHA: {}'.format(len(self.testSet), i, self.accuracy, self.time, self.epsilon, self.alpha))
+		print('Processed {} tweets, only {} had a predictable hashtag, accuracy was: {}, this took {} seconds. EPSILON: {} | ALPHA: {}'.format(len(testSet), i, self.accuracy, self.time, self.epsilon, self.alpha))
 
 	def getAccuracy(self):
 		return self.accuracy

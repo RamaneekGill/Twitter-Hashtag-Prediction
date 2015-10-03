@@ -22,3 +22,16 @@
 	Generate graph of hit range varying
 	Install caffee
 	Logistic Regression using caffe
+
+
+
+### Sept 30 2015
+
+	TODO:
+	start writing report
+	install caffe
+	better graphs
+	have graph for vary size of training and test set
+	predict out of 500 hashtags, not 56
+	50 examples where predicted correct, 50 examples where prediction is incorrect
+		for each example compute the top log probabilities. E.g. hashtag is basketball, lebron has high P(hashtag|word)
