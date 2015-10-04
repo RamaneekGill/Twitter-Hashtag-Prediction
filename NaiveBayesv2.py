@@ -7,7 +7,6 @@ import string
 import re
 import time
 from PIL import Image
-from pylab import *
 import numpy as np
 import matplotlib.pyplot as plt
 import operator
@@ -28,12 +27,35 @@ import matplotlib.cbook as cbook
 
 def main():
 	CONST_EPSILON_INTERVALS = [0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
-	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1]
 	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
 	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
+	BEST_ALPHA = 0.92
+	BEST_EPSILON = 0.01
+
+	# For 500 hashtags and predicting top 5
+	BEST_ALPHA = 0.9
+	BEST_EPSILON = 1e-09
+
 	naiveBayes = NaiveBayes()
-	naiveBayes.testAgainst(naiveBayes.validationSet)
-	naiveBayes.testAgainst(naiveBayes.testSet)
+	naiveBayes.setEpsilon(BEST_EPSILON)
+	naiveBayes.setAlpha(BEST_ALPHA)
+
+	# print('Performing cross validation to find the best epsilon and alpha values')
+	# accuracies = []
+	# maxAccuracy = 0
+	# for epsilon in CONST_EPSILON_INTERVALS:
+	# 	for alpha in CONST_ALPHA_INTERVALS:
+	# 		naiveBayes.setEpsilon(epsilon)
+	# 		naiveBayes.setAlpha(alpha)
+	# 		naiveBayes.testAgainst(naiveBayes.validationSet)
+	# 		accuracy = naiveBayes.getAccuracy()
+	# 		accuracies.append(accuracy)
+	# 		if max(accuracies) > maxAccuracy:
+	# 			BEST_EPSILON = epsilon
+	# 			BEST_ALPHA = alpha
+	# 			maxAccuracy = max(accuracies)
+	# print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
 
 	# print('Generating graph for varying number of hashtags predicted contain target')
 	# accuracies = []
@@ -61,23 +83,6 @@ def main():
 	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
 	# plt.show()
 
-	# print('Performing cross validation to find the best epsilon and alpha values')
-	# accuracies = []
-	# maxAccuracy = 0
-	# for epsilon in CONST_EPSILON_INTERVALS:
-	# 	for alpha in CONST_ALPHA_INTERVALS:
-	# 		naiveBayes.setEpsilon(epsilon)
-	# 		naiveBayes.setAlpha(alpha)
-	# 		naiveBayes.testAgainst(naiveBayes.testSet)
-	# 		accuracy = naiveBayes.getAccuracy()
-	# 		accuracies.append(accuracy)
-	# 		if max(accuracies) > maxAccuracy:
-	# 			BEST_EPSILON = epsilon
-	# 			BEST_ALPHA = alpha
-	# 			maxAccuracy = max(accuracies)
-	# print('Validation tests have shown that the best epsilon value to use is: {}, best alpha value is: {}'.format(BEST_EPSILON, BEST_ALPHA))
-	#
-	#
 	# print('Generating graph for epsilon accuracies')
 	# epsilonAccuracies = []
 	# alpha = BEST_ALPHA
@@ -92,8 +97,7 @@ def main():
 	# plt.ylabel('Accuracy')
 	# plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
 	# plt.show()
-	#
-	#
+
 	# print('Generating graph for alpha accuracies')
 	# alphaAccuracies = []
 	# epsilon = BEST_EPSILON
@@ -112,16 +116,21 @@ def main():
 
 class NaiveBayes:
 	# Need to test these still
-	BEST_EPSILON = 1e-5
-	BEST_ALPHA = 0.9
+	BEST_EPSILON = 0.01
+	BEST_ALPHA = 0.92
 
 	CONST_RANDOM_SEED = 20150819
 	CONST_TO_PREDICT = 56
 	CONST_HIT_RANGE = 20
+
+	# For our tests
+	CONST_TO_PREDICT = 500
+	CONST_HIT_RANGE = 5
+
 	CONST_TEST_RATIO = 0.5
 	CONST_VALIDATION_RATIO = 0.1
 
-	def __init__(self, epsilon = 1e-5, alpha = 0.9, validation_ratio = 0.1, test_ratio = 0.5):
+	def __init__(self, epsilon = 0.01, alpha = 0.92, validation_ratio = 0.1, test_ratio = 0.5):
 		self.epsilon = epsilon
 		self.alpha = alpha
 		self.validation_ratio = validation_ratio
