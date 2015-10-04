@@ -40,6 +40,11 @@ def main():
 	naiveBayes = NaiveBayes()
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
+	naiveBayes.testAgainst(naiveBayes.testSet)
+	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
 	# print('Performing cross validation to find the best epsilon and alpha values')
 	# accuracies = []
@@ -149,6 +154,9 @@ class NaiveBayes:
 		self.wordsMappedToHashtags = self.generateHashtagSpecificVocabulary()
 		self.hashtagsToPredict = self.getHashtagsToPredict()
 		self.hitRange = NaiveBayes.CONST_HIT_RANGE
+
+		self.correctPredictions = []
+		self.incorrectPredictions = []
 
 	def generateCounts(self):
 		wordCounts = {}
@@ -272,11 +280,58 @@ class NaiveBayes:
 
 			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
 
-			hits += len(set(hashtags).intersection(topProbabilities)) > 0
+			if len(set(hashtags).intersection(topProbabilities)) > 0:
+				hits += 1
+				if len(self.correctPredictions) < 20:
+					self.correctPredictions.append(tweet)
+			else:
+				if len(self.incorrectPredictions) < 20:
+					self.incorrectPredictions.append(tweet)
 
 		self.accuracy = hits/i
 		self.time = time.time() - self.time
 		print('Processed {} tweets, only {} had a predictable hashtag, accuracy was: {}, this took {} seconds. EPSILON: {} | ALPHA: {}'.format(len(testSet), i, self.accuracy, self.time, self.epsilon, self.alpha))
+
+	def getProbabilityResults(self, testSet):
+		i = 0
+		hits = 0
+		for tweet in testSet:
+			words = []
+			hashtags = []
+
+			for word in tweet.split():
+				if word.startswith('#') and len(word) > 2:
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					hashtags.append(word)
+					# words.append(word) DON'T WANT TO BE AWARE OF THE HASHTAG IN TESTSET
+				else:
+					if '@' in word:
+						continue
+					if word in self.stopWords:
+						continue
+					word = word.lower().translate(string.maketrans("",""), string.punctuation) # remove punctuation
+					words.append(word)
+
+			if len(set(hashtags).intersection(self.hashtagsToPredict)) == 0:
+				continue # Can't predict any hashtags for this tweet
+
+			i += 1
+			probabilitiesMappedToHashtagsToPredict = {}
+			probPerWord = {}
+			for hashtag in self.hashtagsToPredict:
+				probPerWord[hashtag] = {}
+				prob = 0
+				for word in words:
+					prob += log(self.epsilon + self.wordsMappedToHashtags[hashtag].get(word, 0.0)) - log(self.hashtagCounts[hashtag])
+					probPerWord[hashtag][word] = prob
+				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
+
+			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
+
+			print('These are the probability results for the tweet with words: {}'.format(', '.join(words)))
+
+			for hashtag in topProbabilities:
+				print(hashtag, probPerWord[hashtag])
 
 	def getAccuracy(self):
 		return self.accuracy
