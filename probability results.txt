@@ -1,244 +1,285 @@
 Ramaneek Twitter-Hashtag-Prediction (master)*$ python NaiveBayesv2.py
-Processed 16565 tweets, only 8998 had a predictable hashtag, accuracy was: 0.440431206935, this took 134.265083075 seconds. EPSILON: 1e-09 | ALPHA: 0.9
+Processed 16565 tweets, only 8998 had a predictable hashtag, accuracy was: 0.440431206935, this took 134.52772212 seconds. EPSILON: 1e-09 | ALPHA: 0.9
 CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~
-These are the probability results for the tweet with words: ahh, wish, vote, favs, , karla, jonathan, vitolio, asuka, ade, melissa, loved, kaylas, outfit, haha
+
+These are the probability results for the tweet with words: ahh, wish, vote, favs, , karla, jonathan, vitolio, asuka, ade, melissa, loved, kaylas, outfit, haha, hashtags associated = sytycd
 ('woofwednesday', {'': -74.934128832036706, 'loved': -218.68184490839366, 'asuka': -168.91754706878149, 'wish': -26.268443280425974, 'ahh': -23.495854559186192, 'haha': -268.44614274800585, 'outfit': -265.67355402676606, 'ade': -192.41340162796769, 'melissa': -215.90925618715389, 'kaylas': -242.17769946757986, 'vote': -49.764297839612169, 'favs': -73.260152398798368, 'jonathan': -121.92583795040909, 'karla': -98.429983391222891, 'vitolio': -145.42169250959529})
 ('fb', {'': -68.153274258707199, 'loved': -238.46841964633015, 'asuka': -177.71416477620966, 'wish': -11.388003434660241, 'ahh': -6.6669567914292065, 'haha': -298.81720940850914, 'outfit': -293.2488649050814, 'ade': -205.10438740558527, 'melissa': -232.49461003496089, 'kaylas': -265.85864227570579, 'vote': -38.778226064035863, 'favs': -66.168448693411477, 'jonathan': -122.93371951745843, 'karla': -95.543496888082814, 'vitolio': -150.32394214683404})
 ('iremember', {'': -62.200684986297958, 'loved': -219.51440887216407, 'asuka': -164.56388613590593, 'wish': -8.6364566109097218, 'ahh': -4.8675344494555821, 'haha': -273.95410598478952, 'outfit': -270.69600944696805, 'ade': -190.15468642330794, 'melissa': -215.74548671070994, 'kaylas': -245.10520915956607, 'vote': -34.227256898311715, 'favs': -59.818057185713712, 'jonathan': -113.38228556110194, 'karla': -87.791485273699948, 'vitolio': -138.97308584850393})
 ('followfriday', {'': -49.535944879310286, 'loved': -222.67151161913878, 'asuka': -160.70850474093021, 'wish': -33.764401804862111, 'ahh': -27.793139965404983, 'haha': -284.63451849734741, 'outfit': -278.25779154994876, 'ade': -188.50164470633518, 'melissa': -216.29478467174016, 'kaylas': -250.46465158454376, 'vote': -40.834275932320679, 'favs': -47.904150059779255, 'jonathan': -105.12222481012026, 'karla': -77.329084844715268, 'vitolio': -132.91536477552523})
 ('sytycd', {'': -36.420564600213645, 'loved': -61.308001023639548, 'asuka': -50.641956842171304, 'wish': -6.4175489409188815, 'ahh': -3.5553480604894134, 'haha': -71.974045205107771, 'outfit': -68.418697144618363, 'ade': -54.197304902660719, 'melissa': -57.752652963150133, 'kaylas': -64.863349084128956, 'vote': -9.27974982134835, 'favs': -33.558363719784175, 'jonathan': -43.531260721192474, 'karla': -39.975912660703059, 'vitolio': -47.086608781681889})
-These are the probability results for the tweet with words:
+
+These are the probability results for the tweet with words: , hashtags associated = sebday
 ('sebday', {})
 ('ff', {})
 ('squarespace', {})
 ('fb', {})
 ('followfriday', {})
-These are the probability results for the tweet with words: thinking, great, race, rip, silverstone
+
+These are the probability results for the tweet with words: thinking, great, race, rip, silverstone, hashtags associated = f1
 ('squarespace', {'thinking': -4.9534768799229738, 'silverstone': -89.945336705089986, 'great': -9.6192716874775002, 'race': -36.394626693348329, 'rip': -63.169981699219157})
 ('iranelection', {'thinking': -5.5174528954647073, 'silverstone': -66.548889504845022, 'great': -9.9362935029279704, 'race': -36.177012236339088, 'rip': -40.308170771433907})
 ('f1', {'thinking': -4.7361984473944956, 'silverstone': -40.086769963115913, 'great': -9.4723968947889912, 'race': -11.500545142014611, 'rip': -36.960009427355516})
 ('followfriday', {'thinking': -5.4604362158244717, 'silverstone': -49.452563270995583, 'great': -8.2128222307334013, 'race': -14.589549178132028, 'rip': -21.6594233055906})
 ('fb', {'thinking': -4.8751973230344845, 'silverstone': -25.880064010990367, 'great': -8.3641002850740787, 'race': -13.932444788501842, 'rip': -19.213107219561159})
-These are the probability results for the tweet with words: thank, you
+
+These are the probability results for the tweet with words: thank, you, hashtags associated = followfriday
 ('musicmonday', {'you': -8.9055528304214633, 'thank': -5.2574953710277814})
 ('iranelection', {'you': -8.8376812144820835, 'thank': -5.5174528954647073})
 ('fb', {'you': -10.443541826351137, 'thank': -5.9738096113692611})
 ('ff', {'you': -4.4198360313107639, 'thank': -1.8474700762264353})
 ('followfriday', {'you': -4.4471052000916025, 'thank': -1.8880905781608694})
-These are the probability results for the tweet with words: follow, amp, ill, follow, you, dday, jayz, tetris, sims, 3, palm, pre, england, its, cool, normandy, audioboo,
+
+These are the probability results for the tweet with words: follow, amp, ill, follow, you, dday, jayz, tetris, sims, 3, palm, pre, england, its, cool, normandy, audioboo, , hashtags associated = robotpickuplines
 ('phish', {'sims': -79.73985455536814, 'pre': -106.39004641761831, 'tetris': -56.308538517319519, 'normandy': -200.11531056981283, '': -225.56152962790372, 'ill': -4.7229532206111413, '3': -103.17117059341676, 'jayz': -32.877222479270898, 'palm': -104.78060850551753, 'dday': -30.862319459228637, 'amp': -2.7080502005688767, 'follow': -5.8215655090792513, 'you': -29.25288154712787, 'cool': -176.6839945317642, 'audioboo': -223.54662660786147, 'its': -153.25267849371556, 'england': -129.82136245566693})
 ('followfriday', {'sims': -104.75134199543936, 'pre': -166.71434887364794, 'tetris': -97.681467867980786, 'normandy': -231.66125356806182, '': -261.08618835299785, 'ill': -9.4353331561828533, '3': -111.12806894283798, 'jayz': -69.88832790257581, 'palm': -138.92120890824296, 'dday': -42.095187937170834, 'amp': -5.0735092288931583, 'follow': -11.743033349835123, 'you': -14.302047971765855, 'cool': -203.86811360265685, 'audioboo': -259.45439353346683, 'its': -199.63145281831331, 'england': -194.50748883905291})
 ('squarespace', {'sims': -110.17713185220528, 'pre': -168.39363667150147, 'tetris': -104.12504268428086, 'normandy': -211.53349971275082, '': -240.26659932530731, 'ill': -14.690531602973525, '3': -114.8429266597598, 'jayz': -77.349687678410021, 'palm': -141.61828166563063, 'dday': -50.5743326725392, 'amp': -10.024736795418999, 'follow': -20.049473590837998, 'you': -23.798977666668371, 'cool': -184.75814470687999, 'audioboo': -238.30885471862166, 'its': -178.70605553895558, 'england': -174.44572583942588})
 ('ff', {'sims': -121.94039187467858, 'pre': -139.95945135048379, 'tetris': -95.210772878130442, 'normandy': -203.23417108478066, '': -231.96281005567988, 'ill': -9.9089326766309256, '3': -127.94674503328031, 'jayz': -68.481153881582301, 'palm': -133.95309819188205, 'dday': -41.751534885034154, 'amp': -5.9820210588340288, 'follow': -12.449549933401681, 'you': -15.021915888486008, 'cool': -176.50455208823251, 'audioboo': -229.9637900813288, 'its': -171.59681121763222, 'england': -166.68907034703193})
 ('robotpickuplines', {'sims': -15.728378895808769, 'pre': -20.438909596218576, 'tetris': -12.732646623254778, 'normandy': -30.342397146254701, '': -57.057127529309099, 'ill': -6.0968250612658075, '3': -18.724111168362761, 'jayz': -11.682824498898958, 'palm': -19.522618864469422, 'dday': -10.989677318439012, 'amp': -4.1997050767132595, 'follow': -7.3007978654250767, 'you': -10.296530137979067, 'cool': -27.346664873700711, 'audioboo': -54.061395256755105, 'its': -25.044079781206666, 'england': -22.741494688712621})
-These are the probability results for the tweet with words: committee, , me
+
+These are the probability results for the tweet with words: committee, , me, hashtags associated = followfriday, bloggerprom
 ('iranelection', {'': -28.020502011568649, 'me': -31.458513366228519, 'committee': -26.240718733411118})
 ('ff', {'': -28.728638970899222, 'me': -32.250085480629622, 'committee': -26.729618996548144})
 ('squarespace', {'': -28.733099612556479, 'me': -31.740666343709854, 'committee': -26.775355005870829})
 ('fb', {'': -29.375048194671344, 'me': -33.55709833722922, 'committee': -27.390222629375618})
 ('followfriday', {'': -29.424934784936013, 'me': -33.604437155442866, 'committee': -27.793139965404983})
-These are the probability results for the tweet with words: people, learn, country, codes, read, urls, apple, us, still, date, 17th, apple, au, 18th
+
+These are the probability results for the tweet with words: people, learn, country, codes, read, urls, apple, us, still, date, 17th, apple, au, 18th, hashtags associated = iphone
 ('trackle', {'codes': -78.841790247799054, '17th': -170.72385218995058, 'apple': -175.1665034454409, 'people': -3.3440389674888733, 'read': -83.284441503289372, 'country': -53.675873154362321, 'us': -116.64251392764677, '18th': -225.49833763231433, 'au': -200.33242053887761, 'urls': -108.45035859672609, 'learn': -28.5099560609256, 'date': -145.55793509651386, 'still': -120.39201800307714})
 ('squarespace', {'codes': -84.586394717142184, '17th': -163.02227216311343, 'apple': -167.97574904303639, 'people': -4.2603296995296951, 'read': -90.638483885066606, 'country': -57.811039711271349, 'us': -127.32079265078337, '18th': -221.52645905477806, 'au': -194.75110404890722, 'urls': -117.41383889093743, 'learn': -31.035684705400524, 'date': -136.24691715724259, 'still': -130.19482798931818})
 ('fail', {'codes': -82.394780731232458, '17th': -154.38300277626882, 'apple': -158.74610140055719, 'people': -5.0562458043483076, 'read': -86.757879355520828, 'country': -56.615269088937744, 'us': -120.57044106608234, '18th': -168.85859300925381, 'au': -163.80234720490552, 'urls': -112.53739099781555, 'learn': -30.835757446643026, 'date': -149.32675697192053, 'still': -123.54724532962581})
 ('fb', {'codes': -44.213039175148623, '17th': -123.45088644023039, 'apple': -129.42469605159965, 'people': -4.8751973230344845, 'read': -49.493701606207935, 'country': -16.822816545773009, 'us': -87.445249097577175, '18th': -163.48187547240448, 'au': -156.81491868097527, 'urls': -76.883924235583549, 'learn': -10.849006934403747, 'date': -96.060663810854777, 'still': -90.780001379795465})
 ('iphone', {'codes': -61.241571233405494, '17th': -130.94254281854751, 'apple': -133.49340743603639, 'people': -4.9487598893781684, 'read': -86.913596960730075, 'country': -56.292811344027328, 'us': -119.39210001486177, '18th': -142.6977800347328, 'au': -138.44216732541457, 'urls': -112.58562268805466, 'learn': -30.620785616702747, 'date': -125.99378292916933, 'still': -122.14363532779261})
-These are the probability results for the tweet with words: in, bed, and, 1030, friday, night, gone, days, 5hours, sleep, adequate, why, happen
+
+These are the probability results for the tweet with words: in, bed, and, 1030, friday, night, gone, days, 5hours, sleep, adequate, why, happen, hashtags associated = fb
 ('iphone', {'and': -55.194199056025887, 'gone': -93.920744983423589, 'in': -25.672025727324581, 'happen': -184.39680747316197, 'friday': -85.121837492668703, '5hours': -124.54153060012634, 'days': -98.869504872801755, 'bed': -51.344051454649161, 'why': -179.44804758378379, 'sleep': -150.21355632745093, 'night': -90.07059738204687, '1030': -80.866224783350475, 'adequate': -175.88558205477551})
 ('clothdiapers', {'and': -31.535529287601332, 'gone': -67.446815595696293, 'in': -3.9702919125521219, 'happen': -174.16163042279467, 'friday': -60.19937895065199, '5hours': -116.83393109669335, 'days': -92.140373346194821, 'bed': -6.8419715371028005, 'why': -149.46807267229613, 'sleep': -120.80422300924548, 'night': -63.476523683144165, '1030': -35.505821200153456, 'adequate': -145.49778075974402})
 ('followfriday', {'and': -15.994686626973252, 'gone': -81.577580087927885, 'in': -5.6835797670886814, 'happen': -162.26530270014084, 'friday': -47.813178283065767, '5hours': -115.34198189278999, 'days': -87.548841927385013, 'bed': -12.060306714487307, 'why': -155.19542857268226, 'sleep': -121.71870884018861, 'night': -53.784440122522895, '1030': -43.787826592378238, 'adequate': -149.51184880559359})
 ('squarespace', {'and': -13.250992727690377, 'gone': -54.375952749697475, 'in': -4.9534768799229738, 'happen': -127.34752769253811, 'friday': -44.468998989851528, '5hours': -84.495346723323848, 'days': -57.719991717453013, 'bed': -9.3961281362132905, 'why': -121.98858570467364, 'sleep': -89.161141530878382, 'night': -49.422475869774502, '1030': -40.026347733561209, 'adequate': -115.93649653674922})
 ('fb', {'and': -13.018007625513482, 'gone': -54.628357115764018, 'in': -4.0278994627425195, 'happen': -128.85552444469138, 'friday': -45.688892685948417, '5hours': -85.741097558349765, 'days': -58.35087492897415, 'bed': -8.2969609822824459, 'why': -122.18856765326218, 'sleep': -89.517682592827256, 'night': -49.060012612336259, '1030': -40.408230254889098, 'adequate': -116.90790522220287})
-These are the probability results for the tweet with words:
+
+These are the probability results for the tweet with words: , hashtags associated = followfriday
 ('sebday', {})
 ('ff', {})
 ('squarespace', {})
 ('fb', {})
 ('followfriday', {})
-These are the probability results for the tweet with words: please, retweet, following, counter, unkind, trending, topic,
+
+These are the probability results for the tweet with words: please, retweet, following, counter, unkind, trending, topic, , hashtags associated = dannygokeyislove
 ('bsb', {'': -116.07912464901287, 'trending': -109.0117515206589, 'unkind': -106.39435568792483, 'counter': -80.751108925150291, 'please': -3.8213686368266817, 'topic': -113.93173244548703, 'following': -55.107862162375753, 'retweet': -29.464615399601215})
 ('squarespace', {'': -102.3025115555906, 'trending': -94.292677780980526, 'unkind': -89.339200901057552, 'counter': -62.563845895186716, 'please': -2.9610467155206468, 'topic': -100.34476694890495, 'following': -35.788490889315888, 'retweet': -29.736401721391474})
 ('iranelection', {'': -76.678001229924234, 'trending': -70.073912236361949, 'unkind': -65.249606520957187, 'counter': -39.008887787546072, 'please': -3.1195576235754277, 'topic': -74.898217951766711, 'following': -12.768169054134951, 'retweet': -8.6370105190401354})
 ('followfriday', {'': -85.346340292482068, 'trending': -77.743283633493917, 'unkind': -70.673409506035341, 'counter': -42.880269540630351, 'please': -4.5849674785872381, 'topic': -83.714545472951045, 'following': -15.087129575225365, 'retweet': -10.961694425985865})
 ('dannygokeyislove', {'': -9.7702354211665163, 'trending': -6.7520302928513756, 'unkind': -6.4418753646384452, 'counter': -3.7338251645362348, 'please': -0.40546510800816415, 'topic': -7.0621852210643059, 'following': -3.4236702363233045, 'retweet': -0.71562003622109449})
-These are the probability results for the tweet with words: thanks, love, , back, ya
+
+These are the probability results for the tweet with words: thanks, love, , back, ya, hashtags associated = ff
 ('follow', {'': -6.5307318438052748, 'ya': -12.419609801138154, 'love': -4.27944004544878, 'thanks': -2.2512917983564948, 'back': -9.4751708224717142})
 ('asot400', {'': -7.8930388819527657, 'ya': -17.221162288085331, 'love': -6.6200732061636884, 'thanks': -3.401197381462155, 'back': -12.210526994989076})
 ('fb', {'': -10.531247407180429, 'ya': -19.365351321186356, 'love': -8.5464218418847011, 'thanks': -4.5875152506243708, 'back': -13.391541709817094})
 ('ff', {'': -4.8761094677508074, 'ya': -13.199936332515337, 'love': -2.877089493399728, 'thanks': -0.93117934436165584, 'back': -8.8030210855477051})
 ('followfriday', {'': -5.1155080000590853, 'ya': -12.952637281134255, 'love': -3.4837131805280563, 'thanks': -1.1323379233735071, 'back': -8.5218204823623704})
-These are the probability results for the tweet with words: thanks
+
+These are the probability results for the tweet with words: thanks, hashtags associated = followfriday
 ('iranelection', {'thanks': -4.418840607463264})
 ('squarespace', {'thanks': -6.0520891679244171})
 ('ff', {'thanks': -0.93117934436165584})
 ('fb', {'thanks': -4.5875152506243708})
 ('followfriday', {'thanks': -1.1323379233735071})
-These are the probability results for the tweet with words: i, think, ever, win, contest, , total, waste, time
+
+These are the probability results for the tweet with words: i, think, ever, win, contest, , total, waste, time, hashtags associated = squarespace
 ('musicmonday', {'': -41.488032558611408, 'waste': -72.726289138613382, 'contest': -40.719173556327, 'i': -1.8562979903322927, 'win': -14.738412347352806, 'time': -76.374346598007065, 'total': -67.468793767585595, 'ever': -10.579529264326467, 'think': -6.4206461813001283})
 ('bsb', {'': -16.612697557710206, 'waste': -67.899191083259282, 'contest': -14.465305354184363, 'i': -0.64331480679818043, 'win': -9.5453244293562385, 'time': -71.432877647717518, 'total': -42.255944320484744, 'ever': -6.9279285966221593, 'think': -3.6173855834281348})
 ('followfriday', {'': -47.109397845896574, 'waste': -81.972411938760132, 'contest': -45.477603026365543, 'i': -1.8123787564255824, 'win': -38.407728898906967, 'time': -86.269697344916423, 'total': -54.179271973355142, 'ever': -10.614588933501986, 'think': -6.1096641625818737})
 ('fb', {'': -45.786058456961577, 'waste': -79.843237877766398, 'contest': -43.801232891665848, 'i': -1.2464217931524963, 'win': -16.411010262290226, 'time': -82.598171664747454, 'total': -73.176281086337198, 'ever': -9.7440534708610187, 'think': -5.0230068276299829})
 ('squarespace', {'': -18.134272387048853, 'waste': -71.68498239879051, 'contest': -16.176527780363202, 'i': -0.89879757442085761, 'win': -11.510732972808675, 'time': -75.434486474620883, 'total': -44.909627392919681, 'ever': -9.2653062936767991, 'think': -5.0049765941471041})
-These are the probability results for the tweet with words:
+
+These are the probability results for the tweet with words: , hashtags associated = ff
 ('sebday', {})
 ('ff', {})
 ('squarespace', {})
 ('fb', {})
 ('followfriday', {})
-These are the probability results for the tweet with words: graphicvideo2, young, iranians, shot, one, clearly, dies, httpbitly16njm8, can, someone, confirm, happened
+
+These are the probability results for the tweet with words: graphicvideo2, young, iranians, shot, one, clearly, dies, httpbitly16njm8, can, someone, confirm, happened, hashtags associated = iranelection
 ('followfriday', {'httpbitly16njm8': -155.4931909839153, 'someone': -165.44328449854842, 'shot': -68.627415897725669, 'confirm': -193.2364244639534, 'dies': -127.70005101851032, 'young': -33.764401804862111, 'one': -72.113771087700357, 'can': -160.16516983948458, 'graphicvideo2': -27.793139965404983, 'iranians': -61.557541770267093, 'clearly': -99.906911053105347, 'happened': -221.02956442935837})
 ('squarespace', {'httpbitly16njm8': -169.62081415610118, 'someone': -177.69964080289344, 'shot': -107.10142002348331, 'confirm': -204.47499580876428, 'dies': -142.84545915023034, 'young': -53.550710011741657, 'one': -110.0180149764351, 'can': -173.03384599533891, 'graphicvideo2': -26.775355005870829, 'iranians': -80.326065017612478, 'clearly': -116.07010414435952, 'happened': -210.52708497668868})
 ('bgt', {'httpbitly16njm8': -140.68319388945596, 'someone': -169.3383910626996, 'shot': -60.529270169755485, 'confirm': -194.83234152411168, 'dies': -115.18924342804388, 'young': -30.264635084877742, 'one': -64.201342505219714, 'can': -143.84444060128752, 'graphicvideo2': -25.493950461412076, 'iranians': -55.758585546289822, 'clearly': -89.695292966631797, 'happened': -198.90987896751741})
 ('fb', {'httpbitly16njm8': -153.65614665612432, 'someone': -162.07740535506287, 'shot': -88.837624679556058, 'confirm': -189.46762798443848, 'dies': -126.26592402674871, 'young': -34.057179420804822, 'one': -92.208744605943892, 'can': -157.4898901044385, 'graphicvideo2': -27.390222629375618, 'iranians': -61.447402050180443, 'clearly': -98.875701397373092, 'happened': -195.03597248786625})
 ('iranelection', {'httpbitly16njm8': -77.240461970279696, 'someone': -106.43368424261706, 'shot': -37.337756306870617, 'confirm': -111.95113713808178, 'dies': -50.999743236868575, 'young': -30.659559340874381, 'one': -41.063449733940601, 'can': -80.192965509205948, 'graphicvideo2': -26.240718733411118, 'iranians': -33.612062879800632, 'clearly': -46.580902629405308, 'happened': -116.77544285348654})
-These are the probability results for the tweet with words: thank, lovely, mention
+
+These are the probability results for the tweet with words: thank, lovely, mention, hashtags associated = followfriday
 ('bsb', {'mention': -33.873770700796683, 'lovely': -8.2305239380221487, 'thank': -4.919980924828125})
 ('iranelection', {'mention': -37.275624524340529, 'lovely': -31.758171628875825, 'thank': -5.5174528954647073})
 ('fb', {'mention': -17.921428833857785, 'lovely': -11.254472042428578, 'thank': -5.9738096113692611})
 ('ff', {'mention': -9.1416775239383767, 'lovely': -5.7743816940233321, 'thank': -1.8474700762264353})
 ('followfriday', {'mention': -9.3814483201406738, 'lovely': -6.3189073769327546, 'thank': -1.8880905781608694})
-These are the probability results for the tweet with words: dude, thanks, karma, back, atcha
+
+These are the probability results for the tweet with words: dude, thanks, karma, back, atcha, hashtags associated = followfriday
 ('zenjar', {'back': -32.6570396980309, 'atcha': -56.638402072998794, 'dude': -3.2580965370214821, 'thanks': -6.5161930740429641, 'karma': -8.6756773230630024})
 ('2', {'back': -35.768066296720662, 'atcha': -60.252532249360634, 'dude': -3.7612001146935623, 'thanks': -7.5224002293871246, 'karma': -32.006866182027096})
 ('hhrs', {'back': -34.473730009499562, 'atcha': -58.981185480364232, 'dude': -3.7841896329182609, 'thanks': -6.8752320857765765, 'karma': -31.382687556641248})
 ('follow', {'back': -53.91743477036853, 'atcha': -57.555020929094916, 'dude': -24.360851996672796, 'thanks': -26.61214379502929, 'karma': -50.97299579170209})
 ('followfriday', {'back': -37.609905030145626, 'atcha': -42.888019689209479, 'dude': -5.278114659063851, 'thanks': -6.4104525824373582, 'karma': -34.203592547842341})
-These are the probability results for the tweet with words: wanted, give, something, special, ur, father, day, u, done, all
+
+These are the probability results for the tweet with words: wanted, give, something, special, ur, father, day, u, done, all, hashtags associated = haveyouever
 ('haveyouever', {'all': -98.480963823772541, 'give': -28.527109139985182, 'father': -63.941770850434985, 'ur': -59.693275609385623, 'u': -69.260707503727417, 'something': -32.082457200974595, 'done': -73.509202744776772, 'wanted': -3.5553480609894139, 'day': -67.091653803482899, 'special': -57.054218279970364})
 ('goodsex', {'all': -93.501705962438947, 'give': -6.8419715371028005, 'father': -83.101177232755788, 'ur': -58.40761948225726, 'u': -87.352881605396092, 'something': -31.535529287601332, 'done': -90.630026337888268, 'wanted': -3.9702919125521219, 'day': -85.685174784938013, 'special': -56.229087038099863})
 ('ff', {'all': -111.43090045849493, 'give': -53.459237993096288, 'father': -95.31754470905345, 'ur': -68.58792571250531, 'u': -102.05725146954958, 'something': -58.366978863696573, 'done': -107.37045744809137, 'wanted': -26.729618996548144, 'day': -98.758948511116728, 'special': -62.581572553903584})
 ('fb', {'all': -72.859561458701393, 'give': -11.136689006855526, 'father': -56.918344098884667, 'ur': -50.25138730745546, 'u': -64.170038773186263, 'something': -16.194207886650631, 'done': -68.272046208077015, 'wanted': -5.5683445034277632, 'day': -59.294841450151786, 'special': -22.861164678079838})
 ('followfriday', {'all': -71.445175057047024, 'give': -11.500690926659029, 'father': -54.893981481701658, 'ur': -27.100841516296672, 'u': -61.816286306866509, 'something': -17.471952766116157, 'done': -66.940250286126911, 'wanted': -6.3767269473986268, 'day': -58.596559780139273, 'special': -21.97687753703627})
-These are the probability results for the tweet with words:
+
+These are the probability results for the tweet with words: , hashtags associated = followfriday
 ('sebday', {})
 ('ff', {})
 ('squarespace', {})
 ('fb', {})
 ('followfriday', {})
-These are the probability results for the tweet with words: need, sleep, i, will, see, tomorrow, stand, rights, iran, watching, supporting
+
+These are the probability results for the tweet with words: need, sleep, i, will, see, tomorrow, stand, rights, iran, watching, supporting, hashtags associated = iranelection, gr88
 ('e3', {'supporting': -125.77499144143638, 'iran': -96.608968644560093, 'rights': -71.11501818314801, 'i': -10.063558629819065, 'watching': -100.28104098002431, 'will': -13.224805341650629, 'see': -16.049579816918126, 'sleep': -8.8482220668713847, 'stand': -45.621067721735926, 'need': -4.770684623465665, 'tomorrow': -20.127117260323846})
 ('bgt', {'supporting': -123.70374666740713, 'iran': -95.230871050924122, 'rights': -69.736920589512039, 'i': -9.8122442015445088, 'watching': -98.209796205995062, 'will': -12.503487284205338, 'see': -15.076947331223673, 'sleep': -8.8482220668713847, 'stand': -44.242970128099969, 'need': -4.0775374434057197, 'tomorrow': -18.749019666687893})
 ('squarespace', {'supporting': -132.68900159023656, 'iran': -79.138291578494886, 'rights': -52.362936572624065, 'i': -8.6722425716807301, 'watching': -105.91364658436572, 'will': -12.016281539436271, 'see': -16.122460559162519, 'sleep': -7.7734449972598716, 'stand': -25.58758156675324, 'need': -3.1076501897053452, 'tomorrow': -20.228639578888767})
 ('fb', {'supporting': -92.386544762581821, 'iran': -60.894314698315455, 'rights': -54.227357906886247, 'i': -9.2050569701878562, 'watching': -64.996322133206206, 'will': -12.61391722455712, 'see': -16.447660672871287, 'sleep': -7.9586351770353598, 'stand': -26.83713527751063, 'need': -4.1820501425578733, 'tomorrow': -20.170178486081422})
 ('iranelection', {'supporting': -40.85143175408308, 'iran': -32.86104839935328, 'rights': -31.437940065127336, 'i': -8.7923180081559593, 'watching': -36.432591146619814, 'will': -12.363860755422497, 'see': -15.578728558793159, 'sleep': -7.4795577310971435, 'stand': -25.920487169662628, 'need': -3.5715427472665366, 'tomorrow': -20.403034274197921})
 INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~
-These are the probability results for the tweet with words: otherwise, big, deal, now, might, future
+
+These are the probability results for the tweet with words: otherwise, big, deal, now, might, future, hashtags associated = bing
 ('iranelection', {'deal': -57.305743182226998, 'big': -31.06502444881588, 'future': -91.942310378309401, 'now': -60.877285929493532, 'might': -65.701591644898286, 'otherwise': -26.240718733411118})
 ('followfriday', {'deal': -60.710243910070368, 'big': -32.917103944665385, 'future': -97.855640389327135, 'now': -64.378920656833458, 'might': -70.062500423922145, 'otherwise': -27.793139965404983})
 ('mw2', {'deal': -28.863435592385787, 'big': -5.195730776272935, 'future': -58.42001836483152, 'now': -31.807874570552229, 'might': -34.752313548718668, 'otherwise': -2.2512917981064948})
 ('fb', {'deal': -39.337841851864141, 'big': -32.670885060434934, 'future': -74.615240694164612, 'now': -41.944355633729685, 'might': -47.225018064788998, 'otherwise': -27.390222629375618})
 ('squarespace', {'deal': -38.879533341719657, 'big': -32.827444173795243, 'future': -51.68869331702782, 'now': -41.887100072873032, 'might': -46.329751329163351, 'otherwise': -26.775355005870829})
-These are the probability results for the tweet with words: sure, awesome, just, made, lol
+
+These are the probability results for the tweet with words: sure, awesome, just, made, lol, hashtags associated = andyhurleyday
 ('musicmonday', {'awesome': -8.4355492016257259, 'sure': -4.5643481909678361, 'lol': -20.423845682699898, 'just': -11.295149300764228, 'made': -15.859497491732064})
 ('squarespace', {'awesome': -10.024736795418999, 'sure': -5.3589419878644717, 'lol': -22.112578713286105, 'just': -12.780989098302051, 'made': -18.139931086166523})
 ('ff', {'awesome': -8.6115089371746425, 'sure': -4.396915246967632, 'lol': -20.695674219844378, 'just': -11.978804767089688, 'made': -16.886545637689977})
 ('fb', {'awesome': -8.9518869499220308, 'sure': -5.0575188797951061, 'lol': -20.938421589491576, 'just': -11.342177623321293, 'made': -15.370077086063812})
 ('followfriday', {'awesome': -8.4359657821276102, 'sure': -4.7672890353645263, 'lol': -21.849941630757623, 'just': -11.699177420793641, 'made': -17.67043926025077})
-These are the probability results for the tweet with words: good, worrying, updated, since, tear, gas, 25mins, ago, s, also, can, use, search, httpbitlyuhqrz
+
+These are the probability results for the tweet with words: good, worrying, updated, since, tear, gas, 25mins, ago, s, also, can, use, search, httpbitlyuhqrz, hashtags associated = iranelections
 ('iphone', {'ago': -141.41464883669605, 'updated': -33.777786038019528, 'good': -4.255612709318223, 'httpbitlyuhqrz': -208.56475580434918, 'tear': -85.121837492668689, 'search': -182.89273007702459, 'since': -59.449811765344108, 'gas': -110.79386321999327, 'use': -177.94397018764641, 'also': -170.93682216539736, 's': -145.26479643807278, 'can': -173.68835747832819, '25mins': -136.46588894731786, 'worrying': -29.927638436642802})
 ('squarespace', {'ago': -146.77554716337048, 'updated': -35.413797440357435, 'good': -3.2795004466221358, 'httpbitlyuhqrz': -217.90657247328107, 'tear': -66.449482145757969, 'search': -191.13121746741024, 'since': -39.674127139887133, 'gas': -93.224837151628805, 'use': -185.07912829948583, 'also': -177.81123186877102, 's': -173.55090216924131, 'can': -181.22426370800875, '25mins': -120.00019215749964, 'worrying': -30.054855452492966})
 ('followfriday', {'ago': -155.18488962426815, 'updated': -58.764333761137507, 'good': -3.1780538303275376, 'httpbitlyuhqrz': -210.31273385991923, 'tear': -92.528735565999625, 'search': -182.51959389451426, 'since': -64.735595600594635, 'gas': -120.3218755314046, 'use': -175.44971976705568, 'also': -165.3173046956619, 's': -160.64532584009262, 'can': -169.98928355123121, '25mins': -148.11501549680958, 'worrying': -30.971193795732521})
 ('fb', {'ago': -109.40962728523029, 'updated': -37.113218300562778, 'good': -3.0560388797579554, 'httpbitlyuhqrz': -164.99883543694284, 'tear': -70.071785433366159, 'search': -137.60861280756723, 'since': -42.681562803990545, 'gas': -76.738742224795359, 'use': -130.94165601613801, 'also': -122.05039368802875, 's': -115.38343689659955, 'can': -125.88413713634291, '25mins': -104.12896485417097, 'worrying': -30.446261509133574})
 ('iranelection', {'ago': -82.408101011095866, 'updated': -14.067452037939455, 'good': -3.7256934270699857, 'httpbitlyuhqrz': -153.70125352317854, 'tear': -45.825623666815275, 'search': -127.46053478976741, 'since': -19.584904933404161, 'gas': -51.343076562279983, 'use': -101.21981605635629, 'also': -93.44300680202528, 's': -87.925553906560566, 'can': -96.395510340951532, '25mins': -77.583795295691104, 'worrying': -9.2431463225346935})
-These are the probability results for the tweet with words: i, think, im, going, miss, tonight
+
+These are the probability results for the tweet with words: i, think, im, going, miss, tonight, hashtags associated = masterchef
 ('iranelection', {'i': -1.3127602770588158, 'tonight': -22.423052394115746, 'going': -11.388146603186332, 'im': -8.1732787998156695, 'miss': -16.905599498651039, 'think': -5.2207752608894227})
 ('ff', {'i': -1.4630583773210901, 'tonight': -23.37512792126774, 'going': -14.070471803699819, 'im': -9.4504130054679774, 'miss': -18.97821267430011, 'think': -6.0831171755529319})
 ('squarespace', {'i': -0.89879757442085761, 'tonight': -19.495874135498426, 'going': -10.687532664098365, 'im': -7.3434936963428239, 'miss': -14.542397255575452, 'think': -5.0049765941471041})
 ('followfriday', {'i': -1.8123787564255824, 'tonight': -25.257863511188333, 'going': -14.162637692470803, 'im': -9.4906588369015097, 'miss': -19.286601671731205, 'think': -6.1096641625818737})
 ('fb', {'i': -1.2464217931524963, 'tonight': -18.730203975557064, 'going': -10.979786699604411, 'im': -7.9763915533304921, 'miss': -15.00768616234693, 'think': -5.0230068276299829})
-These are the probability results for the tweet with words: wish, time, celebrate, alas, going, see, fightstar, tonight, instead, dont, dvds, neways
+
+These are the probability results for the tweet with words: wish, time, celebrate, alas, going, see, fightstar, tonight, instead, dont, dvds, neways, hashtags associated = starwarsday
 ('followfriday', {'neways': -175.89415330155023, 'tonight': -109.05849687221931, 'dont': -120.30787337074028, 'dvds': -148.10101333614526, 'wish': -5.9712618394571289, 'fightstar': -103.08723503276218, 'see': -75.294095067357205, 'going': -70.526806031992678, 'time': -10.268547245613419, 'instead': -115.02975871167644, 'alas': -65.854827176423385, 'celebrate': -38.061687211018402})
 ('iranelection', {'neways': -161.23160970672282, 'tonight': -98.813878736972612, 'dont': -108.75017223990059, 'dvds': -134.99089097331171, 'wish': -3.7256934270699857, 'fightstar': -93.296425841507912, 'see': -67.055707108096797, 'going': -63.840839304726138, 'time': -8.1445340345332493, 'instead': -104.33133163243733, 'alas': -60.62597150135548, 'celebrate': -34.385252767944365})
 ('bgt', {'neways': -153.8152898337031, 'tonight': -94.672314024317501, 'dont': -102.82738891087894, 'dvds': -128.32133937229102, 'wish': -4.0775374434057197, 'fightstar': -91.28792376122172, 'see': -65.79397329980965, 'going': -63.220513252791314, 'time': -8.8482220668713847, 'instead': -99.44299864778317, 'alas': -59.836122989695539, 'celebrate': -34.342172528283463})
 ('squarespace', {'neways': -162.81096307095612, 'tonight': -99.640981371820303, 'dont': -109.26025305921446, 'dvds': -136.03560806508528, 'wish': -3.1617174109726971, 'fightstar': -94.687504491897329, 'see': -67.912149486026507, 'going': -63.805970466300259, 'time': -6.9112214868030684, 'instead': -104.99992335968477, 'alas': -60.461931498544722, 'celebrate': -33.686576492673893})
 ('fb', {'neways': -144.0138787933443, 'tonight': -78.78989170813081, 'dont': -89.233433534593061, 'dvds': -116.62365616396868, 'wish': -4.7210466432310358, 'fightstar': -75.067373894920678, 'see': -47.677151265545064, 'going': -43.843407817230897, 'time': -7.4759804302120969, 'instead': -83.665089031165294, 'alas': -40.84001267095698, 'celebrate': -34.866203059587718})
-These are the probability results for the tweet with words: hey, do, know, many, seasons, jonas, going, do, love, melissa, uk, xxx
+
+These are the probability results for the tweet with words: hey, do, know, many, seasons, jonas, going, do, love, melissa, uk, xxx, hashtags associated = jonaslive
 ('140conf', {'do': -70.621436451237457, 'love': -73.712478904095775, 'many': -14.038146243671601, 'xxx': -147.23484531668979, 'hey': -3.7841896329182609, 'going': -66.837246818319201, 'jonas': -63.053057185400945, 'know': -10.25395661075334, 'uk': -122.72738984582512, 'seasons': -38.545601714536275, 'melissa': -98.219934374960445})
 ('iranelection', {'do': -99.124033665452231, 'love': -104.64148656091695, 'many': -38.603422679854575, 'xxx': -162.64037692320389, 'hey': -26.240718733411118, 'going': -94.299727950047469, 'jonas': -91.084860146676803, 'know': -34.184582072391308, 'uk': -136.39965818979277, 'seasons': -64.844141413265689, 'melissa': -130.88220529432806})
 ('bgt', {'do': -96.464073493073343, 'love': -98.932173024444964, 'many': -38.014244863747685, 'xxx': -154.69075857073477, 'hey': -4.770684623465665, 'going': -92.386536049667626, 'jonas': -89.002145786571845, 'know': -12.520294402335606, 'uk': -149.92007394726912, 'seasons': -63.508195325159761, 'melissa': -124.42612348585703})
 ('fb', {'do': -83.884447186020907, 'love': -87.843353777281237, 'many': -20.532262277567987, 'xxx': -170.01402166540808, 'hey': -5.9738096113692611, 'going': -78.31610268259314, 'jonas': -75.312707536319223, 'know': -15.811215634336952, 'uk': -142.62379903603247, 'seasons': -47.922484906943609, 'melissa': -115.23357640665685})
 ('followfriday', {'do': -85.158914824502517, 'love': -87.510290081657061, 'many': -18.523929090724636, 'xxx': -128.75003112191925, 'hey': -3.8509983035503716, 'going': -78.782187877103894, 'jonas': -74.110209021534601, 'know': -14.162105163434942, 'uk': -122.37330417452063, 'seasons': -46.317069056129618, 'melissa': -115.30343004706205})
-These are the probability results for the tweet with words: rewriting, drafts, lost, you, know, much, sucks
+
+These are the probability results for the tweet with words: rewriting, drafts, lost, you, know, much, sucks, hashtags associated = wordpress, blog
 ('squarespace', {'drafts': -53.550710011741657, 'lost': -58.909651999606126, 'sucks': -97.95517048033895, 'rewriting': -26.775355005870829, 'much': -71.179815474468114, 'know': -66.514020666913581, 'you': -62.659156075436499})
 ('ff', {'drafts': -53.459237993096288, 'lost': -80.188856989644435, 'sucks': -95.576275735275829, 'rewriting': -26.729618996548144, 'much': -89.569922576674102, 'know': -86.821665955132318, 'you': -82.761222944728758})
 ('e3', {'drafts': -50.987900922824153, 'lost': -55.758585546289815, 'sucks': -72.644099464149591, 'rewriting': -25.493950461412076, 'much': -67.873414840683921, 'know': -63.102730217218259, 'you': -59.430657881754037})
 ('iphone', {'drafts': -51.344051454649161, 'lost': -55.599664163967383, 'sucks': -71.928967820930339, 'rewriting': -25.672025727324581, 'much': -67.673355111612111, 'know': -63.417742402293882, 'you': -59.855276873285604})
 ('fb', {'drafts': -54.780445258751236, 'lost': -59.25017747373311, 'sucks': -76.71771460683523, 'rewriting': -27.390222629375618, 'much': -71.437052175775918, 'know': -67.98897120825491, 'you': -63.719909688714985})
-These are the probability results for the tweet with words: i, missed, rampage, last, night, oh, well, , better, late, never
+
+These are the probability results for the tweet with words: i, missed, rampage, last, night, oh, well, , better, late, never, hashtags associated = ontd, fuqtwitter, ohnotheydidnt, ohyeswedid
 ('e3', {'': -48.571822000099687, 'late': -57.014578959029571, 'last': -34.458896803229699, 'missed': -4.887408898411902, 'rampage': -30.381359359823978, 'oh': -42.613971690041133, 'i': -1.2153365629476802, 'never': -61.785263582495233, 'well': -46.286044025505355, 'better': -52.243894335563908, 'night': -38.536434246635416})
 ('ff', {'': -54.049677040710371, 'late': -62.884329529149227, 'last': -37.902798599378656, 'missed': -5.8599736242887221, 'rampage': -32.589592620836868, 'oh': -47.836063376152282, 'i': -1.4630583773210901, 'never': -67.79207039974952, 'well': -52.050657066359292, 'better': -58.669735838942216, 'night': -43.216004577920444})
 ('squarespace', {'': -51.712022155590731, 'late': -60.232681554650114, 'last': -37.139273587882407, 'missed': -6.2577395622853293, 'rampage': -33.033094568156159, 'oh': -45.311626292614761, 'i': -0.89879757442085761, 'never': -63.886875450685253, 'well': -49.75427754890508, 'better': -55.972351855120422, 'night': -42.092750467805381})
 ('followfriday', {'': -55.64560904359454, 'late': -66.453152789765056, 'last': -39.314450179678204, 'missed': -6.3973462350128205, 'rampage': -34.190486200417801, 'oh': -49.716528817907218, 'i': -1.8123787564255824, 'never': -71.913589005589529, 'well': -54.013814224063509, 'better': -62.02233599099317, 'night': -45.285712019135332})
 ('fb', {'': -31.494681599927311, 'late': -40.397778385704314, 'last': -17.186849158359212, 'missed': -7.2202314045217575, 'rampage': -13.887188195950964, 'oh': -25.83863151580637, 'i': -1.2464217931524963, 'never': -44.867510600686188, 'well': -29.509856034631586, 'better': -35.522581062669829, 'night': -20.557969084747054})
-These are the probability results for the tweet with words: hmm, lose, lose, started, promising, sports, night
+
+These are the probability results for the tweet with words: hmm, lose, lose, started, promising, sports, night, hashtags associated = pens, cavs
 ('e3', {'lose': -76.481851384236222, 'started': -81.252536007701892, 'night': -115.59470853598536, 'sports': -111.51717109257964, 'hmm': -25.493950461412076, 'promising': -86.023220631167561})
 ('ff', {'lose': -80.188856989644435, 'started': -86.195210148246161, 'night': -123.55124110187788, 'sports': -118.23803512333609, 'hmm': -26.729618996548144, 'promising': -112.9248291447943})
 ('fb', {'lose': -82.170667888126857, 'started': -87.45133031918617, 'night': -124.87962966637882, 'sports': -121.50850973999098, 'hmm': -27.390222629375618, 'promising': -114.84155294856178})
 ('fail', {'lose': -56.615269088937744, 'started': -61.671514893286052, 'night': -96.464905856275934, 'sports': -92.507272339929074, 'hmm': -5.0562458043483076, 'promising': -87.451026535580766})
 ('squarespace', {'lose': -38.879533341719657, 'started': -44.931622509644072, 'night': -103.4358094013087, 'sports': -98.482332521385729, 'hmm': -26.775355005870829, 'promising': -71.706977515514893})
-These are the probability results for the tweet with words: alright, wanted, go, outside, denied
+
+These are the probability results for the tweet with words: alright, wanted, go, outside, denied, hashtags associated = meowmonday
 ('iremember', {'alright': -25.590800287401994, 'go': -32.840962537858495, 'outside': -58.431762825260492, 'wanted': -29.765187556797631, 'denied': -84.022563112662482})
 ('musicmonday', {'alright': -25.980761208974194, 'go': -55.273107640778001, 'outside': -60.530603011805781, 'wanted': -51.961522417948387, 'denied': -86.511364220779967})
 ('squarespace', {'alright': -26.775355005870829, 'go': -57.523357638861242, 'outside': -63.575446806785656, 'wanted': -53.550710011741657, 'denied': -90.350801812656485})
 ('fb', {'alright': -27.390222629375618, 'go': -36.258228095211628, 'outside': -41.538890526270947, 'wanted': -32.958567132803381, 'denied': -68.929113155646561})
 ('followfriday', {'alright': -7.0698741274585721, 'go': -18.570565054117601, 'outside': -25.640439181576173, 'wanted': -13.446601074857199, 'denied': -53.43357914698116})
-These are the probability results for the tweet with words: get, fatty
+
+These are the probability results for the tweet with words: get, fatty, hashtags associated = facup
 ('squarespace', {'fatty': -29.736401721391474, 'get': -2.9610467155206468})
 ('andyclemmensen', {'fatty': -6.5286886432285032, 'get': -2.9177707315842789})
 ('bradiewebb', {'fatty': -5.395897693761901, 'get': -1.6582280764785327})
 ('fb', {'fatty': -30.473660483320938, 'get': -3.0834378539453189})
 ('followfriday', {'fatty': -31.727519877890927, 'get': -3.9343799124859444})
-These are the probability results for the tweet with words: oh, i, wish, i, wordcamp, chicago, right, now
+
+These are the probability results for the tweet with words: oh, i, wish, i, wordcamp, chicago, right, now, hashtags associated = wcchicago
 ('bsb', {'right': -62.363252616317688, 'wordcamp': -32.493172108774978, 'i': -6.849925346000445, 'wish': -6.2066105392022646, 'chicago': -58.136418871549509, 'oh': -2.8405393840232893, 'now': -64.718284184607356})
 ('ff', {'right': -70.820895287170885, 'wordcamp': -39.183535420022451, 'i': -12.453916423474311, 'wish': -10.990858046153221, 'chicago': -65.913154416570592, 'oh': -4.6200587982318417, 'now': -74.054659724470341})
 ('squarespace', {'right': -67.087840384229921, 'wordcamp': -34.953543390494616, 'i': -8.1781883846237893, 'wish': -7.2793908102029317, 'chicago': -61.728898396365445, 'oh': -3.2188758248093774, 'now': -70.095407115383296})
 ('followfriday', {'right': -53.251674171233432, 'wordcamp': -41.819976116485165, 'i': -14.026836151080179, 'wish': -12.214457394654596, 'chicago': -48.889850243943741, 'oh': -4.4308167987718852, 'now': -56.920350917996515})
 ('fb', {'right': -50.040635043898092, 'wordcamp': -39.88477528997096, 'i': -12.494552660595344, 'wish': -11.248130867442848, 'chicago': -45.858584901340222, 'oh': -5.2806624310593158, 'now': -52.647148825763637})
-These are the probability results for the tweet with words: shit, sucks
+
+These are the probability results for the tweet with words: shit, sucks, hashtags associated = 3turnoffwords
 ('spymaster', {'sucks': -8.6876108417073681, 'shit': -4.343805420853684})
 ('e3', {'sucks': -8.8482220668713847, 'shit': -4.0775374434057197})
 ('asot400', {'sucks': -10.021270586192511, 'shit': -5.0106352930962554})
 ('iranelection', {'sucks': -10.341758610869469, 'shit': -4.8243057154047619})
 ('fb', {'sucks': -11.254472042428578, 'shit': -5.9738096113692611})
-These are the probability results for the tweet with words: palms, sweaty, , going, wire, i, like
+
+These are the probability results for the tweet with words: palms, sweaty, , going, wire, i, like, hashtags associated = pakcricket
 ('ff', {'': -55.458257967447366, 'wire': -86.807935762227345, 'like': -93.584200118090223, 'palms': -26.729618996548144, 'i': -88.270994139548435, 'sweaty': -53.459237993096288, 'going': -60.078316765679205})
 ('iranelection', {'': -54.261220744979767, 'wire': -83.716807281761547, 'like': -88.467578913480239, 'palms': -26.240718733411118, 'i': -85.029567558820361, 'sweaty': -52.481437466822236, 'going': -57.476088548350425})
 ('squarespace', {'': -55.508454618427308, 'wire': -85.627848592053681, 'like': -89.246530825188032, 'palms': -26.775355005870829, 'i': -86.526646166474535, 'sweaty': -53.550710011741657, 'going': -58.852493586182845})
 ('followfriday', {'': -57.218074750340996, 'wire': -89.683193571315272, 'like': -95.164249074503942, 'palms': -27.793139965404983, 'i': -91.495572327740859, 'sweaty': -55.586279930809965, 'going': -61.890053605910289})
 ('fb', {'': -56.765270824046965, 'wire': -66.435622761750082, 'like': -70.981705517310829, 'palms': -27.390222629375618, 'i': -67.682044554902575, 'sweaty': -54.780445258751236, 'going': -59.768665970320882})
-These are the probability results for the tweet with words: oi, vey, another, wicket, down, go, proteas
+
+These are the probability results for the tweet with words: oi, vey, another, wicket, down, go, proteas, hashtags associated = t20
 ('xboxe3', {'oi': -24.674509555527838, 'wicket': -76.588478023795048, 'down': -80.539721741376482, 'another': -51.913968468267214, 'go': -83.797818278897964, 'vey': -49.349019111055675, 'proteas': -108.4723278344258})
 ('asot400', {'oi': -25.733901131042664, 'wicket': -82.212338686224257, 'down': -86.529826799260562, 'another': -56.478437555181586, 'go': -89.748702623962089, 'vey': -51.467802262085328, 'proteas': -115.48260375500476})
 ('iranelection', {'oi': -26.240718733411118, 'wicket': -84.239609095698057, 'down': -89.063914811102819, 'another': -57.998890362286943, 'go': -92.97192979493343, 'vey': -52.481437466822236, 'proteas': -119.21264852834454})
 ('squarespace', {'oi': -26.775355005870829, 'wicket': -84.298712644732063, 'down': -89.657654632596532, 'another': -57.523357638861242, 'go': -93.630302259716117, 'vey': -53.550710011741657, 'proteas': -120.40565726558694})
 ('fb', {'oi': -27.390222629375618, 'wicket': -86.535039587462009, 'down': -91.815702018521321, 'another': -59.144816958086395, 'go': -95.115362980929575, 'vey': -54.780445258751236, 'proteas': -122.50558561030519})
-These are the probability results for the tweet with words: i, go, work
+
+These are the probability results for the tweet with words: i, go, work, hashtags associated = inaperfectworld
 ('iranelection', {'i': -1.3127602770588158, 'go': -5.2207752608894227, 'work': -8.946468687959408})
 ('ff', {'i': -1.4630583773210901, 'go': -6.3707992479213793, 'work': -10.074567314429066})
 ('squarespace', {'i': -0.89879757442085761, 'go': -4.871445201540439, 'work': -8.090321026349816})
 ('followfriday', {'i': -1.8123787564255824, 'go': -6.9363427356859839, 'work': -11.298166662975678})
 ('fb', {'i': -1.2464217931524963, 'go': -4.5460827555607466, 'work': -7.3010165425418077})
-These are the probability results for the tweet with words: course, am, know, already
+
+These are the probability results for the tweet with words: course, am, know, already, hashtags associated = noundiessunday
 ('followfriday', {'course': -5.9712618394571289, 'already': -43.159217933172528, 'am': -33.764401804862111, 'know': -37.698781717348055})
 ('iranelection', {'course': -5.5174528954647073, 'already': -19.67191630996955, 'am': -11.034905790929415, 'know': -14.154463414504843})
 ('ff', {'course': -6.0063531586017325, 'already': -22.07950248620876, 'am': -12.012706317203465, 'know': -16.073149327607027})
 ('squarespace', {'course': -4.9534768799229738, 'already': -19.526225446879003, 'am': -11.005566047847392, 'know': -14.860430639324479})
 ('fb', {'course': -5.9738096113692611, 'already': -21.274199622073553, 'am': -11.947619222738522, 'know': -16.216680742278449})
-These are the probability results for the tweet with words: , allow, lts, nonlts, upgrade, , used, try, run, version, servers, comp, not, anymore
+
+These are the probability results for the tweet with words: , allow, lts, nonlts, upgrade, , used, try, run, version, servers, comp, not, anymore, hashtags associated = ubuntu
 ('squarespace', {'': -111.01690923685462, 'lts': -55.508454618427308, 'upgrade': -109.05916463016897, 'run': -148.51014821845439, 'version': -153.46362509837735, 'anymore': -216.47945611770976, 'comp': -207.01433511011902, 'servers': -180.23898010424818, 'try': -121.73479321258355, 'used': -116.37585122471909, 'allow': -28.733099612556479, 'not': -211.12051412984528, 'nonlts': -82.283809624298129})
 ('tweetdeck', {'': -102.01468221250576, 'lts': -51.007341106252881, 'upgrade': -100.02225204798222, 'run': -112.2686388232591, 'version': -115.35968127611741, 'anymore': -191.56762503362825, 'comp': -164.37459221784675, 'servers': -139.86713674698208, 'try': -108.48444919034084, 'used': -104.70025955742258, 'allow': -26.49988563538821, 'not': -167.06016956276358, 'nonlts': -75.514796577117551})
 ('tweetie', {'': -75.928509118426774, 'lts': -48.325887478186594, 'upgrade': -74.829896829925332, 'run': -105.32289022706166, 'version': -108.21326198395782, 'anymore': -181.94454652538172, 'comp': -155.44053717364298, 'servers': -131.82689957880041, 'try': -81.709252632219091, 'used': -78.818880875322932, 'allow': -24.712249883344018, 'not': -158.33090893053915, 'nonlts': -71.939525073029174})
 ('fb', {'': -92.114128630087563, 'lts': -56.765270824046965, 'upgrade': -90.129303064791841, 'run': -108.42611955231125, 'version': -135.81634218168688, 'anymore': -200.34718208628485, 'comp': -190.59678744043811, 'servers': -163.20656481106249, 'try': -103.36860067251614, 'used': -97.394791061146876, 'allow': -29.375048194671344, 'not': -194.37337247491558, 'nonlts': -84.155493453422579})
 ('fail', {'': -63.692379092987657, 'lts': -32.395495690494549, 'upgrade': -62.132640849136131, 'run': -99.584382343978987, 'version': -104.64062814832729, 'anymore': -165.21353075361191, 'comp': -156.19965143291674, 'servers': -130.42013979062202, 'try': -94.52813653963068, 'used': -89.471890735282372, 'allow': -6.6159840481998327, 'not': -160.15728494926361, 'nonlts': -58.175007332789264})
-These are the probability results for the tweet with words: watching, greek, i, believe, season, ends, tonight
+
+These are the probability results for the tweet with words: watching, greek, i, believe, season, ends, tonight, hashtags associated = bsb
 ('squarespace', {'ends': -93.329040927882176, 'watching': -26.775355005870829, 'i': -33.726241748216097, 'season': -66.55368592201134, 'tonight': -98.282517807805149, 'greek': -32.827444173795243, 'believe': -60.501596754086926})
 ('1', {'ends': -61.661959243583951, 'watching': -3.8918202971106264, 'i': -29.263232514305663, 'season': -37.046873108526917, 'tonight': -65.553779540694578, 'greek': -28.506906432167664, 'believe': -33.15505281141629})
 ('lost', {'ends': -56.862814909371288, 'watching': -3.3672958289864741, 'i': -28.745711784100997, 'season': -32.772253242438403, 'tonight': -59.536963558297813, 'greek': -27.45785749591936, 'believe': -31.014395325086028})
 ('trackle', {'ends': -64.413559755695786, 'watching': -4.4426512554903166, 'i': -9.6390743133320136, 'season': -39.247642662259054, 'tonight': -68.856211011186105, 'greek': -8.8853025109806332, 'believe': -34.804991406768735})
 ('fb', {'ends': -49.156003295333704, 'watching': -4.1020074348907469, 'i': -32.738651857418859, 'season': -43.875340864274392, 'tonight': -52.878521108543836, 'greek': -31.492230064266366, 'believe': -38.306996360846625})
-These are the probability results for the tweet with words: you, late, thanks, trying, o, invented, time, httpbitlynpmkk, 12
+
+These are the probability results for the tweet with words: you, late, thanks, trying, o, invented, time, httpbitlynpmkk, 12, hashtags associated = rikatuesday, charitytuesday
 ('followfriday', {'invented': -91.501589240291082, 'o': -63.708449274886092, 'late': -6.9898314207026182, '12': -130.66188873931094, 'thanks': -8.1221693440761253, 'time': -95.798874646447373, 'you': -2.559014621930733, 'trying': -35.91530930948111, 'httpbitlynpmkk': -123.59201461185236})
 ('bgt', {'invented': -68.972027128685369, 'o': -43.478076667273285, 'late': -29.166022796876298, '12': -104.00734683702878, 'thanks': -33.936707420341961, 'time': -73.742711752151038, 'you': -3.6720723354642217, 'trying': -38.707392043807623, 'httpbitlynpmkk': -99.236662213563108})
 ('f1', {'invented': -68.477427999889898, 'o': -43.017963714548998, 'late': -9.4723968947889912, '12': -100.51891742362362, 'thanks': -12.822300981813596, 'time': -71.421866978889668, 'you': -4.7361984473944956, 'trying': -17.558499429208091, 'httpbitlynpmkk': -96.881331264230568})
 ('squarespace', {'invented': -50.744231709001255, 'o': -23.96887670313043, 'late': -8.0098337753600664, '12': -87.321179958626871, 'thanks': -14.061922943284483, 'time': -54.493735784831628, 'you': -3.7495040758303713, 'trying': -19.015399823207456, 'httpbitlynpmkk': -81.26909079070245})
 ('fb', {'invented': -52.017523672616647, 'o': -24.62730104324103, 'late': -9.3449295380163608, '12': -88.136489700342594, 'thanks': -13.932444788640732, 'time': -54.77245745959771, 'you': -4.4697322149818763, 'trying': -18.653491431871768, 'httpbitlynpmkk': -82.162680088973332})
+Ramaneek Twitter-Hashtag-Prediction (master)*$

@@ -35,17 +35,17 @@ def main():
 	BEST_EPSILON = 0.01
 
 	# For 500 hashtags and predicting top 5
-	# BEST_ALPHA = 0.9
-	# BEST_EPSILON = 1e-09
+	BEST_ALPHA = 0.9
+	BEST_EPSILON = 1e-09
 
 	naiveBayes = NaiveBayes()
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
-	# naiveBayes.testAgainst(naiveBayes.testSet)
-	# print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	# naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
-	# print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	# naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
+	naiveBayes.testAgainst(naiveBayes.testSet)
+	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
 	# print('Performing cross validation to find the best epsilon and alpha values')
 	# accuracies = []
@@ -143,8 +143,8 @@ class NaiveBayes:
 	CONST_HIT_RANGE = 20
 
 	# For our tests
-	# CONST_TO_PREDICT = 500
-	# CONST_HIT_RANGE = 5
+	CONST_TO_PREDICT = 500
+	CONST_HIT_RANGE = 5
 
 	CONST_TEST_RATIO = 0.5
 	CONST_VALIDATION_RATIO = 0.1
@@ -342,7 +342,7 @@ class NaiveBayes:
 
 			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
 
-			print('These are the probability results for the tweet with words: {}'.format(', '.join(words)))
+			print('These are the probability results for the tweet with words: {}, hashtags associated = {}'.format(', '.join(words), ', '.join(hashtags)))
 
 			for hashtag in topProbabilities:
 				print(hashtag, probPerWord[hashtag])
