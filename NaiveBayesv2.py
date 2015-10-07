@@ -30,21 +30,22 @@ def main():
 	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1]
 	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
 	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
+	CONST_TEST_RATIOS = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 	BEST_ALPHA = 0.92
 	BEST_EPSILON = 0.01
 
 	# For 500 hashtags and predicting top 5
-	BEST_ALPHA = 0.9
-	BEST_EPSILON = 1e-09
+	# BEST_ALPHA = 0.9
+	# BEST_EPSILON = 1e-09
 
 	naiveBayes = NaiveBayes()
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
-	naiveBayes.testAgainst(naiveBayes.testSet)
-	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
-	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
+	# naiveBayes.testAgainst(naiveBayes.testSet)
+	# print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	# naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	# print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	# naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
 	# print('Performing cross validation to find the best epsilon and alpha values')
 	# accuracies = []
@@ -118,6 +119,19 @@ def main():
 	# plt.title('Accuracy on Test Set Using Epsilon = {}'.format(epsilon))
 	# plt.show()
 
+	# print('Generating graph for test set size variances')
+	# accuracies = []
+	# for testRatio in CONST_TEST_RATIOS:
+	# 	naiveBayes = NaiveBayes(BEST_EPSILON, BEST_ALPHA, 0.1, testRatio)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_TEST_RATIOS, accuracies)
+	# plt.xlabel('Ratio Of Test Size')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set Using Epsilon = {}, Alpha = {}, Validation Ratio = {}'.format(BEST_EPSILON, BEST_ALPHA, 0.1))
+	# plt.show()
+
 
 class NaiveBayes:
 	# Need to test these still
@@ -129,8 +143,8 @@ class NaiveBayes:
 	CONST_HIT_RANGE = 20
 
 	# For our tests
-	CONST_TO_PREDICT = 500
-	CONST_HIT_RANGE = 5
+	# CONST_TO_PREDICT = 500
+	# CONST_HIT_RANGE = 5
 
 	CONST_TEST_RATIO = 0.5
 	CONST_VALIDATION_RATIO = 0.1
