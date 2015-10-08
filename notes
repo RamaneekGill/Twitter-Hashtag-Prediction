@@ -35,3 +35,12 @@
 	predict out of 500 hashtags, not 56
 	50 examples where predicted correct, 50 examples where prediction is incorrect
 		for each example compute the top log probabilities. E.g. hashtag is basketball, lebron has high P(hashtag|word)
+
+
+### Oct 7 2015
+
+	TODO:
+	show graphs for the 500 hashtags in range of 5
+	show probability results for the actual hashtag in incorrect predictions
+	for prediction probability results have hitrange set to 50
+	Take the median and average differences between each word for the probability results, show the max, and min for hashtag

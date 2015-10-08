@@ -291,7 +291,7 @@ class NaiveBayes:
 				for word in words:
 					prob += log(self.epsilon + self.wordsMappedToHashtags[hashtag].get(word, 0.0)) - log(self.hashtagCounts[hashtag])
 				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
-
+				# the hashtagCounts*alpha is the priors
 			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
 
 			if len(set(hashtags).intersection(topProbabilities)) > 0:
