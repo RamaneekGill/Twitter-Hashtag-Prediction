@@ -44,6 +44,7 @@ def main():
 	naiveBayes.testAgainst(naiveBayes.testSet)
 	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
 	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	print('\n\n\n\n\n\n\n\n\n\n\n')
 	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
 	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
@@ -340,12 +341,41 @@ class NaiveBayes:
 					probPerWord[hashtag][word] = prob
 				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
 
-			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
-
+			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-50:])
 			print('These are the probability results for the tweet with words: {}, hashtags associated = {}'.format(', '.join(words), ', '.join(hashtags)))
 
+			medianIndex = int(len(topProbabilities)/2)
+			i = 0
+			total = 0
+			minVal = 1000000000
+			maxVal = -1000000000
+
+			print(probPerWord[hashtag])
 			for hashtag in topProbabilities:
+				prob = sum(probPerWord[hashtag].values())
+				total += prob
+
+				if i == medianIndex:
+					median = hashtag
+
+				if prob < minVal:
+					minVal = prob
+					minHashtag = hashtag
+
+				if prob > maxVal:
+					maxVal = prob
+					maxHashtag = hashtag
+
+				i += 1
 				print(hashtag, probPerWord[hashtag])
+
+			print('Median is: |||{}||| with sum of {} for {}'.format(median, sum(probPerWord[median].values()), probPerWord[median]))
+			print('Min is: |||{}||| with sum of {} for {}'.format(minHashtag, sum(probPerWord[minHashtag].values()), probPerWord[minHashtag]))
+			print('Max is: |||{}||| with sum of {} for {}'.format(maxHashtag, sum(probPerWord[maxHashtag].values()), probPerWord[maxHashtag]))
+			print('Average of the summations is: {}'.format(total / len(topProbabilities)))
+
+			print('This is the probability result for the TARGET:')
+			print(hashtag, probPerWord[hashtag])
 
 	def getAccuracy(self):
 		return self.accuracy
