@@ -44,3 +44,12 @@
 	show probability results for the actual hashtag in incorrect predictions
 	for prediction probability results have hitrange set to 50
 	Take the median and average differences between each word for the probability results, show the max, and min for hashtag
+
+### Oct 14 2015
+
+	TODO:
+	Compute probabilities without the priors
+	Write report for Naive Bayes section
+		Start with the reproductino
+		Then our fine tuning and show results
+	Hopefully logistic regression
