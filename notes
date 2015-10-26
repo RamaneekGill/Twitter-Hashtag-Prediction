@@ -53,3 +53,12 @@
 		Start with the reproductino
 		Then our fine tuning and show results
 	Hopefully logistic regression
+
+### Oct 26 2015
+	TODO:
+	Try to see if not double counting words make difference in naive bayes
+	Save training, test, validation, and outputs as csv
+	Use torch and do logistic regression with fully connected model
+	If have time, add hidden layer
+	REMEMBER to save weights, save outputs.
+	Compute the probabilities of each of the inputs to an output unit just like NB
