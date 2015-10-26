@@ -26,27 +26,34 @@ import matplotlib.cbook as cbook
 
 
 def main():
+	naiveBayes = NaiveBayes()
+
 	CONST_EPSILON_INTERVALS = [0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
 	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1]
 	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
 	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
 	CONST_TEST_RATIOS = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+	CONST_TEST_SIZE = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+	for i in range(len(CONST_TEST_RATIOS)):
+		CONST_TEST_SIZE[i] = CONST_TEST_RATIOS[i] * len(naiveBayes.testSet)
+
 	BEST_ALPHA = 0.92
 	BEST_EPSILON = 0.01
 
 	# For 500 hashtags and predicting top 5
-	BEST_ALPHA = 0.9
-	BEST_EPSILON = 1e-09
+	# BEST_ALPHA = 0.9
+	# BEST_EPSILON = 1e-09
 
-	naiveBayes = NaiveBayes()
+
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
-	naiveBayes.testAgainst(naiveBayes.testSet)
-	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
-	print('\n\n\n\n\n\n\n\n\n\n\n')
-	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
+
+	# naiveBayes.testAgainst(naiveBayes.testSet)
+	# print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	# naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	# print('\n\n\n\n\n\n\n\n\n\n\n')
+	# print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	# naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
 	# print('Performing cross validation to find the best epsilon and alpha values')
 	# accuracies = []
@@ -90,20 +97,21 @@ def main():
 	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
 	# plt.show()
 
-	# print('Generating graph for epsilon accuracies')
-	# epsilonAccuracies = []
-	# alpha = BEST_ALPHA
-	# for epsilon in CONST_EPSILON_INTERVALS:
-	# 	naiveBayes.setEpsilon(epsilon)
-	# 	naiveBayes.setAlpha(alpha)
-	# 	naiveBayes.testAgainst(naiveBayes.testSet)
-	# 	accuracy = naiveBayes.getAccuracy()
-	# 	epsilonAccuracies.append(accuracy)
-	# plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
-	# plt.xlabel('Epsilon')
-	# plt.ylabel('Accuracy')
-	# plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
-	# plt.show()
+	print('Generating graph for epsilon accuracies')
+	epsilonAccuracies = []
+	alpha = BEST_ALPHA
+	for epsilon in CONST_EPSILON_INTERVALS:
+		naiveBayes.setEpsilon(epsilon)
+		naiveBayes.setAlpha(alpha)
+		naiveBayes.testAgainst(naiveBayes.testSet)
+		accuracy = naiveBayes.getAccuracy()
+		epsilonAccuracies.append(accuracy)
+	plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
+	plt.xscale('log', nonposy='clip')
+	plt.xlabel('Epsilon')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
+	plt.show()
 
 	# print('Generating graph for alpha accuracies')
 	# alphaAccuracies = []
@@ -120,18 +128,18 @@ def main():
 	# plt.title('Accuracy on Test Set Using Epsilon = {}'.format(epsilon))
 	# plt.show()
 
-	# print('Generating graph for test set size variances')
-	# accuracies = []
-	# for testRatio in CONST_TEST_RATIOS:
-	# 	naiveBayes = NaiveBayes(BEST_EPSILON, BEST_ALPHA, 0.1, testRatio)
-	# 	naiveBayes.testAgainst(naiveBayes.testSet)
-	# 	accuracy = naiveBayes.getAccuracy()
-	# 	accuracies.append(accuracy)
-	# plt.plot(CONST_TEST_RATIOS, accuracies)
-	# plt.xlabel('Ratio Of Test Size')
-	# plt.ylabel('Accuracy')
-	# plt.title('Accuracy on Test Set Using Epsilon = {}, Alpha = {}, Validation Ratio = {}'.format(BEST_EPSILON, BEST_ALPHA, 0.1))
-	# plt.show()
+	print('Generating graph for test set size variances')
+	accuracies = []
+	for testRatio in CONST_TEST_RATIOS:
+		naiveBayes = NaiveBayes(BEST_EPSILON, BEST_ALPHA, 0.1, testRatio)
+		naiveBayes.testAgainst(naiveBayes.testSet)
+		accuracy = naiveBayes.getAccuracy()
+		accuracies.append(accuracy)
+	plt.plot(CONST_TEST_SIZE, accuracies)
+	plt.xlabel('Number of Tweets In Test Set')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy on Test Set Using Epsilon = {}, Alpha = {}'.format(BEST_EPSILON, BEST_ALPHA))
+	plt.show()
 
 
 class NaiveBayes:
@@ -144,8 +152,8 @@ class NaiveBayes:
 	CONST_HIT_RANGE = 20
 
 	# For our tests
-	CONST_TO_PREDICT = 500
-	CONST_HIT_RANGE = 5
+	# CONST_TO_PREDICT = 500
+	# CONST_HIT_RANGE = 5
 
 	CONST_TEST_RATIO = 0.5
 	CONST_VALIDATION_RATIO = 0.1
@@ -292,7 +300,9 @@ class NaiveBayes:
 				for word in words:
 					prob += log(self.epsilon + self.wordsMappedToHashtags[hashtag].get(word, 0.0)) - log(self.hashtagCounts[hashtag])
 				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
-				# the hashtagCounts*alpha is the priors
+				# This is without priors
+				probabilitiesMappedToHashtagsToPredict[hashtag] = (1-self.alpha)*prob - log(len(self.trainSet))
+
 			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-self.hitRange:])
 
 			if len(set(hashtags).intersection(topProbabilities)) > 0:
