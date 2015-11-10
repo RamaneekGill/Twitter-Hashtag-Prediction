@@ -164,10 +164,10 @@ class NaiveBayes:
 		self.validation_ratio = validation_ratio
 		self.test_ratio = test_ratio
 
-		with open('stopwords.txt') as f:
+		with open('../stopwords.txt') as f:
 			self.stopWords = f.read().splitlines()
 
-		filename = 'training.1600000.processed.noemoticon.csv'
+		filename = '../training.1600000.processed.noemoticon.csv'
 		self.dataset = self.readCsv(filename) # Contains only tweets with hashtags
 
 		self.validationSet, self.dataset = self.splitDataset(self.dataset, self.validation_ratio)
