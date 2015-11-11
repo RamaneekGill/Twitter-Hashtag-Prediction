@@ -23,6 +23,7 @@ from pylab import *
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cbook as cbook
+import pickle
 
 
 def main():
@@ -47,6 +48,22 @@ def main():
 
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
+
+	# Save the train, test, and validation set
+	# The train set is 85%, test set is 5%, validation set is 10% of dataset
+	print("Saving train set")
+	output = open('trainset.pkl', 'wb')
+	pickle.dump(naiveBayes.trainSet, output)
+
+	print("Train set saved")
+
+	# np.savetxt('training_set_inputs', naiveBayes.trainSetTweets(), delimiter=',')
+	# np.savetxt('test_set_inputs', naiveBayes.validationSetTweets(), delimiter=',')
+	# np.savetxt('validation_set_inputs', naiveBayes.testSetTweets(), delimiter=',')
+	# np.savetxt('training_set_targets', naiveBayes.trainSetTweets(), delimiter=',')
+	# np.savetxt('test_set_targets', naiveBayes.validationSetTweets(), delimiter=',')
+	# np.savetxt('validation_set_targets', naiveBayes.testSetTweets(), delimiter=',')
+
 
 	# naiveBayes.testAgainst(naiveBayes.testSet)
 	# print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -97,21 +114,21 @@ def main():
 	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
 	# plt.show()
 
-	print('Generating graph for epsilon accuracies')
-	epsilonAccuracies = []
-	alpha = BEST_ALPHA
-	for epsilon in CONST_EPSILON_INTERVALS:
-		naiveBayes.setEpsilon(epsilon)
-		naiveBayes.setAlpha(alpha)
-		naiveBayes.testAgainst(naiveBayes.testSet)
-		accuracy = naiveBayes.getAccuracy()
-		epsilonAccuracies.append(accuracy)
-	plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
-	plt.xscale('log', nonposy='clip')
-	plt.xlabel('Epsilon')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
-	plt.show()
+	# print('Generating graph for epsilon accuracies')
+	# epsilonAccuracies = []
+	# alpha = BEST_ALPHA
+	# for epsilon in CONST_EPSILON_INTERVALS:
+	# 	naiveBayes.setEpsilon(epsilon)
+	# 	naiveBayes.setAlpha(alpha)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	epsilonAccuracies.append(accuracy)
+	# plt.plot(CONST_EPSILON_INTERVALS, epsilonAccuracies)
+	# plt.xscale('log', nonposy='clip')
+	# plt.xlabel('Epsilon')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set Using Alpha = {}'.format(alpha))
+	# plt.show()
 
 	# print('Generating graph for alpha accuracies')
 	# alphaAccuracies = []
@@ -128,18 +145,18 @@ def main():
 	# plt.title('Accuracy on Test Set Using Epsilon = {}'.format(epsilon))
 	# plt.show()
 
-	print('Generating graph for test set size variances')
-	accuracies = []
-	for testRatio in CONST_TEST_RATIOS:
-		naiveBayes = NaiveBayes(BEST_EPSILON, BEST_ALPHA, 0.1, testRatio)
-		naiveBayes.testAgainst(naiveBayes.testSet)
-		accuracy = naiveBayes.getAccuracy()
-		accuracies.append(accuracy)
-	plt.plot(CONST_TEST_SIZE, accuracies)
-	plt.xlabel('Number of Tweets In Test Set')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy on Test Set Using Epsilon = {}, Alpha = {}'.format(BEST_EPSILON, BEST_ALPHA))
-	plt.show()
+	# print('Generating graph for test set size variances')
+	# accuracies = []
+	# for testRatio in CONST_TEST_RATIOS:
+	# 	naiveBayes = NaiveBayes(BEST_EPSILON, BEST_ALPHA, 0.1, testRatio)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_TEST_SIZE, accuracies)
+	# plt.xlabel('Number of Tweets In Test Set')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy on Test Set Using Epsilon = {}, Alpha = {}'.format(BEST_EPSILON, BEST_ALPHA))
+	# plt.show()
 
 
 class NaiveBayes:
