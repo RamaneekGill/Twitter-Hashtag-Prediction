@@ -107,9 +107,10 @@ class DataSet(object):
       fake_label = 0
       return [fake_image for _ in xrange(batch_size)], [
           fake_label for _ in xrange(batch_size)]
+
     start = self._index_in_epoch
     self._index_in_epoch += batch_size
-    
+
     if self._index_in_epoch > self._num_examples:
       # Finished epoch
       self._epochs_completed += 1
@@ -129,16 +130,19 @@ def read_data_sets(train_dir, fake_data=False, one_hot=False):
   class DataSets(object):
     pass
   data_sets = DataSets()
+
   if fake_data:
     data_sets.train = DataSet([], [], fake_data=True)
     data_sets.validation = DataSet([], [], fake_data=True)
     data_sets.test = DataSet([], [], fake_data=True)
     return data_sets
+
   TRAIN_IMAGES = 'train-images-idx3-ubyte.gz'
   TRAIN_LABELS = 'train-labels-idx1-ubyte.gz'
   TEST_IMAGES = 't10k-images-idx3-ubyte.gz'
   TEST_LABELS = 't10k-labels-idx1-ubyte.gz'
   VALIDATION_SIZE = 5000
+
   local_file = maybe_download(TRAIN_IMAGES, train_dir)
   train_images = extract_images(local_file)
   local_file = maybe_download(TRAIN_LABELS, train_dir)
@@ -147,11 +151,14 @@ def read_data_sets(train_dir, fake_data=False, one_hot=False):
   test_images = extract_images(local_file)
   local_file = maybe_download(TEST_LABELS, train_dir)
   test_labels = extract_labels(local_file, one_hot=one_hot)
+
   validation_images = train_images[:VALIDATION_SIZE]
   validation_labels = train_labels[:VALIDATION_SIZE]
   train_images = train_images[VALIDATION_SIZE:]
   train_labels = train_labels[VALIDATION_SIZE:]
+
   data_sets.train = DataSet(train_images, train_labels)
   data_sets.validation = DataSet(validation_images, validation_labels)
   data_sets.test = DataSet(test_images, test_labels)
+
   return data_sets

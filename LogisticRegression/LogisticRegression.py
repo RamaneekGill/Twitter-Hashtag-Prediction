@@ -47,22 +47,45 @@ def main():
 	# Add the keys from hashtag dictionary to the vocabulary dictionary
 
 	# Input matrix is 1xlen(vocabulary)
+		# Should be a 0 if word not present, 1 if present
 	# Weights matrix is len(vocabulary)xlen(hashtags)
 	# bias matrix is 1xlen(hashtags)
 	# prediction = Weights * input + b
+################################################################################
+
+	import input_data # File responsible for parsing train, test, validation set
+	# data contains the 3 different sets, Each a DataSet class
+	data = input_data.read_data_sets()
+
+	LEARNING_RATE = 0.01
+
+	vocabulary = data.train.vocabulary
+	numWords = len(vocabulary.keys())
+	hashtags = data.train.hashtags
+	numHashtags = len(hashtags.keys())
+
+	x = tf.placeholder("float", [None, numWords]) # the inputs, this is hydrated with batches
+	y_ = tf.placeholder("float", [None, 10]) # the correct answers
+	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
+	b = tf.Variable(tf.zeros(numHashtags)) # bias
+	y = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+
+	cross_entropy = -tf.reduce_sum(y_*tf.log(y))
+	train_step = tf.train.GradientDescentOptimizer(LEARNING_RATE).minimize(cross_entropy)
 
 
+############################# Reference Code ###################################
 	import input_data
 	mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 	# NOTE: Find out what mnist is below:
 	# https://tensorflow.googlesource.com/tensorflow/+/master/tensorflow/g3doc/tutorials/mnist/input_data.py
 
-	x = tf.placeholder("float", [None, 784])
+	x = tf.placeholder("float", [None, 784]) # None means can be any length
 	W = tf.Variable(tf.zeros([784,10]))
 	b = tf.Variable(tf.zeros([10]))
-	y = tf.nn.softmax(tf.matmul(x,W) + b)
-	y_ = tf.placeholder("float", [None,10])
+	y = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+	y_ = tf.placeholder("float", [None,10]) # the correct answers
 	cross_entropy = -tf.reduce_sum(y_*tf.log(y))
 	train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
 
