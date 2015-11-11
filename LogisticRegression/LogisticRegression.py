@@ -52,6 +52,12 @@ def main():
 	# prediction = Weights * input + b
 
 
+	import input_data
+	mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+	# NOTE: Find out what mnist is below:
+	# https://tensorflow.googlesource.com/tensorflow/+/master/tensorflow/g3doc/tutorials/mnist/input_data.py
+
 	x = tf.placeholder("float", [None, 784])
 	W = tf.Variable(tf.zeros([784,10]))
 	b = tf.Variable(tf.zeros([10]))
