@@ -34,7 +34,7 @@ def main():
 	LEARNING_RATE = 0.01
 	EPOCHS = 1000
 	BATCH_SIZE = 100
-	DISPLAY_STEP = 1 # To print results every n number of epochs
+	DISPLAY_STEP = 10 # To print results every n number of epochs
 
 	vocabulary = data.train.vocabulary
 	numWords = len(vocabulary.keys())
@@ -43,10 +43,13 @@ def main():
 
 	# Setup the model
 	x = tf.placeholder("float", [None, numWords]) # the inputs, this is hydrated with batches
-	y = tf.placeholder("float", [None, 10]) # the correct answers
+	y = tf.placeholder("float", [None, numHashtags]) # the correct answers
 	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
 	b = tf.Variable(tf.zeros(numHashtags)) # bias
 	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+	# TODO: use sigmoid instead of softmax
+	# tf.sigmoid(x, name=None)
+	# tf.nn.softmax(logits, name=None)
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
@@ -77,36 +80,3 @@ def main():
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 	print sess.run(accuracy, feed_dict={x: data.test.input, y: data.test.targets})
 	# print "Accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels})
-
-
-
-
-
-############################# Reference Code ###################################
-
-	# https://github.com/aymericdamien/TensorFlow-Examples/blob/master/logistic_regression.py
-	import input_data
-	mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
-
-	# NOTE: Find out what mnist is below:
-	# https://tensorflow.googlesource.com/tensorflow/+/master/tensorflow/g3doc/tutorials/mnist/input_data.py
-
-	x = tf.placeholder("float", [None, 784]) # None means can be any length
-	W = tf.Variable(tf.zeros([784,10]))
-	b = tf.Variable(tf.zeros([10]))
-	y = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
-	y_ = tf.placeholder("float", [None,10]) # the correct answers
-	cross_entropy = -tf.reduce_sum(y_*tf.log(y))
-	train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
-
-	init = tf.initialize_all_variables()
-	sess = tf.Session()
-	sess.run(init)
-
-	for i in range(1000):
-		batch_xs, batch_ys = mnist.train.next_batch(100)
-		sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
-
-	correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
-	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
-	print sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels})
