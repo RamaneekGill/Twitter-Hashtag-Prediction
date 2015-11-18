@@ -36,7 +36,7 @@ def main():
 	BATCH_SIZE = 100
 	DISPLAY_STEP = 10 # To print results every n number of epochs
 
-	vocabulary = data.train.vocabulary
+	vocabulary = data.train.vocabulary #len(input_data.vocabulary)
 	numWords = len(vocabulary.keys())
 	hashtags = data.train.hashtags
 	numHashtags = len(hashtags.keys())
