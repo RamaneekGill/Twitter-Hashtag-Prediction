@@ -29,17 +29,12 @@ import tensorflow as tf
 def main():
 	import input_data # File responsible for parsing train, test, validation set
 	# data contains the 3 different sets, Each a DataSet class
-	data = input_data.read_data_sets()
+	numWords, numHashtags, data = input_data.read_data_sets()
 
 	LEARNING_RATE = 0.01
 	EPOCHS = 1000
 	BATCH_SIZE = 100
 	DISPLAY_STEP = 10 # To print results every n number of epochs
-
-	vocabulary = data.train.vocabulary #len(input_data.vocabulary)
-	numWords = len(vocabulary.keys())
-	hashtags = data.train.hashtags
-	numHashtags = len(hashtags.keys())
 
 	# Setup the model
 	x = tf.placeholder("float", [None, numWords]) # the inputs, this is hydrated with batches
@@ -58,7 +53,9 @@ def main():
 	# Initialize session and its veriables
 	init = tf.initialize_all_variables()
 	sess = tf.Session()
+	print("Starting tensorflow session")
 	sess.run(init)
+	print("Ran tensorflow session")
 
 	# Train the model
 	for epoch in range(EPOCHS):
@@ -80,3 +77,5 @@ def main():
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 	print sess.run(accuracy, feed_dict={x: data.test.input, y: data.test.targets})
 	# print "Accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels})
+
+main()

@@ -3,14 +3,18 @@
 import numpy
 from numpy import *
 import numpy as np
+import time
 
-SOURCE_URL = 'http://yann.lecun.com/exdb/mnist/'
-
-def vocabulary(dataset):
+def create_vocabulary(dataset):
     vocabulary = []
+    total_words = 0
     for words in dataset:
         vocabulary += words
+        total_words += len(words)
     vocabulary = list(set(vocabulary))
+
+    print ("Compressed %d words into a vocabulary of size %d !" % (total_words, len(vocabulary)))
+
     return vocabulary
 
 def convert_to_one_hot_vector(vector, words, vocabulary):
@@ -21,8 +25,11 @@ def convert_to_one_hot_vector(vector, words, vocabulary):
     return vector
 
 def create_matrix(dataset, vocabulary):
-    matrix = np.zeros(len(dataset), len(vocabulary))
+    matrix = np.zeros((len(dataset), len(vocabulary)))
+    print("Creating a %d x %d matrix" % (matrix.shape[0], matrix.shape[1]))
     for i in range(len(matrix)):
+        if i % 100 == 0:
+            print("On the %dth row out of %d" % (i, matrix.shape[0]))
         # matrix[i] is the input vector, dataset[i] are the words of the input
         matrix[i] = convert_to_one_hot_vector(matrix[i], dataset[i], vocabulary)
 
@@ -57,6 +64,9 @@ class DataSet(object):
 
     @property
     def next_batch(self, batch_size):
+        CONST_RANDOM_SEED = 20150819
+        np.random.seed(CONST_RANDOM_SEED)
+
         start = self._index_in_epoch
         self._index_in_epoch += batch_size
 
@@ -78,39 +88,40 @@ class DataSet(object):
         return self._inputs[start:end], self.targets[start:end]
 
 
-def read_data_sets(train_dir, fake_data=False, one_hot=False):
+def read_data_sets():
   class DataSets(object):
     pass
   data_sets = DataSets()
 
-  if fake_data:
-    data_sets.train = DataSet([], [], fake_data=True)
-    data_sets.validation = DataSet([], [], fake_data=True)
-    data_sets.test = DataSet([], [], fake_data=True)
-    return data_sets
+  start = time.time()
 
-  TRAIN_IMAGES = 'train-images-idx3-ubyte.gz'
-  TRAIN_LABELS = 'train-labels-idx1-ubyte.gz'
-  TEST_IMAGES = 't10k-images-idx3-ubyte.gz'
-  TEST_LABELS = 't10k-labels-idx1-ubyte.gz'
-  VALIDATION_SIZE = 5000
+  # Read csv and get inputs and targets for train, validation, and test set
+  import parse_csv
+  train_inputs, train_targets, validation_inputs, validation_targets, test_inputs, test_targets = parse_csv.read_dataset()
 
-  local_file = maybe_download(TRAIN_IMAGES, train_dir)
-  train_images = extract_images(local_file)
-  local_file = maybe_download(TRAIN_LABELS, train_dir)
-  train_labels = extract_labels(local_file, one_hot=one_hot)
-  local_file = maybe_download(TEST_IMAGES, train_dir)
-  test_images = extract_images(local_file)
-  local_file = maybe_download(TEST_LABELS, train_dir)
-  test_labels = extract_labels(local_file, one_hot=one_hot)
+  print("Training set size: %d \t Validation set size: %d \t Test set size: %d" % (len(train_inputs), len(validation_inputs), len(test_inputs)))
 
-  validation_images = train_images[:VALIDATION_SIZE]
-  validation_labels = train_labels[:VALIDATION_SIZE]
-  train_images = train_images[VALIDATION_SIZE:]
-  train_labels = train_labels[VALIDATION_SIZE:]
+  print('creating vocabularies')
+  tweet_vocabulary = create_vocabulary(train_inputs + validation_inputs + test_inputs)
+  hashtag_vocabulary = create_vocabulary(train_targets + validation_targets + test_targets)
 
-  data_sets.train = DataSet(train_images, train_labels)
-  data_sets.validation = DataSet(validation_images, validation_labels)
-  data_sets.test = DataSet(test_images, test_labels)
+  print('creating matrixes')
+  train_inputs = create_matrix(train_inputs[:10], tweet_vocabulary).astype(int)
+  print('finished train_inputs')
+  train_targets = create_matrix(train_targets[:10], hashtag_vocabulary).astype(int)
+  print('finished train_targets')
+  validation_inputs = create_matrix(validation_inputs[:10], tweet_vocabulary).astype(int)
+  print('finished validation_inputs')
+  validation_targets = create_matrix(validation_targets[:10], hashtag_vocabulary).astype(int)
+  print('finished validation_targets')
+  test_inputs = create_matrix(test_inputs[:10], tweet_vocabulary).astype(int)
+  print('finished test_inputs')
+  test_targets = create_matrix(test_targets[:10], hashtag_vocabulary).astype(int)
+  print('finished test_targets')
 
-  return data_sets
+  data_sets.train = DataSet(train_inputs, train_targets)
+  data_sets.validation = DataSet(validation_inputs, validation_targets)
+  data_sets.test = DataSet(test_inputs, test_targets)
+
+  print('Finished setting up data! Took {} seconds'.format(time.time() - start))
+  return len(tweet_vocabulary), len(hashtag_vocabulary), data_sets
