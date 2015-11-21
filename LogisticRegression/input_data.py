@@ -35,7 +35,7 @@ def create_matrix(dataset, vocabulary):
 
     return matrix
 
-class DataSet(object):
+class DataSet:
     def __init__(self, inputs, targets):
         # Make sure inputs and targets have same number of data points
         assert inputs.shape[0] == targets.shape[0]
@@ -46,24 +46,19 @@ class DataSet(object):
         self._epochs_completed = 0
         self._index_in_epoch = 0
 
-    @property
     def inputs(self):
         return self._inputs
 
-    @property
     def targets(self):
         return self._targets
 
-    @property
     def num_examples(self):
         return self._num_examples
 
-    @property
     def epochs_completed(self):
         return self._epochs_completed
 
-    @property
-    def next_batch(self, batch_size):
+    def next_batch(self, batch_size = 100):
         CONST_RANDOM_SEED = 20150819
         np.random.seed(CONST_RANDOM_SEED)
 
@@ -72,7 +67,7 @@ class DataSet(object):
 
         if self._index_in_epoch > self._num_examples:
             # Finished epoch
-            self._epoch_completed += 1
+            self._epochs_completed += 1
             # Shuffle data
             perm = np.arange(self._num_examples)
             np.random.shuffle(perm)
@@ -85,7 +80,7 @@ class DataSet(object):
 
         end = self._index_in_epoch
 
-        return self._inputs[start:end], self.targets[start:end]
+        return self._inputs[start:end], self._targets[start:end]
 
 
 def read_data_sets():
@@ -106,22 +101,24 @@ def read_data_sets():
   hashtag_vocabulary = create_vocabulary(train_targets + validation_targets + test_targets)
 
   print('creating matrixes')
-  train_inputs = create_matrix(train_inputs[:10], tweet_vocabulary).astype(int)
+  train_inputs = create_matrix(train_inputs, tweet_vocabulary).astype(np.int32)
   print('finished train_inputs')
-  train_targets = create_matrix(train_targets[:10], hashtag_vocabulary).astype(int)
+  train_targets = create_matrix(train_targets, hashtag_vocabulary).astype(np.int32)
   print('finished train_targets')
-  validation_inputs = create_matrix(validation_inputs[:10], tweet_vocabulary).astype(int)
+  validation_inputs = create_matrix(validation_inputs, tweet_vocabulary).astype(np.int32)
   print('finished validation_inputs')
-  validation_targets = create_matrix(validation_targets[:10], hashtag_vocabulary).astype(int)
+  validation_targets = create_matrix(validation_targets, hashtag_vocabulary).astype(np.int32)
   print('finished validation_targets')
-  test_inputs = create_matrix(test_inputs[:10], tweet_vocabulary).astype(int)
+  test_inputs = create_matrix(test_inputs, tweet_vocabulary).astype(np.int32)
   print('finished test_inputs')
-  test_targets = create_matrix(test_targets[:10], hashtag_vocabulary).astype(int)
+  test_targets = create_matrix(test_targets, hashtag_vocabulary).astype(np.int32)
   print('finished test_targets')
 
-  data_sets.train = DataSet(train_inputs, train_targets)
-  data_sets.validation = DataSet(validation_inputs, validation_targets)
-  data_sets.test = DataSet(test_inputs, test_targets)
+  data_sets.train_set = DataSet(train_inputs, train_targets)
+  data_sets.validation_set = DataSet(validation_inputs, validation_targets)
+  data_sets.test_set = DataSet(test_inputs, test_targets)
 
   print('Finished setting up data! Took {} seconds'.format(time.time() - start))
+  test = DataSet(train_inputs, train_targets)
+
   return len(tweet_vocabulary), len(hashtag_vocabulary), data_sets

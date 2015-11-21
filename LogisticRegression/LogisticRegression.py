@@ -32,15 +32,17 @@ def main():
 	numWords, numHashtags, data = input_data.read_data_sets()
 
 	LEARNING_RATE = 0.01
-	EPOCHS = 1000
-	BATCH_SIZE = 100
-	DISPLAY_STEP = 10 # To print results every n number of epochs
+	EPOCHS = 100
+	BATCH_SIZE = 1000
+	DISPLAY_STEP = 1 # To print results every n number of epochs
+	numWords = int(numWords)
+	numHashtags = int(numHashtags)
 
 	# Setup the model
 	x = tf.placeholder("float", [None, numWords]) # the inputs, this is hydrated with batches
 	y = tf.placeholder("float", [None, numHashtags]) # the correct answers
 	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
-	b = tf.Variable(tf.zeros(numHashtags)) # bias
+	b = tf.Variable(tf.zeros([numHashtags])) # bias
 	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
 	# TODO: use sigmoid instead of softmax
 	# tf.sigmoid(x, name=None)
@@ -58,16 +60,26 @@ def main():
 	print("Ran tensorflow session")
 
 	# Train the model
+	print("Training the model")
+	print("Epochs to run {}".format(EPOCHS))
+
+	start = time.time()
+
+	# Add ops to save and restore all the variables.
+	saver = tf.train.Saver()
+
 	for epoch in range(EPOCHS):
 		avg_cost = 0.0
-		num_batches = data.train.num_examples / BATCH_SIZE
+		num_batches = int(data.train_set.num_examples() / BATCH_SIZE)
+
+		print("Batches to run {}".format(num_batches))
 
 		for batch in range(num_batches):
-			batch_xs, batch_ys = data.train.next_batch(BATCH_SIZE)
+			batch_xs, batch_ys = data.train_set.next_batch(BATCH_SIZE)
 			sess.run(optimizer, feed_dict={x: batch_xs, y: batch_ys})
 			avg_cost += sess.run(cost, feed_dict={x: batch_xs, y: batch_ys}) / num_batches
 
-		if epoch % display_step == 0:
+		if epoch % DISPLAY_STEP == 0:
 			print "Epoch:", '%04d' % (epoch+1), "cost=", "{:.9f}".format(avg_cost)
 
 	print "Training is done!"
@@ -75,7 +87,13 @@ def main():
 	# Test the model
 	correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
-	print sess.run(accuracy, feed_dict={x: data.test.input, y: data.test.targets})
-	# print "Accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels})
+	print ("ACCURACY IS:")
+	print sess.run(accuracy, feed_dict={x: data.test_set.inputs(), y: data.test_set.targets()})
+
+	print("This took {} seconds to run".format(time.time() - start))
+
+	print("Saving weights")
+	save_path = saver.save(sess, "mymodel")
+	print "Model saved in file: ", save_path
 
 main()
