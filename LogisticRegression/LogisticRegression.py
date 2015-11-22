@@ -31,48 +31,46 @@ def main():
 	# data contains the 3 different sets, Each a DataSet class
 	numWords, numHashtags, data = input_data.read_data_sets()
 
-	LEARNING_RATE = 0.01
-	EPOCHS = 100
+	LEARNING_RATE = 0.02
+	EPOCHS = 10
 	BATCH_SIZE = 1000
-	DISPLAY_STEP = 1 # To print results every n number of epochs
+	DISPLAY_STEP = 1 # To print cost every n number of epochs
+	PREDICTION_RANGE = 5 # If actual target is in range of predictions then it is correct
 	numWords = int(numWords)
 	numHashtags = int(numHashtags)
 
+	# Setup variables for batch feeding, these are hydrated when running/evaluating sessions
+	x = tf.placeholder("float", [None, numWords]) # The inputs
+	y = tf.placeholder("float", [None, numHashtags]) # The correct answers
+
 	# Setup the model
-	x = tf.placeholder("float", [None, numWords]) # the inputs, this is hydrated with batches
-	y = tf.placeholder("float", [None, numHashtags]) # the correct answers
 	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
 	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
 	# TODO: use sigmoid instead of softmax
 	# tf.sigmoid(x, name=None)
-	# tf.nn.softmax(logits, name=None)
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
 	optimizer = tf.train.GradientDescentOptimizer(LEARNING_RATE).minimize(cost)
 
-	# Initialize session and its veriables
+	# Initialize session and its variables
 	init = tf.initialize_all_variables()
 	sess = tf.Session()
+
 	print("Starting tensorflow session")
+	start = time.time()
 	sess.run(init)
-	print("Ran tensorflow session")
+	saver = tf.train.Saver() # Add ops to save and restore all the variables.
 
 	# Train the model
 	print("Training the model")
 	print("Epochs to run {}".format(EPOCHS))
-
-	start = time.time()
-
-	# Add ops to save and restore all the variables.
-	saver = tf.train.Saver()
+	print("Batches to run {}".format(int(data.train_set.num_examples() / BATCH_SIZE)))
 
 	for epoch in range(EPOCHS):
 		avg_cost = 0.0
 		num_batches = int(data.train_set.num_examples() / BATCH_SIZE)
-
-		print("Batches to run {}".format(num_batches))
 
 		for batch in range(num_batches):
 			batch_xs, batch_ys = data.train_set.next_batch(BATCH_SIZE)
@@ -82,16 +80,28 @@ def main():
 		if epoch % DISPLAY_STEP == 0:
 			print "Epoch:", '%04d' % (epoch+1), "cost=", "{:.9f}".format(avg_cost)
 
-	print "Training is done!"
+	print("Training is done! It took {} minutes to train".format((time.time() - start)/60))
 
 	# Test the model
 	correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
-	print ("ACCURACY IS:")
-	print sess.run(accuracy, feed_dict={x: data.test_set.inputs(), y: data.test_set.targets()})
+	print("Accuracy of model is predicting 1 hashtag {}".format(sess.run(accuracy, feed_dict={x: data.test_set.inputs(), y: data.test_set.targets()})))
 
-	print("This took {} seconds to run".format(time.time() - start))
+	num_correct = 0
+	predictions = sess.run(activation, feed_dict={x: data.test_set.inputs()})
+	targets = data.test_set.targets()
+	for i in range(len(predictions)):
+		top_prediction_indexes = predictions[i].argsort()[-PREDICTION_RANGE:][::-1]
 
+		for index in top_prediction_indexes:
+			if targets[i][index]:
+				num_correct += 1
+				break
+
+	percentage = float(num_correct) / float(len(predictions))
+	print("Accuracy of model prediction {} hashtags: num correct = {}, out of {}, percentage = {}".format(PREDICTION_RANGE, num_correct, len(predictions), percentage))
+
+	# Save the model
 	print("Saving weights")
 	save_path = saver.save(sess, "mymodel")
 	print "Model saved in file: ", save_path
