@@ -32,7 +32,7 @@ def main():
 	numWords, numHashtags, data = input_data.read_data_sets()
 
 	LEARNING_RATE = 0.02
-	EPOCHS = 5
+	EPOCHS = 200
 	BATCH_SIZE = 1000
 	DISPLAY_STEP = 1 # To print cost every n number of epochs
 	PREDICTION_RANGE = 5 # If actual target is in range of predictions then it is correct
@@ -46,12 +46,12 @@ def main():
 	# Setup the model
 	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
-	activation = tf.nn.sigmoid(tf.matmul(x,W) + b) # the predictions
-	# TODO: use sigmoid instead of softmax
-	# tf.sigmoid(x, name=None)
+	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+	# choose between sigmoid and softmax
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
+	# cost = tf.reduce_mean(tf.square(y - activation))
 	optimizer = tf.train.GradientDescentOptimizer(LEARNING_RATE).minimize(cost)
 
 	# Initialize session and its variables
@@ -68,6 +68,8 @@ def main():
 	print("Epochs to run {}".format(EPOCHS))
 	print("Batches to run {}".format(int(data.train_set.num_examples() / BATCH_SIZE)))
 
+	validation_accuracies = []
+
 	for epoch in range(EPOCHS):
 		avg_cost = 0.0
 		num_batches = int(data.train_set.num_examples() / BATCH_SIZE)
@@ -80,8 +82,48 @@ def main():
 		if epoch % DISPLAY_STEP == 0:
 			print "Epoch:", '%04d' % (epoch+1), "cost=", "{:.9f}".format(avg_cost)
 
-	print("Training is done! It took {} minutes to train".format((time.time() - start)/60))
+			# Test it against the validation set
+			print("Testing against validation set")
+			correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
+			accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+			print("Accuracy on validation set predicting 1 hashtag: {}".format(sess.run(accuracy, feed_dict={x: data.validation_set.inputs(), y: data.validation_set.targets()})))
 
+			num_correct = 0
+			predictions = sess.run(activation, feed_dict={x: data.validation_set.inputs()})
+			targets = data.validation_set.targets()
+			for i in range(len(predictions)):
+				top_prediction_indexes = predictions[i].argsort()[-PREDICTION_RANGE:][::-1]
+
+				for index in top_prediction_indexes:
+					if targets[i][index]:
+						num_correct += 1
+						break
+
+			validation_accuracy = float(num_correct) / float(len(predictions))
+			validation_accuracies.append(validation_accuracy)
+			print("Accuracy on validation set prediction out of 5 hashtags: {}".format(validation_accuracy))
+
+			# Just for kicks print out accuracy on test set
+			num_correct = 0
+			predictions = sess.run(activation, feed_dict={x: data.test_set.inputs()})
+			targets = data.test_set.targets()
+			for i in range(len(predictions)):
+				top_prediction_indexes = predictions[i].argsort()[-PREDICTION_RANGE:][::-1]
+
+				for index in top_prediction_indexes:
+					if targets[i][index]:
+						num_correct += 1
+						break
+
+			percentage = float(num_correct) / float(len(predictions))
+			print("Accuracy of model prediction {} hashtags: num correct = {}, out of {}, percentage = {}".format(PREDICTION_RANGE, num_correct, len(predictions), percentage))
+
+		# If performance is getting worse stop training
+		if validation_accuracy < max(validation_accuracies) and epoch > 5:
+			continue
+			break
+
+	print("Training is done! It took {} minutes to train".format((time.time() - start)/60))
 	# Test the model
 	correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
 	accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
@@ -100,6 +142,9 @@ def main():
 
 	percentage = float(num_correct) / float(len(predictions))
 	print("Accuracy of model prediction {} hashtags: num correct = {}, out of {}, percentage = {}".format(PREDICTION_RANGE, num_correct, len(predictions), percentage))
+
+
+	print(validation_accuracies)
 
 	# Save the model
 	print("Saving weights")
