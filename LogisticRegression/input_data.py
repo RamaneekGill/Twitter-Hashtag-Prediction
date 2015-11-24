@@ -83,11 +83,11 @@ class DataSet:
         return self._inputs[start:end], self._targets[start:end]
 
 
-def read_data_sets():
+def read_data_sets(debug_mode=False):
   class DataSets(object):
     pass
-  data_sets = DataSets()
 
+  data_sets = DataSets()
   start = time.time()
 
   # Read csv and get inputs and targets for train, validation, and test set
@@ -101,17 +101,17 @@ def read_data_sets():
   hashtag_vocabulary = create_vocabulary(train_targets + validation_targets + test_targets)
 
   print('creating matrixes')
-  train_inputs = create_matrix(train_inputs, tweet_vocabulary).astype(np.int32)
+  train_inputs = create_matrix(train_inputs[:], tweet_vocabulary).astype(np.int32)
   print('finished train_inputs')
-  train_targets = create_matrix(train_targets, hashtag_vocabulary).astype(np.int32)
+  train_targets = create_matrix(train_targets[:], hashtag_vocabulary).astype(np.int32)
   print('finished train_targets')
-  validation_inputs = create_matrix(validation_inputs, tweet_vocabulary).astype(np.int32)
+  validation_inputs = create_matrix(validation_inputs[:], tweet_vocabulary).astype(np.int32)
   print('finished validation_inputs')
-  validation_targets = create_matrix(validation_targets, hashtag_vocabulary).astype(np.int32)
+  validation_targets = create_matrix(validation_targets[:], hashtag_vocabulary).astype(np.int32)
   print('finished validation_targets')
-  test_inputs = create_matrix(test_inputs, tweet_vocabulary).astype(np.int32)
+  test_inputs = create_matrix(test_inputs[:], tweet_vocabulary).astype(np.int32)
   print('finished test_inputs')
-  test_targets = create_matrix(test_targets, hashtag_vocabulary).astype(np.int32)
+  test_targets = create_matrix(test_targets[:], hashtag_vocabulary).astype(np.int32)
   print('finished test_targets')
 
   data_sets.train_set = DataSet(train_inputs, train_targets)

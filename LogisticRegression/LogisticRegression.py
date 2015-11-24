@@ -32,7 +32,7 @@ def main():
 	numWords, numHashtags, data = input_data.read_data_sets()
 
 	LEARNING_RATE = 0.02
-	EPOCHS = 10
+	EPOCHS = 5
 	BATCH_SIZE = 1000
 	DISPLAY_STEP = 1 # To print cost every n number of epochs
 	PREDICTION_RANGE = 5 # If actual target is in range of predictions then it is correct
@@ -46,7 +46,7 @@ def main():
 	# Setup the model
 	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
-	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+	activation = tf.nn.sigmoid(tf.matmul(x,W) + b) # the predictions
 	# TODO: use sigmoid instead of softmax
 	# tf.sigmoid(x, name=None)
 
