@@ -44,7 +44,7 @@ def main():
 	y = tf.placeholder("float", [None, numHashtags]) # The correct answers
 
 	# Setup the model
-	W = tf.Variable(tf.zeros([numWords, numHashtags])) # weights matrix
+	W = tf.Variable(tf.random_normal([numWords, numHashtags], stddev=0.01)) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
 	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
 	# choose between sigmoid and softmax
