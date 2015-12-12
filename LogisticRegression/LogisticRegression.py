@@ -31,7 +31,7 @@ def main():
 	# data contains the 3 different sets, Each a DataSet class
 	numWords, numHashtags, data = input_data.read_data_sets()
 
-	LEARNING_RATE = 0.02
+	LEARNING_RATE = 0.1
 	EPOCHS = 200
 	BATCH_SIZE = 1000
 	DISPLAY_STEP = 1 # To print cost every n number of epochs
@@ -44,14 +44,14 @@ def main():
 	y = tf.placeholder("float", [None, numHashtags]) # The correct answers
 
 	# Setup the model
-	W = tf.Variable(tf.random_normal([numWords, numHashtags], stddev=0.01)) # weights matrix
+	W = tf.Variable(tf.random_normal([numWords, numHashtags], stddev=1)) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
-	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions
+	activation = tf.nn.sigmoid(tf.matmul(x,W) + b) # the predictions
 	# choose between sigmoid and softmax
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
-	# cost = tf.reduce_mean(tf.square(y - activation))
+	cost = tf.reduce_sum(tf.square(y - activation))
 	optimizer = tf.train.GradientDescentOptimizer(LEARNING_RATE).minimize(cost)
 
 	# Initialize session and its variables

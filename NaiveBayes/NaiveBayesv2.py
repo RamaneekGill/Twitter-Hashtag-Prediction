@@ -31,7 +31,7 @@ def main():
 
 	CONST_EPSILON_INTERVALS = [0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001]
 	CONST_ALPHA_INTERVALS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1]
-	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300]
+	CONST_HASHTAGS_TO_PREDICT = [56, 100, 150, 200, 250, 300, 350, 400, 450, 500]
 	CONST_HASHTAG_PREDICTION_RANGE = [20, 15, 10, 5, 3, 1]
 	CONST_TEST_RATIOS = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 	CONST_TEST_SIZE = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -42,20 +42,21 @@ def main():
 	BEST_EPSILON = 0.01
 
 	# For 500 hashtags and predicting top 5
-	# BEST_ALPHA = 0.9
-	# BEST_EPSILON = 1e-09
+	BEST_ALPHA = 0.9
+	BEST_EPSILON = 1e-09
 
 
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
+	naiveBayes.testAgainst(naiveBayes.testSet)
 
 	# Save the train, test, and validation set
 	# The train set is 85%, test set is 5%, validation set is 10% of dataset
-	print("Saving train set")
-	output = open('trainset.pkl', 'wb')
-	pickle.dump(naiveBayes.trainSet, output)
-
-	print("Train set saved")
+	# print("Saving train set")
+	# output = open('trainset.pkl', 'wb')
+	# pickle.dump(naiveBayes.trainSet, output)
+	#
+	# print("Train set saved")
 
 	# np.savetxt('training_set_inputs', naiveBayes.trainSetTweets(), delimiter=',')
 	# np.savetxt('test_set_inputs', naiveBayes.validationSetTweets(), delimiter=',')
@@ -101,18 +102,18 @@ def main():
 	# plt.title('Accuracy when Varying Number of Hashtags Predicted Contain Target Hashtag')
 	# plt.show()
 
-	# print('Generating graph for varying number of hashtags to predict')
-	# accuracies = []
-	# for numHashtags in CONST_HASHTAGS_TO_PREDICT:
-	# 	naiveBayes.setHashtagsToPredict(numHashtags)
-	# 	naiveBayes.testAgainst(naiveBayes.testSet)
-	# 	accuracy = naiveBayes.getAccuracy()
-	# 	accuracies.append(accuracy)
-	# plt.plot(CONST_HASHTAGS_TO_PREDICT, accuracies)
-	# plt.xlabel('Number Of Hashtags To Predict')
-	# plt.ylabel('Accuracy')
-	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
-	# plt.show()
+	print('Generating graph for varying number of hashtags to predict')
+	accuracies = []
+	for numHashtags in CONST_HASHTAGS_TO_PREDICT:
+		naiveBayes.setHashtagsToPredict(numHashtags)
+		naiveBayes.testAgainst(naiveBayes.testSet)
+		accuracy = naiveBayes.getAccuracy()
+		accuracies.append(accuracy)
+	plt.plot(CONST_HASHTAGS_TO_PREDICT, accuracies)
+	plt.xlabel('Number Of Hashtags To Predict')
+	plt.ylabel('Accuracy')
+	plt.title('Accuracy when Varying Number of Hashtags to Predict')
+	plt.show()
 
 	# print('Generating graph for epsilon accuracies')
 	# epsilonAccuracies = []
@@ -169,13 +170,14 @@ class NaiveBayes:
 	CONST_HIT_RANGE = 20
 
 	# For our tests
-	# CONST_TO_PREDICT = 500
-	# CONST_HIT_RANGE = 5
+	CONST_TO_PREDICT = 500
+	CONST_HIT_RANGE = 5
 
 	CONST_TEST_RATIO = 0.5
 	CONST_VALIDATION_RATIO = 0.1
 
 	def __init__(self, epsilon = 0.01, alpha = 0.92, validation_ratio = 0.1, test_ratio = 0.5):
+		print('Intializing NaiveBayes')
 		self.epsilon = epsilon
 		self.alpha = alpha
 		self.validation_ratio = validation_ratio
