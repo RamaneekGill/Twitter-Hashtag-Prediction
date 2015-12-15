@@ -31,8 +31,8 @@ def main():
 	# data contains the 3 different sets, Each a DataSet class
 	numWords, numHashtags, data = input_data.read_data_sets()
 
-	LEARNING_RATE = 0.05
-	EPOCHS = 200
+	LEARNING_RATE = 0.01
+	EPOCHS = 500
 	BATCH_SIZE = 1000
 	DISPLAY_STEP = 1 # To print cost every n number of epochs
 	PREDICTION_RANGE = 5 # If actual target is in range of predictions then it is correct
@@ -44,14 +44,16 @@ def main():
 	y = tf.placeholder("float", [None, numHashtags]) # The correct answers
 
 	# Setup the model
-	W = tf.Variable(tf.random_normal([numWords, numHashtags], stddev=1)) # weights matrix
+	W = tf.Variable(tf.random_normal([numWords, numHashtags], stddev=0.01)) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
 	activation = tf.nn.softmax(tf.matmul(x,W) + b) # the predictions, choose between sigmoid and softmax
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
+	# cost = tf.reduce_sum(tf.nn.sigmoid_cross_entropy_with_logits(activation, y))
 	# cost = tf.reduce_sum(tf.square(y - activation))
-	# cost = tf.reduce_sum(y*activation + (1-y)*(1-activation))
+	# cost = -tf.reduce_sum(activation*y + (1-activation)*(1-y))
+	# cost = tf.reduce_sum()
 	optimizer = tf.train.GradientDescentOptimizer(LEARNING_RATE).minimize(cost)
 
 	# Initialize session and its variables
@@ -70,7 +72,7 @@ def main():
 
 	validation_accuracies = []
 
-	print("TRAIN \t VALID \t TEST \t COST \t EPOCH")
+	print("ONE PREDICTION \t TRAIN \t VALID \t TEST \t COST \t EPOCH")
 
 	for epoch in range(EPOCHS):
 		avg_cost = 0.0
@@ -82,6 +84,11 @@ def main():
 			avg_cost += sess.run(cost, feed_dict={x: batch_xs, y: batch_ys}) / num_batches
 
 		if epoch % DISPLAY_STEP == 0:
+
+			# Training set accuracy on one hashtag:
+			correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
+			one_accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+			one_accuracy = sess.run(one_accuracy, feed_dict={x: data.train_set.inputs(), y: data.train_set.targets()})
 
 			# Training Set Accuracy
 			num_correct = 0
@@ -126,7 +133,8 @@ def main():
 
 			test_accuracy = float(num_correct) / float(len(predictions))
 
-			print("{:.4f} \t {:.4f} \t {:.4f} \t {:.4f} \t {}".format(train_accuracy,
+			print("{} \t {:.4f} \t {:.4f} \t {:.4f} \t {:.4f} \t {}".format(one_accuracy,
+				train_accuracy,
 				validation_accuracy,
 				test_accuracy,
 				avg_cost,
