@@ -62,3 +62,9 @@
 	If have time, add hidden layer
 	REMEMBER to save weights, save outputs.
 	Compute the probabilities of each of the inputs to an output unit just like NB
+
+
+### Dec 14 2015
+	TODO:
+	Consider mechanical turk ~150-200 people
+	Write the report, only include the analysis for log reg and naive bayes

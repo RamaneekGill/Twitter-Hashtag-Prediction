@@ -26,13 +26,27 @@ import matplotlib.cbook as cbook
 import tensorflow as tf
 
 
+def getWords(vector, vocabulary):
+	words = []
+	for i in range(len(vector)):
+		if vector[i] > 0:
+			words.append(vocabulary[i])
+	return words
+
+def getWordsWithIndexes(indexes, vocabulary):
+	words = []
+	for index in indexes:
+		words.append(vocabulary[index])
+	return words
+
+
 def main():
 	import input_data # File responsible for parsing train, test, validation set
 	# data contains the 3 different sets, Each a DataSet class
-	numWords, numHashtags, data = input_data.read_data_sets()
+	numWords, numHashtags, data, tweet_vocabulary, hashtag_vocabulary = input_data.read_data_sets()
 
-	LEARNING_RATE = 0.01
-	EPOCHS = 500
+	LEARNING_RATE = 0.03
+	EPOCHS = 100
 	BATCH_SIZE = 1000
 	DISPLAY_STEP = 1 # To print cost every n number of epochs
 	PREDICTION_RANGE = 5 # If actual target is in range of predictions then it is correct
@@ -50,6 +64,7 @@ def main():
 
 	# Specify the cost and optimization
 	cost = -tf.reduce_sum(y*tf.log(activation)) # cross entropy is the cost function
+	# cost = tf.reduce_sum((y-1)*tf.log(activation))
 	# cost = tf.reduce_sum(tf.nn.sigmoid_cross_entropy_with_logits(activation, y))
 	# cost = tf.reduce_sum(tf.square(y - activation))
 	# cost = -tf.reduce_sum(activation*y + (1-activation)*(1-y))
@@ -72,11 +87,40 @@ def main():
 
 	validation_accuracies = []
 
+
+	# Load the model if it exists
+	saver.restore(sess, "mymodel")
+	print("Loaded a trained model")
+
+	for i in range(len(data.test_set.inputs())):
+
+		is_correct_prediction = False
+		tweet = getWords(data.test_set.inputs()[i], tweet_vocabulary)
+		hashtags = getWords(data.test_set.targets()[j], hashtag_vocabulary)
+		predictions_probabilities = sess.run(activation, feed_dict={x: [data.test_set.inputs()[i]]})
+		top_prediction_probability_indexes = predictions_probabilities.argsort()[-50:][::-1]
+		predicted_hashtags = getWordsWithIndexes(top_prediction_probability_indexes, hashtag_vocabulary)
+
+		for j in range(PREDICTION_RANGE):
+			if predicted_hashtags[j] in hashtags:
+				is_correct_prediction = True
+				break
+
+
+		print(is_correct_prediction)
+		break
+
+	exit()
+
 	print("ONE PREDICTION \t TRAIN \t VALID \t TEST \t COST \t EPOCH")
 
 	for epoch in range(EPOCHS):
 		avg_cost = 0.0
 		num_batches = int(data.train_set.num_examples() / BATCH_SIZE)
+
+		if epoch == 3:
+			cost = -tf.reduce_sum(activation*y + (1-activation)*(1-y))
+			activation = tf.nn.sigmoid(tf.matmul(x,W) + b)
 
 		for batch in range(num_batches):
 			batch_xs, batch_ys = data.train_set.next_batch(BATCH_SIZE)
@@ -170,8 +214,10 @@ def main():
 	print(validation_accuracies)
 
 	# Save the model
-	# print("Saving weights")
-	# save_path = saver.save(sess, "mymodel")
-	# print "Model saved in file: ", save_path
+	print("Saving weights")
+	save_path = saver.save(sess, "mymodel")
+	print "Model saved in file: ", save_path
+
+
 
 main()

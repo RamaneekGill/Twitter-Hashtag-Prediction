@@ -48,7 +48,7 @@ def main():
 
 	naiveBayes.setEpsilon(BEST_EPSILON)
 	naiveBayes.setAlpha(BEST_ALPHA)
-	naiveBayes.testAgainst(naiveBayes.testSet)
+	# naiveBayes.testAgainst(naiveBayes.testSet)
 
 	# Save the train, test, and validation set
 	# The train set is 85%, test set is 5%, validation set is 10% of dataset
@@ -66,12 +66,12 @@ def main():
 	# np.savetxt('validation_set_targets', naiveBayes.testSetTweets(), delimiter=',')
 
 
-	# naiveBayes.testAgainst(naiveBayes.testSet)
-	# print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	# naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
-	# print('\n\n\n\n\n\n\n\n\n\n\n')
-	# print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
-	# naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
+	naiveBayes.testAgainst(naiveBayes.testSet)
+	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
+	print('\n\n\n\n\n\n\n\n\n\n\n')
+	print('INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
+	naiveBayes.getProbabilityResults(naiveBayes.incorrectPredictions)
 
 	# print('Performing cross validation to find the best epsilon and alpha values')
 	# accuracies = []
@@ -166,15 +166,12 @@ class NaiveBayes:
 	BEST_ALPHA = 0.92
 
 	CONST_RANDOM_SEED = 20150819
-	CONST_TO_PREDICT = 56
-	CONST_HIT_RANGE = 20
+	# CONST_TO_PREDICT = 56
+	# CONST_HIT_RANGE = 20
 
 	# For our tests
 	CONST_TO_PREDICT = 500
 	CONST_HIT_RANGE = 5
-
-	CONST_TEST_RATIO = 0.5
-	CONST_VALIDATION_RATIO = 0.1
 
 	def __init__(self, epsilon = 0.01, alpha = 0.92, validation_ratio = 0.1, test_ratio = 0.5):
 		print('Intializing NaiveBayes')
@@ -326,10 +323,10 @@ class NaiveBayes:
 
 			if len(set(hashtags).intersection(topProbabilities)) > 0:
 				hits += 1
-				if len(self.correctPredictions) < 20:
+				if len(self.correctPredictions) < 50:
 					self.correctPredictions.append(tweet)
 			else:
-				if len(self.incorrectPredictions) < 20:
+				if len(self.incorrectPredictions) < 50:
 					self.incorrectPredictions.append(tweet)
 
 		self.accuracy = hits/i
