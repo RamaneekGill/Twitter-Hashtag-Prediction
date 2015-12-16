@@ -91,25 +91,41 @@ def main():
 	# Load the model if it exists
 	saver.restore(sess, "mymodel")
 	print("Loaded a trained model")
-
+	weights = sess.run(W)
 	for i in range(len(data.test_set.inputs())):
 
 		is_correct_prediction = False
 		tweet = getWords(data.test_set.inputs()[i], tweet_vocabulary)
-		hashtags = getWords(data.test_set.targets()[j], hashtag_vocabulary)
+		hashtags = getWords(data.test_set.targets()[i], hashtag_vocabulary)
 		predictions_probabilities = sess.run(activation, feed_dict={x: [data.test_set.inputs()[i]]})
-		top_prediction_probability_indexes = predictions_probabilities.argsort()[-50:][::-1]
+		top_prediction_probability_indexes = predictions_probabilities[0].argsort()[-5:][::-1]
 		predicted_hashtags = getWordsWithIndexes(top_prediction_probability_indexes, hashtag_vocabulary)
 
-		for j in range(PREDICTION_RANGE):
-			if predicted_hashtags[j] in hashtags:
+		# Check if prediction was correct:
+		for index in top_prediction_probability_indexes:
+			if hashtag_vocabulary[index] in hashtags:
 				is_correct_prediction = True
 				break
 
+		print("This is a {} prediction".format(is_correct_prediction))
+		output_str = ''
+		for word in tweet:
+			output_str += '\t' + word
 
-		print(is_correct_prediction)
-		break
+		print("Tweet Words: " + output_str)
+		print("Hashtags")
 
+		# Get the weight values
+		for j in range(len(predicted_hashtags)):
+			output_str = ''
+			for k in range(len(data.test_set.inputs()[i])):
+				if data.test_set.inputs()[i][k] > 0:
+					output_str += '\t' + '%.2f' % weights[k][top_prediction_probability_indexes[j]]
+			print(predicted_hashtags[j] + output_str)
+
+		print("\n")
+		if i>50:
+			break
 	exit()
 
 	print("ONE PREDICTION \t TRAIN \t VALID \t TEST \t COST \t EPOCH")
