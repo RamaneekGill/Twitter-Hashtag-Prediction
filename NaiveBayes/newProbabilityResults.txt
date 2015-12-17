@@ -1,4 +1,5 @@
 CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~
+
 These are the probability results for the tweet with words: ahh, wish, vote, favs, , karla, jonathan, vitolio, asuka, ade, melissa, loved, kaylas, outfit, haha, hashtags associated = sytycd
 {'': -49.535944879310286, 'loved': -222.67151161913878, 'asuka': -160.70850474093021, 'wish': -33.764401804862111, 'ahh': -27.793139965404983, 'haha': -284.63451849734741, 'outfit': -278.25779154994876, 'ade': -188.50164470633518, 'melissa': -216.29478467174016, 'kaylas': -250.46465158454376, 'vote': -40.834275932320679, 'favs': -47.904150059779255, 'jonathan': -105.12222481012026, 'karla': -77.329084844715268, 'vitolio': -132.91536477552523}
 ('sobcon', {'': -72.567005217238417, 'loved': -232.18595686762217, 'asuka': -163.77783473174341, 'wish': -24.882148919306079, 'ahh': -22.802707378626245, 'haha': -300.59407900350089, 'outfit': -277.79137162487467, 'ade': -186.58054211036966, 'melissa': -209.38324948899592, 'kaylas': -254.98866424624842, 'vote': -47.684856297932328, 'favs': -70.48756367655858, 'jonathan': -118.17241997449091, 'karla': -95.369712595864655, 'vitolio': -140.97512735311716})
@@ -57,6 +58,7 @@ Max is: |||sytycd||| with sum of -648.981364472 for {'': -36.420564600213645, 'l
 Average of the summations is: -2278.78567939
 This is the probability result for the TARGET:
 ('sytycd', {'': -36.420564600213645, 'loved': -61.308001023639548, 'asuka': -50.641956842171304, 'wish': -6.4175489409188815, 'ahh': -3.5553480604894134, 'haha': -71.974045205107771, 'outfit': -68.418697144618363, 'ade': -54.197304902660719, 'melissa': -57.752652963150133, 'kaylas': -64.863349084128956, 'vote': -9.27974982134835, 'favs': -33.558363719784175, 'jonathan': -43.531260721192474, 'karla': -39.975912660703059, 'vitolio': -47.086608781681889})
+
 These are the probability results for the tweet with words: thinking, great, race, rip, silverstone, hashtags associated = f1
 {'thinking': -5.4604362158244717, 'silverstone': -49.452563270995583, 'great': -8.2128222307334013, 'race': -14.589549178132028, 'rip': -21.6594233055906}
 ('wordcamp', {'thinking': -23.613637594842576, 'silverstone': -96.651774956206523, 'great': -25.810862171678796, 'race': -49.424499766521372, 'rip': -73.038137361363951})
@@ -115,6 +117,7 @@ Max is: |||fb||| with sum of -72.2649136272 for {'thinking': -4.8751973230344845
 Average of the summations is: -255.275516209
 This is the probability result for the TARGET:
 ('fb', {'thinking': -4.8751973230344845, 'silverstone': -25.880064010990367, 'great': -8.3641002850740787, 'race': -13.932444788501842, 'rip': -19.213107219561159})
+
 These are the probability results for the tweet with words: follow, amp, ill, follow, you, dday, jayz, tetris, sims, 3, palm, pre, england, its, cool, normandy, audioboo, , hashtags associated = robotpickuplines
 {'sims': -104.75134199543936, 'pre': -166.71434887364794, 'tetris': -97.681467867980786, 'normandy': -231.66125356806182, '': -261.08618835299785, 'ill': -9.4353331561828533, '3': -111.12806894283798, 'jayz': -69.88832790257581, 'palm': -138.92120890824296, 'dday': -42.095187937170834, 'amp': -5.0735092288931583, 'follow': -11.743033349835123, 'you': -14.302047971765855, 'cool': -203.86811360265685, 'audioboo': -259.45439353346683, 'its': -199.63145281831331, 'england': -194.50748883905291}
 ('makerfaire', {'sims': -161.18869607967736, 'pre': -228.73377199820075, 'tetris': -138.67367077350289, 'normandy': -298.07060738495227, '': -322.37739215935483, 'ill': -26.098544242630574, '3': -183.70372138585182, 'jayz': -116.15864546732843, 'palm': -206.21874669202629, 'dday': -93.643620161153962, 'amp': -24.306784774402519, 'follow': -48.613569548805039, 'you': -71.128594854979497, 'cool': -275.55558207877777, 'audioboo': -320.58563269112676, 'its': -253.04055677260328, 'england': -251.24879730437522})
@@ -173,6 +176,7 @@ Max is: |||robotpickuplines||| with sum of -354.306184383 for {'sims': -15.72837
 Average of the summations is: -2598.34195886
 This is the probability result for the TARGET:
 ('robotpickuplines', {'sims': -15.728378895808769, 'pre': -20.438909596218576, 'tetris': -12.732646623254778, 'normandy': -30.342397146254701, '': -57.057127529309099, 'ill': -6.0968250612658075, '3': -18.724111168362761, 'jayz': -11.682824498898958, 'palm': -19.522618864469422, 'dday': -10.989677318439012, 'amp': -4.1997050767132595, 'follow': -7.3007978654250767, 'you': -10.296530137979067, 'cool': -27.346664873700711, 'audioboo': -54.061395256755105, 'its': -25.044079781206666, 'england': -22.741494688712621})
+
 These are the probability results for the tweet with words: people, learn, country, codes, read, urls, apple, us, still, date, 17th, apple, au, 18th, hashtags associated = iphone
 {'codes': -66.062466540571819, '17th': -192.37622319892054, 'apple': -220.16936316432552, 'people': -3.4063124823032846, 'read': -70.935116091583055, 'country': -38.269326575166843, 'us': -131.79951068145687, '18th': -275.7556430951355, 'au': -247.96250312973049, 'urls': -98.728256056988045, 'learn': -10.476186609761857, 'date': -164.58308323351557, 'still': -136.78994326811059}
 ('imu', {'codes': -91.210829514504979, '17th': -230.10651532694231, 'apple': -232.18595686762214, 'people': -22.802707378626245, 'read': -114.01353689313123, 'country': -68.408122135878727, 'us': -161.69839319106356, '18th': -277.79137162487461, 'au': -254.98866424624839, 'urls': -136.81624427175748, 'learn': -45.60541475725249, 'date': -207.30380794831606, 'still': -184.50110056968981})
@@ -231,6 +235,7 @@ Max is: |||fb||| with sum of -1050.59597675 for {'codes': -44.213039175148623, '
 Average of the summations is: -1783.52813711
 This is the probability result for the TARGET:
 ('iphone', {'codes': -61.241571233405494, '17th': -130.94254281854751, 'apple': -133.49340743603639, 'people': -4.9487598893781684, 'read': -86.913596960730075, 'country': -56.292811344027328, 'us': -119.39210001486177, '18th': -142.6977800347328, 'au': -138.44216732541457, 'urls': -112.58562268805466, 'learn': -30.620785616702747, 'date': -125.99378292916933, 'still': -122.14363532779261})
+
 These are the probability results for the tweet with words: in, bed, and, 1030, friday, night, gone, days, 5hours, sleep, adequate, why, happen, hashtags associated = fb
 {'and': -15.994686626973252, 'gone': -81.577580087927885, 'in': -5.6835797670886814, 'happen': -162.26530270014084, 'friday': -47.813178283065767, '5hours': -115.34198189278999, 'days': -87.548841927385013, 'bed': -12.060306714487307, 'why': -155.19542857268226, 'sleep': -121.71870884018861, 'night': -53.784440122522895, '1030': -43.787826592378238, 'adequate': -149.51184880559359}
 ('mtb', {'and': -25.551579572248709, 'gone': -114.88239456977075, 'in': -22.33270374938051, 'happen': -248.87861706605375, 'friday': -70.216987071009726, '5hours': -159.54780206853175, 'days': -137.21509831915125, 'bed': -23.94214166081461, 'why': -226.54591331667325, 'sleep': -181.88050581791225, 'night': -92.549690820390239, '1030': -47.884283321629219, 'adequate': -204.21320956729275})
@@ -289,6 +294,7 @@ Max is: |||squarespace||| with sum of -812.543462992 for {'and': -13.25099272769
 Average of the summations is: -1491.38168314
 This is the probability result for the TARGET:
 ('fb', {'and': -13.018007625513482, 'gone': -54.628357115764018, 'in': -4.0278994627425195, 'happen': -128.85552444469138, 'friday': -45.688892685948417, '5hours': -85.741097558349765, 'days': -58.35087492897415, 'bed': -8.2969609822824459, 'why': -122.18856765326218, 'sleep': -89.517682592827256, 'night': -49.060012612336259, '1030': -40.408230254889098, 'adequate': -116.90790522220287})
+
 These are the probability results for the tweet with words: please, retweet, following, counter, unkind, trending, topic, , hashtags associated = dannygokeyislove
 {'': -85.346340292482068, 'trending': -77.743283633493917, 'unkind': -70.673409506035341, 'counter': -42.880269540630351, 'please': -4.5849674785872381, 'topic': -83.714545472951045, 'following': -15.087129575225365, 'retweet': -10.961694425985865}
 ('asylm', {'': -153.84401959470893, 'trending': -127.08846721630094, 'unkind': -123.17644421187279, 'counter': -98.541155369498227, 'please': -24.635288842374557, 'topic': -151.72375605867549, 'following': -73.905866527123663, 'retweet': -49.270577684749114})
@@ -347,6 +353,7 @@ Max is: |||dannygokeyislove||| with sum of -38.3049068448 for {'': -9.7702354211
 Average of the summations is: -636.026627582
 This is the probability result for the TARGET:
 ('dannygokeyislove', {'': -9.7702354211665163, 'trending': -6.7520302928513756, 'unkind': -6.4418753646384452, 'counter': -3.7338251645362348, 'please': -0.40546510800816415, 'topic': -7.0621852210643059, 'following': -3.4236702363233045, 'retweet': -0.71562003622109449})
+
 These are the probability results for the tweet with words: thanks, love, , back, ya, hashtags associated = ff
 {'': -5.1155080000590853, 'ya': -12.952637281134255, 'love': -3.4837131805280563, 'thanks': -1.1323379233735071, 'back': -8.5218204823623704}
 ('followfridays', {'': -25.656711492042014, 'ya': -51.467573663720813, 'love': -24.558099203540571, 'thanks': -0.944461608697994, 'back': -27.853936068878234})
@@ -405,6 +412,7 @@ Max is: |||ff||| with sum of -30.6873357236 for {'': -4.8761094677508074, 'ya': 
 Average of the summations is: -100.208028809
 This is the probability result for the TARGET:
 ('followfriday', {'': -5.1155080000590853, 'ya': -12.952637281134255, 'love': -3.4837131805280563, 'thanks': -1.1323379233735071, 'back': -8.5218204823623704})
+
 These are the probability results for the tweet with words: i, think, ever, win, contest, , total, waste, time, hashtags associated = squarespace
 {'': -47.109397845896574, 'waste': -81.972411938760132, 'contest': -45.477603026365543, 'i': -1.8123787564255824, 'win': -38.407728898906967, 'time': -86.269697344916423, 'total': -54.179271973355142, 'ever': -10.614588933501986, 'think': -6.1096641625818737}
 ('glasto', {'': -77.206386339796268, 'waste': -125.0906696634255, 'contest': -76.184735092375405, 'i': -1.1394342830633648, 'win': -52.242593430560788, 'time': -128.30954548729369, 'total': -101.14852800161088, 'ever': -28.300451768746175, 'think': -4.3583101069315653})
@@ -463,6 +471,7 @@ Max is: |||bsb||| with sum of -233.39996938 for {'': -16.612697557710206, 'waste
 Average of the summations is: -497.040449502
 This is the probability result for the TARGET:
 ('squarespace', {'': -18.134272387048853, 'waste': -71.68498239879051, 'contest': -16.176527780363202, 'i': -0.89879757442085761, 'win': -11.510732972808675, 'time': -75.434486474620883, 'total': -44.909627392919681, 'ever': -9.2653062936767991, 'think': -5.0049765941471041})
+
 These are the probability results for the tweet with words: nooo, it, will, end, soon, hashtags associated = asot400
 {'will': -35.430098176328542, 'nooo': -27.793139965404983, 'end': -63.223238141733525, 'it': -31.495718263842598, 'soon': -68.68367435755799}
 ('javaone', {'will': -28.465667857928857, 'nooo': -23.901319667294356, 'end': -52.366987525223209, 'it': -26.386226316582356, 'soon': -76.268307192517568})
@@ -521,6 +530,7 @@ Max is: |||f1||| with sum of -80.8457867022 for {'will': -11.030541513418875, 'n
 Average of the summations is: -203.487168447
 This is the probability result for the TARGET:
 ('fb', {'will': -34.287985845784476, 'nooo': -27.390222629375618, 'end': -39.00903248901551, 'it': -30.87912559141521, 'soon': -44.066551368810615})
+
 These are the probability results for the tweet with words: graphicvideo2, young, iranians, shot, one, clearly, dies, httpbitly16njm8, can, someone, confirm, happened, hashtags associated = iranelection
 {'httpbitly16njm8': -155.4931909839153, 'someone': -165.44328449854842, 'shot': -68.627415897725669, 'confirm': -193.2364244639534, 'dies': -127.70005101851032, 'young': -33.764401804862111, 'one': -72.113771087700357, 'can': -160.16516983948458, 'graphicvideo2': -27.793139965404983, 'iranians': -61.557541770267093, 'clearly': -99.906911053105347, 'happened': -221.02956442935837}
 ('s', {'httpbitly16njm8': -187.45052830438897, 'someone': -192.17348152453343, 'shot': -93.725264152194484, 'confirm': -215.60479756258206, 'dies': -164.01921226634033, 'young': -46.862632076097242, 'one': -117.1565801902431, 'can': -190.15857850449117, 'graphicvideo2': -23.431316038048621, 'iranians': -70.293948114145863, 'clearly': -140.58789622829173, 'happened': -239.0361136006307})
@@ -579,6 +589,7 @@ Max is: |||iranelection||| with sum of -759.087884575 for {'httpbitly16njm8': -7
 Average of the summations is: -1528.61953665
 This is the probability result for the TARGET:
 ('iranelection', {'httpbitly16njm8': -77.240461970279696, 'someone': -106.43368424261706, 'shot': -37.337756306870617, 'confirm': -111.95113713808178, 'dies': -50.999743236868575, 'young': -30.659559340874381, 'one': -41.063449733940601, 'can': -80.192965509205948, 'graphicvideo2': -26.240718733411118, 'iranians': -33.612062879800632, 'clearly': -46.580902629405308, 'happened': -116.77544285348654})
+
 These are the probability results for the tweet with words: thank, lovely, mention, hashtags associated = followfriday
 {'mention': -9.3814483201406738, 'lovely': -6.3189073769327546, 'thank': -1.8880905781608694}
 ('whyitweet', {'mention': -47.284262120058756, 'lovely': -24.615086134057034, 'thank': -1.9459101480553131})
@@ -637,6 +648,7 @@ Max is: |||ff||| with sum of -16.7635292942 for {'mention': -9.1416775239383767,
 Average of the summations is: -79.8056667266
 This is the probability result for the TARGET:
 ('followfriday', {'mention': -9.3814483201406738, 'lovely': -6.3189073769327546, 'thank': -1.8880905781608694})
+
 These are the probability results for the tweet with words: dude, thanks, karma, back, atcha, hashtags associated = followfriday
 {'back': -37.609905030145626, 'atcha': -42.888019689209479, 'dude': -5.278114659063851, 'thanks': -6.4104525824373582, 'karma': -34.203592547842341}
 ('followsaturday', {'back': -47.920422368745101, 'atcha': -70.435447674919573, 'dude': -22.515025306174465, 'thanks': -23.613637594342574, 'karma': -46.128662900517043})
@@ -695,6 +707,7 @@ Max is: |||zenjar||| with sum of -107.745408705 for {'back': -32.6570396980309, 
 Average of the summations is: -223.827242931
 This is the probability result for the TARGET:
 ('followfriday', {'back': -37.609905030145626, 'atcha': -42.888019689209479, 'dude': -5.278114659063851, 'thanks': -6.4104525824373582, 'karma': -34.203592547842341})
+
 These are the probability results for the tweet with words: wanted, give, something, special, ur, father, day, u, done, all, hashtags associated = haveyouever
 {'all': -71.445175057047024, 'give': -11.500690926659029, 'father': -54.893981481701658, 'ur': -27.100841516296672, 'u': -61.816286306866509, 'something': -17.471952766116157, 'done': -66.940250286126911, 'wanted': -6.3767269473986268, 'day': -58.596559780139273, 'special': -21.97687753703627}
 ('ac', {'all': -191.63335348576211, 'give': -47.112958362005251, 'father': -119.5169969600679, 'ur': -95.96051777906527, 'u': -144.52039512375686, 'something': -70.669437543007874, 'done': -168.07687430475949, 'wanted': -23.556479181002626, 'day': -143.07347614107053, 'special': -94.225916724010503})
@@ -753,6 +766,7 @@ Max is: |||followfriday||| with sum of -398.119342605 for {'all': -71.4451750570
 Average of the summations is: -906.955934026
 This is the probability result for the TARGET:
 ('followfriday', {'all': -71.445175057047024, 'give': -11.500690926659029, 'father': -54.893981481701658, 'ur': -27.100841516296672, 'u': -61.816286306866509, 'something': -17.471952766116157, 'done': -66.940250286126911, 'wanted': -6.3767269473986268, 'day': -58.596559780139273, 'special': -21.97687753703627})
+
 These are the probability results for the tweet with words: need, sleep, i, will, see, tomorrow, stand, rights, iran, watching, supporting, hashtags associated = iranelection, gr88
 {'supporting': -166.33266108907682, 'iran': -110.74638115826687, 'rights': -82.953241192861896, 'i': -12.694030474744322, 'watching': -138.53952112367185, 'will': -16.628410387230268, 'see': -21.395699422594795, 'sleep': -10.881651718318739, 'stand': -55.160101227456906, 'need': -4.5049247709201126, 'tomorrow': -27.366961262051923}
 ('wow', {'supporting': -175.53100921484742, 'iran': -128.09301299384663, 'rights': -125.09728072129263, 'i': -27.225556006737047, 'watching': -151.81201110434702, 'will': -50.944554117237445, 'see': -53.940286389791439, 'sleep': -26.714730383054391, 'stand': -101.37828261079224, 'need': -2.9957322725539908, 'tomorrow': -77.659284500291847})
@@ -811,6 +825,7 @@ Max is: |||iranelection||| with sum of -235.69254061 for {'supporting': -40.8514
 Average of the summations is: -783.853128548
 This is the probability result for the TARGET:
 ('iranelection', {'supporting': -40.85143175408308, 'iran': -32.86104839935328, 'rights': -31.437940065127336, 'i': -8.7923180081559593, 'watching': -36.432591146619814, 'will': -12.363860755422497, 'see': -15.578728558793159, 'sleep': -7.4795577310971435, 'stand': -25.920487169662628, 'need': -3.5715427472665366, 'tomorrow': -20.403034274197921})
+
 These are the probability results for the tweet with words: massa, just, bit, annoyed, radio, hashtags associated = f1
 {'radio': -91.766595514141386, 'bit': -36.180315583331414, 'massa': -27.793139965404983, 'annoyed': -63.973455548736396, 'just': -31.056351604071011}
 ('2', {'radio': -100.60045163725201, 'bit': -51.631519731972062, 'massa': -24.484465952639972, 'annoyed': -76.115985684612042, 'just': -27.14705377933209})
@@ -869,6 +884,7 @@ Max is: |||f1||| with sum of -159.944193506 for {'radio': -61.795319404297238, '
 Average of the summations is: -255.025468423
 This is the probability result for the TARGET:
 ('fb', {'radio': -47.701942136257664, 'bit': -34.368028553399249, 'massa': -27.390222629375618, 'annoyed': -41.034985344828456, 'just': -29.780513302774878})
+
 These are the probability results for the tweet with words: awthank, unot, even, close, 2, ready, 4, recommendationsbut, gotta, make, gud, time, since, mia, last, wk, hashtags associated = followfriday
 {'even': -60.710243910070368, 'since': -135.41459825800624, 'unot': -55.586279930809965, 'last': -168.33170220267161, 'recommendationsbut': -108.43623829824736, 'mia': -163.20773822341121, 'gotta': -114.81296524564598, 'gud': -125.1460510123928, 'wk': -196.12484216807658, '2': -71.323631641812526, '4': -80.643098332842385, 'time': -129.44333641854911, 'ready': -77.007211408901213, 'close': -67.086970857468998, 'awthank': -27.793139965404983, 'make': -119.17478917293568}
 ('wiebe', {'even': -68.00752795800517, 'since': -231.14319594406331, 'unot': -45.338351972003444, 'last': -276.48154791606675, 'recommendationsbut': -159.93699487000742, 'mia': -253.81237193006504, 'gotta': -182.60617085600916, 'gud': -206.52810981000627, 'wk': -299.15072390206848, '2': -91.929466912002255, '4': -137.26781888400569, 'time': -208.47401995806158, 'ready': -114.59864289800397, 'close': -69.260290926000536, 'awthank': -22.669175986001722, 'make': -183.85893382400454})
@@ -927,6 +943,7 @@ Max is: |||fb||| with sum of -1653.23860575 for {'even': -59.65564258178572, 'si
 Average of the summations is: -2445.57224606
 This is the probability result for the TARGET:
 ('fb', {'even': -59.65564258178572, 'since': -131.00657082737177, 'unot': -54.780445258751236, 'last': -161.69645441915563, 'recommendationsbut': -106.17892972256605, 'mia': -158.39679345674739, 'gotta': -111.74727422599382, 'gud': -122.68329253696295, 'wk': -189.08667704853124, '2': -69.731459627584186, '4': -78.788707093190439, 'time': -125.43822632394401, 'ready': -74.318974878208564, 'close': -66.322599373214928, 'awthank': -27.390222629375618, 'make': -116.01633574553375})
+
 These are the probability results for the tweet with words: last, day, bohol, heading, back, manila, tomorrow, sigh, goodbye, sun, sea, hashtags associated = fb
 {'last': -5.1239639792604015, 'goodbye': -157.16981642648332, 'sigh': -129.37667646107835, 'bohol': -36.619682243103, 'back': -67.819134690811254, 'heading': -64.412822208507976, 'manila': -95.612274656216243, 'sun': -164.2396905539419, 'day': -8.8265422776980174, 'sea': -192.03283051934687, 'tomorrow': -101.58353649567337}
 ('inaperfectworld', {'last': -25.05399917723274, 'goodbye': -162.62304790119549, 'sigh': -137.56904872396274, 'bohol': -54.438731693751812, 'back': -83.130317030210946, 'heading': -79.492730870984559, 'manila': -108.18431620744369, 'sun': -187.67704707842825, 'day': -29.384732516519072, 'sea': -212.731046255661, 'tomorrow': -112.51504954673001})
@@ -985,6 +1002,7 @@ Max is: |||fb||| with sum of -714.32401903 for {'last': -3.2996609624082498, 'go
 Average of the summations is: -1025.36198684
 This is the probability result for the TARGET:
 ('fb', {'last': -3.2996609624082498, 'goodbye': -105.46096680881338, 'sigh': -99.48715719744412, 'bohol': -33.066380943050987, 'back': -40.984194125482759, 'heading': -38.123899822846091, 'manila': -68.374416754858373, 'sun': -110.18201345204442, 'day': -5.6761583136753657, 'sea': -137.57223608142004, 'tomorrow': -72.096934568068505})
+
 These are the probability results for the tweet with words: kind, late, bedtime, almost, midnight, im, couch, i, got, name, wrong, today, hashtags associated = ff
 {'kind': -3.8117775903986288, 'name': -134.23741643171618, 'almost': -63.828874319980478, 'midnight': -91.622014285385461, 'couch': -122.79614892511009, 'late': -8.2425943891705131, 'i': -124.60852768153568, 'wrong': -141.30729055917476, 'im': -95.003008959705099, 'bedtime': -36.035734354575496, 'got': -129.11345245245579, 'today': -145.19911085724371}
 ('xboxe3', {'kind': -24.674509555527838, 'name': -179.60548474413397, 'almost': -98.69803822211135, 'midnight': -123.37254777763918, 'couch': -150.89968876274702, 'late': -49.349019111055675, 'i': -152.07834375902615, 'wrong': -204.27999429966181, 'im': -126.22517920721917, 'bedtime': -74.023528666583516, 'got': -154.93097518860614, 'today': -207.53809083718329})
@@ -1043,6 +1061,7 @@ Max is: |||ff||| with sum of -683.027465047 for {'kind': -4.0604430104035618, 'n
 Average of the summations is: -1318.65943501
 This is the probability result for the TARGET:
 ('ff', {'kind': -4.0604430104035618, 'name': -85.466077558720485, 'almost': -39.624714495390563, 'midnight': -44.937920473932351, 'couch': -75.034835300395542, 'late': -8.2750367006105723, 'i': -76.497893677716633, 'wrong': -90.779283537262273, 'im': -48.305216303847395, 'bedtime': -35.004655697158718, 'got': -80.558336688120193, 'today': -94.483051603769965})
+
 These are the probability results for the tweet with words: ty, rock, hashtags associated = ff
 {'rock': -9.7089314578476404, 'ty': -4.5849674785872381}
 ('flylady', {'rock': -49.349019111055675, 'ty': -24.674509555527838})
@@ -1101,6 +1120,7 @@ Max is: |||ff||| with sum of -12.8261026274 for {'rock': -8.6115089371746425, 't
 Average of the summations is: -58.8342157144
 This is the probability result for the TARGET:
 ('followfriday', {'rock': -9.7089314578476404, 'ty': -4.5849674785872381})
+
 These are the probability results for the tweet with words: recommended, shes, smart, funny, insightful, httpcligsaqjrlm, hashtags associated = followfriday
 {'funny': -21.546094621142167, 'recommended': -5.9712618394571289, 'shes': -11.431698055281601, 'httpcligsaqjrlm': -56.409108714005725, 'smart': -17.115277822370281, 'insightful': -28.615968748600739}
 ('twitter', {'funny': -98.92239608871553, 'recommended': -24.730599022178883, 'shes': -49.461198044357765, 'httpcligsaqjrlm': -148.3835941330733, 'smart': -74.191797066536651, 'insightful': -123.65299511089441})
@@ -1159,6 +1179,7 @@ Max is: |||followfriday||| with sum of -141.089409801 for {'funny': -21.54609462
 Average of the summations is: -449.857663844
 This is the probability result for the TARGET:
 ('followfriday', {'funny': -21.546094621142167, 'recommended': -5.9712618394571289, 'shes': -11.431698055281601, 'httpcligsaqjrlm': -56.409108714005725, 'smart': -17.115277822370281, 'insightful': -28.615968748600739})
+
 These are the probability results for the tweet with words: blowin, wind, , bob, dylan, hashtags associated = musicmonday
 {'': -57.218074750340996, 'bob': -85.011214715745979, 'dylan': -112.80435468115095, 'wind': -55.586279930809965, 'blowin': -27.793139965404983}
 ('peterfacinelli', {'': -50.233853778346585, 'bob': -74.483480139909162, 'dylan': -98.733106501471738, 'wind': -48.499252723125146, 'blowin': -24.249626361562573})
@@ -1217,6 +1238,7 @@ Max is: |||green||| with sum of -185.768812294 for {'': -24.165285211878818, 'bo
 Average of the summations is: -295.674569997
 This is the probability result for the TARGET:
 ('fb', {'': -36.042004986100551, 'bob': -63.432227615476165, 'dylan': -90.82245024485178, 'wind': -34.057179420804822, 'blowin': -27.390222629375618})
+
 These are the probability results for the tweet with words: inspiring, stuff, im, hoping, good, resolution, hashtags associated = iranelection
 {'inspiring': -7.0698741274585721, 'good': -25.689229346218053, 'hoping': -22.511175515890514, 'stuff': -12.060306714112308, 'im': -15.441301388431944, 'resolution': -53.482369311623032}
 ('lofnotc', {'inspiring': -24.189001739746136, 'good': -77.41903548240802, 'hoping': -74.64644676066824, 'stuff': -48.378003479492271, 'im': -50.457445020922108, 'resolution': -101.60803722215415})
@@ -1275,6 +1297,7 @@ Max is: |||followfriday||| with sum of -136.254256404 for {'inspiring': -7.06987
 Average of the summations is: -310.882787504
 This is the probability result for the TARGET:
 ('followfriday', {'inspiring': -7.0698741274585721, 'good': -25.689229346218053, 'hoping': -22.511175515890514, 'stuff': -12.060306714112308, 'im': -15.441301388431944, 'resolution': -53.482369311623032})
+
 These are the probability results for the tweet with words: end, blue, fear, best, way, end, song, armins, breakthrough, hashtags associated = asot400
 {'blue': -55.586279930809965, 'breakthrough': -182.93150957422964, 'end': -120.27535551596111, 'song': -127.34522964341969, 'armins': -155.13836960882466, 'way': -92.482215550556134, 'fear': -83.379419896214955, 'best': -88.051398751784248}
 ('e3', {'blue': -50.987900922824153, 'breakthrough': -207.62367602676085, 'end': -131.1418246425246, 'song': -156.63577510393668, 'armins': -182.12972556534876, 'way': -105.64787418111251, 'fear': -76.481851384236222, 'best': -80.153923719700444})
@@ -1333,6 +1356,7 @@ Max is: |||fb||| with sum of -295.645506095 for {'blue': -10.694856254600296, 'b
 Average of the summations is: -766.791469013
 This is the probability result for the TARGET:
 ('fb', {'blue': -10.694856254600296, 'breakthrough': -90.690389220901622, 'end': -30.341599458722627, 'song': -35.909943962150393, 'armins': -63.300166591526008, 'way': -25.620552815491589, 'fear': -17.361813046029503, 'best': -21.726184745364662})
+
 These are the probability results for the tweet with words: many, thx, friend, shoutout, folks, follow, kindness, brilliance, amp, beauty, course, hashtags associated = ff
 {'beauty': -89.430227517041914, 'thx': -8.1358611897069011, 'many': -4.361823927289695, 'brilliance': -58.871278516396046, 'course': -95.401489356499042, 'amp': -61.637087551636938, 'folks': -21.700564229880221, 'follow': -24.008264423532491, 'kindness': -31.078138550991063, 'shoutout': -16.933275194515694, 'friend': -12.261296338946401}
 ('unfollowdiddy', {'beauty': -192.73196577376356, 'thx': -47.112958362005251, 'many': -23.556479181002626, 'brilliance': -166.3422732497047, 'course': -216.28844495476619, 'amp': -169.17548659276093, 'folks': -117.78239590501313, 'follow': -119.22931488769946, 'kindness': -142.78579406870207, 'shoutout': -94.225916724010503, 'friend': -70.669437543007874})
@@ -1391,6 +1415,7 @@ Max is: |||followfriday||| with sum of -423.819306796 for {'beauty': -89.4302275
 Average of the summations is: -1174.33018138
 This is the probability result for the TARGET:
 ('followfriday', {'beauty': -89.430227517041914, 'thx': -8.1358611897069011, 'many': -4.361823927289695, 'brilliance': -58.871278516396046, 'course': -95.401489356499042, 'amp': -61.637087551636938, 'folks': -21.700564229880221, 'follow': -24.008264423532491, 'kindness': -31.078138550991063, 'shoutout': -16.933275194515694, 'friend': -12.261296338946401})
+
 These are the probability results for the tweet with words: cbc, quotannouncers, quot2, goal, lead, champsquot, as, head, tv, timeout, nice, go, wings, hashtags associated = redwings
 {'cbc': -27.793139965404983, 'head': -178.70136347134414, 'goal': -111.17255986161993, 'lead': -138.96569982702491, 'tv': -185.77123759880271, 'champsquot': -166.75883979242988, 'as': -172.73010163188701, 'timeout': -213.56437756420769, 'quotannouncers': -55.586279930809965, 'go': -222.46237880588529, 'wings': -250.25551877129027, 'quot2': -83.379419896214955, 'nice': -217.3384148266249}
 ('haveyouever', {'cbc': -24.971761078995769, 'head': -158.32755695607332, 'goal': -99.887044315983076, 'lead': -104.13553955703243, 'tv': -183.29931803506909, 'champsquot': -129.10730063602819, 'as': -133.35579587707755, 'timeout': -208.27107911406486, 'quotannouncers': -49.943522157991538, 'go': -258.21460127205637, 'wings': -283.18636235105214, 'quot2': -74.915283236987307, 'nice': -233.24284019306063})
@@ -1449,6 +1474,7 @@ Max is: |||redwings||| with sum of -253.654919016 for {'cbc': -2.251291798106494
 Average of the summations is: -1949.79976717
 This is the probability result for the TARGET:
 ('redwings', {'cbc': -2.2512917981064948, 'head': -22.862364645271576, 'goal': -11.084608732605815, 'lead': -14.029047710772256, 'tv': -25.806803623438014, 'champsquot': -16.973486688938696, 'as': -19.917925667105138, 'timeout': -28.751242601604453, 'quotannouncers': -5.195730776272935, 'go': -32.694210409739163, 'wings': -34.252355027535714, 'quot2': -8.1401697544393752, 'nice': -31.695681579770891})
+
 These are the probability results for the tweet with words: i, admit, ive, often, played, food, coloring, just, see, teeth, look, like, primary, colors, hashtags associated = lofnotc
 {'ive': -34.372807757195091, 'colors': -183.2214564577489, 'coloring': -103.40568876286224, 'primary': -155.42831649234392, 'often': -40.749534704593714, 'just': -106.66890040152828, 'played': -68.542674669998689, 'i': -1.8123787564255824, 'see': -111.4361894368928, 'like': -127.63517652693893, 'food': -75.612548797457265, 'admit': -29.605518721830563, 'teeth': -118.50606356435138, 'look': -123.96649978017585}
 ('tweetie', {'ive': -26.996485836745627, 'colors': -243.91367334400124, 'coloring': -121.45103621611592, 'primary': -220.30003574915867, 'often': -50.610123431588207, 'just': -145.06467381095851, 'played': -74.223761026430779, 'i': -0.49247648500688479, 'see': -147.26189838779473, 'like': -196.68639815431609, 'food': -97.837398621273351, 'admit': -24.106114079849462, 'teeth': -170.8755359826373, 'look': -194.48917357747987})
@@ -1507,6 +1533,7 @@ Max is: |||fb||| with sum of -1194.96485809 for {'ive': -33.357691065759148, 'co
 Average of the summations is: -1617.11037007
 This is the probability result for the TARGET:
 ('fb', {'ive': -33.357691065759148, 'colors': -154.11017187838766, 'coloring': -98.581678150972635, 'primary': -126.71994924901203, 'often': -60.74791369513477, 'just': -100.9719688243719, 'played': -66.316258198562537, 'i': -1.2464217931524963, 'see': -104.80571227268607, 'like': -120.05299245758283, 'food': -71.191455521597021, 'admit': -28.636644422528114, 'teeth': -111.47266906411527, 'look': -116.75333149517458})
+
 These are the probability results for the tweet with words: , pchhhh, luke, pccchhhh, im, dad, pchhhh, ok, star, wars, old, republic, now, online, mode, come, dark, side, hashtags associated = ea, e3
 {'': -1.631794819531029, 'dad': -95.462083517524192, 'now': -201.23489589450659, 'ok': -128.93880325001786, 'pchhhh': -123.25522348292918, 'luke': -57.218074750340996, 'wars': -163.80181734288141, 'dark': -248.85136388216739, 'old': -169.77307918233853, 'im': -88.392209390065617, 'pccchhhh': -85.011214715745979, 'online': -207.61162284190522, 'star': -136.00867737747643, 'republic': -197.56621914774351, 'come': -241.78148975470882, 'side': -276.64450384757237, 'mode': -235.40476280731019}
 ('vegas', {'': -1.8458266901649971, 'dad': -99.461084932782853, 'now': -244.41175280762644, 'ok': -146.79649456500857, 'pchhhh': -123.12878974889571, 'luke': -49.181236322390703, 'wars': -194.13190419723429, 'dark': -317.6661590540715, 'old': -217.79960901334715, 'im': -75.793380116670008, 'pccchhhh': -72.848941138503562, 'online': -268.0794576237393, 'star': -170.46419938112143, 'republic': -241.46731382946001, 'come': -293.99845423795864, 'side': -341.33386387018436, 'mode': -291.74716243985216})
@@ -1565,6 +1592,7 @@ Max is: |||e3||| with sum of -2439.35714921 for {'': -2.2857779745943314, 'dad':
 Average of the summations is: -2996.79590916
 This is the probability result for the TARGET:
 ('fb', {'': -1.9848255652957274, 'dad': -92.389540610182394, 'now': -192.73677585789289, 'ok': -125.06042567061732, 'pchhhh': -119.77976323955801, 'luke': -56.765270824046965, 'wars': -158.0189928034207, 'dark': -214.20059633881314, 'old': -162.74003944665174, 'im': -87.108878179123082, 'pccchhhh': -84.155493453422579, 'online': -197.45782250112393, 'star': -130.62877017404509, 'republic': -190.13026207602735, 'come': -208.22678672744388, 'side': -220.86755313024236, 'mode': -204.12477929255314})
+
 These are the probability results for the tweet with words: ok, i, never, really, knew, i, recommended, twice, thanks, httpbitlyqdfc4, hashtags associated = followfriday
 {'knew': -24.100410721651887, 'ok': -5.6835797670886814, 'i': -25.912789478077471, 'never': -12.956394739338736, 'twice': -59.677191282939582, 'recommended': -31.884051317534599, 'thanks': -60.809529206313087, 'httpbitlyqdfc4': -88.602669171718077, 'really': -17.030536594193315}
 ('bts', {'knew': -56.082602021819639, 'ok': -3.5263605236161615, 'i': -57.306377453341753, 'never': -28.999762316700849, 'twice': -105.80563017646691, 'recommended': -81.556003814904329, 'thanks': -130.05525653802948, 'httpbitlyqdfc4': -154.30488289959206, 'really': -31.832975660257066})
@@ -1623,6 +1651,7 @@ Max is: |||fb||| with sum of -239.344985584 for {'knew': -20.236385461296667, 'o
 Average of the summations is: -621.495711013
 This is the probability result for the TARGET:
 ('fb', {'knew': -20.236385461296667, 'ok': -5.2806624310593158, 'i': -21.482807254449163, 'never': -10.996816439193688, 'twice': -34.123573657247633, 'recommended': -28.149764045878371, 'thanks': -38.711088907872004, 'httpbitlyqdfc4': -66.101311537247625, 'really': -14.262575849927407})
+
 These are the probability results for the tweet with words: interview, boston, morning, then, taking, care, business, allie, then, back, ct, give, jonah, rematch, court, hashtags associated = fb
 {'then': -141.73443875831407, 'court': -261.43727508149766, 'business': -86.148158827504105, 'give': -178.05785518528273, 'boston': -34.863014092863551, 'taking': -74.087852113016794, 'back': -145.14075124061736, 'jonah': -205.85099515068771, 'morning': -39.224838020153243, 'rematch': -233.64413511609268, 'interview': -27.793139965404983, 'ct': -172.93389120602234, 'allie': -113.94129879290909, 'care': -80.464579060415417}
 ('iran', {'then': -215.47927495633152, 'court': -317.68559325132634, 'business': -167.59499163270229, 'give': -245.85916826588252, 'boston': -47.884283323629219, 'taking': -119.71070830907306, 'back': -218.69815078019971, 'jonah': -269.8013099276971, 'morning': -71.826424985443822, 'rematch': -293.74345158951172, 'interview': -23.94214166181461, 'ct': -242.64029244201433, 'allie': -191.53713329451691, 'care': -143.65284997088767})
@@ -1681,6 +1710,7 @@ Max is: |||fb||| with sum of -1355.35567064 for {'then': -94.607527325572974, 'c
 Average of the summations is: -2253.86686485
 This is the probability result for the TARGET:
 ('fb', {'then': -94.607527325572974, 'court': -212.59705664913986, 'business': -61.243495084828091, 'give': -130.42638876101302, 'boston': -34.057179420804822, 'taking': -49.008193789971116, 'back': -97.467821628209634, 'jonah': -157.81661139038863, 'morning': -37.466039675174088, 'rematch': -185.20683401976424, 'interview': -27.390222629375618, 'ct': -124.85804425758525, 'allie': -88.633717714203712, 'care': -54.576538293398883})
+
 These are the probability results for the tweet with words: thanks, much, hashtags associated = ff
 {'much': -3.8714787115325899, 'thanks': -1.1323379233735071}
 ('bradiewebb', {'much': -28.19860507251315, 'thanks': -3.7376696172833683})
@@ -1739,6 +1769,7 @@ Max is: |||ffvip||| with sum of -1.96165850436 for {'much': -1.6739764322383379,
 Average of the summations is: -18.7254633571
 This is the probability result for the TARGET:
 ('followfriday', {'much': -3.8714787115325899, 'thanks': -1.1323379233735071})
+
 These are the probability results for the tweet with words: is, anyone, camden, i, am, text, call, number, profile, hashtags associated = fb
 {'profile': -157.9623492768232, 'i': -39.719915287744705, 'text': -95.306195218554677, 'is': -4.9904325866537365, 'am': -67.513055253149687, 'number': -150.89247514936463, 'anyone': -10.114396565914138, 'camden': -37.907536531319124, 'call': -123.09933518395965}
 ('hhrs', {'profile': -176.55561820535075, 'i': -54.018340851027396, 'text': -103.03325179275674, 'is': -24.50745547086467, 'am': -78.525796321892074, 'number': -152.04816273448608, 'anyone': -28.29164510378293, 'camden': -52.799100574647596, 'call': -127.54070726362141})
@@ -1797,6 +1828,7 @@ Max is: |||fb||| with sum of -386.120706662 for {'profile': -88.042442944327206,
 Average of the summations is: -691.984634802
 This is the probability result for the TARGET:
 ('fb', {'profile': -88.042442944327206, 'i': -38.07873770899019, 'text': -49.620891823787218, 'is': -4.7210466432310358, 'am': -44.052547320359452, 'number': -60.652220314951585, 'anyone': -9.4420932864620717, 'camden': -36.83231591583769, 'call': -54.678410703582323})
+
 These are the probability results for the tweet with words: well, kathee, im, going, stuff, following, great, tweeple, you, hashtags associated = ff, followfriday
 {'great': -52.011652652252373, 'stuff': -45.133831488103944, 'tweeple': -58.388379599651003, 'kathee': -32.090425371561274, 'well': -4.2972854061562913, 'going': -40.143398901450205, 'im': -35.471420045880912, 'following': -49.259266637343444, 'you': -60.947394221581739}
 ('cubs', {'great': -98.273635386139162, 'stuff': -52.432654557573912, 'tweeple': -121.19412580042179, 'kathee': -25.117714990618847, 'well': -2.1972245763362195, 'going': -29.512164143291283, 'im': -27.314939566955065, 'following': -75.353144971856537, 'you': -123.39135037675801})
@@ -1855,6 +1887,7 @@ Max is: |||iranelection||| with sum of -361.559051548 for {'great': -50.60670064
 Average of the summations is: -563.678880106
 This is the probability result for the TARGET:
 ('followfriday', {'great': -52.011652652252373, 'stuff': -45.133831488103944, 'tweeple': -58.388379599651003, 'kathee': -32.090425371561274, 'well': -4.2972854061562913, 'going': -40.143398901450205, 'im': -35.471420045880912, 'following': -49.259266637343444, 'you': -60.947394221581739})
+
 These are the probability results for the tweet with words: heading, home, concert, awesome, got, sing, johns, mic, ben, threw, pick, i, missed, it, good, times, though, hashtags associated = fb
 {'pick': -237.58859536838159, 'good': -250.86657373215957, 'ben': -182.00231543757164, 'concert': -62.656154058268534, 'though': -283.93782835662842, 'i': -239.40097412480716, 'got': -70.829755575951737, 'awesome': -66.324830805031624, 'johns': -126.41603550676169, 'it': -247.68851990183202, 'mic': -154.20917547216666, 'missed': -243.98594160339439, 'sing': -98.622895541356712, 'home': -34.863014092863551, 'times': -278.65971369756454, 'heading': -27.793139965404983, 'threw': -209.79545540297661}
 ('canucks', {'pick': -262.91451634023792, 'good': -271.63774761312101, 'ben': -215.11187700564921, 'concert': -71.703959001883064, 'though': -298.7171211097633, 'i': -263.89534559313853, 'got': -119.50659833647178, 'awesome': -95.605278669177423, 'johns': -167.30923767106049, 'it': -269.5583060717745, 'mic': -191.21055733835485, 'missed': -267.07339942248649, 'sing': -143.40791800376613, 'home': -47.802639334588712, 'times': -274.81580144246897, 'heading': -23.901319667294356, 'threw': -239.01319667294356})
@@ -1913,6 +1946,7 @@ Max is: |||fb||| with sum of -1973.66886617 for {'pick': -165.46586181666501, 'g
 Average of the summations is: -2717.961789
 This is the probability result for the TARGET:
 ('fb', {'pick': -165.46586181666501, 'good': -179.23103506298432, 'ben': -152.82509541386653, 'concert': -35.747402471578972, 'though': -189.67457688933547, 'i': -166.71228360981752, 'got': -43.264204896364063, 'awesome': -39.641770541705895, 'johns': -98.044650155115292, 'it': -176.17499618322637, 'mic': -125.43487278449091, 'missed': -172.68609322118678, 'sing': -70.654427525739678, 'home': -8.3571798422033563, 'times': -185.20484467435358, 'heading': -5.0575188797951061, 'threw': -159.49205220529575})
+
 These are the probability results for the tweet with words: , motion, control, without, controller, youre, controller, , really, great, wait, games, hashtags associated = microsoft, e3
 {'': -124.56856457207576, 'control': -57.218074750340996, 'great': -131.39509244183927, 'youre': -95.143629787139744, 'motion': -29.424934784936013, 'controller': -122.93676975254473, 'without': -62.678510966165469, 'games': -164.87181217433292, 'wait': -137.07867220892794, 'really': -128.64270642693035}
 ('kevinjonas', {'': -150.53737564883059, 'control': -50.784221871775337, 'great': -177.17360380453002, 'youre': -124.23761972969524, 'motion': -26.299755919135364, 'controller': -148.72208568233521, 'without': -75.268687824415309, 'games': -205.41926987186355, 'wait': -180.93480391922358, 'really': -152.68913785189005})
@@ -1971,6 +2005,7 @@ Max is: |||wii||| with sum of -927.589632502 for {'': -98.460344536228135, 'cont
 Average of the summations is: -1140.61327335
 This is the probability result for the TARGET:
 ('followfriday', {'': -124.56856457207576, 'control': -57.218074750340996, 'great': -131.39509244183927, 'youre': -95.143629787139744, 'motion': -29.424934784936013, 'controller': -122.93676975254473, 'without': -62.678510966165469, 'games': -164.87181217433292, 'wait': -137.07867220892794, 'really': -128.64270642693035})
+
 These are the probability results for the tweet with words: did, know, birthday, today, if, deserve, nothing, does, ♫, httpblipfm7otv9, hashtags associated = followfriday
 {'did': -5.6835797670886814, 'deserve': -31.164054300187033, 'does': -43.917508194984279, 'birthday': -16.687833807033197, 'know': -9.6179596795746249, '\xe2\x99\xab': -50.987382322442855, 'nothing': -37.540781247585656, 'httpblipfm7otv9': -78.780522287847845, 'today': -20.579654105102158, 'if': -25.70361808436256}
 ('p90x', {'did': -1.9459101480553131, 'deserve': -94.568524240117512, 'does': -139.90687621212095, 'birthday': -47.284262120058756, 'know': -24.615086134057034, '\xe2\x99\xab': -162.57605219812268, 'nothing': -117.23770022611923, 'httpblipfm7otv9': -185.24522818412441, 'today': -49.230172268114067, 'if': -71.899348254115793})
@@ -2029,6 +2064,7 @@ Max is: |||followfriday||| with sum of -320.662893796 for {'did': -5.68357976708
 Average of the summations is: -828.198356846
 This is the probability result for the TARGET:
 ('followfriday', {'did': -5.6835797670886814, 'deserve': -31.164054300187033, 'does': -43.917508194984279, 'birthday': -16.687833807033197, 'know': -9.6179596795746249, '\xe2\x99\xab': -50.987382322442855, 'nothing': -37.540781247585656, 'httpblipfm7otv9': -78.780522287847845, 'today': -20.579654105102158, 'if': -25.70361808436256})
+
 These are the probability results for the tweet with words: inverter, laptop, just, died, nbw, wait, one, hook, monitor, hashtags associated = fb
 {'monitor': -179.19198638815931, 'just': -58.849491569475994, 'laptop': -55.586279930809965, 'nbw': -114.43577150028597, 'one': -123.60570645734934, 'hook': -151.39884642275433, 'inverter': -27.793139965404983, 'died': -86.642631534880977, 'wait': -120.11935126737465}
 ('mmwanted', {'monitor': -175.2692339419682, 'just': -51.013963569359618, 'laptop': -48.557227796871651, 'nbw': -99.571191366231261, 'one': -126.71200614509655, 'hook': -150.99062004353237, 'inverter': -24.278613898435825, 'died': -75.292577467795439, 'wait': -123.84980526466708})
@@ -2087,6 +2123,7 @@ Max is: |||fb||| with sum of -547.873657137 for {'monitor': -110.45677092942971,
 Average of the summations is: -779.948705848
 This is the probability result for the TARGET:
 ('fb', {'monitor': -110.45677092942971, 'just': -35.348857806202645, 'laptop': -32.958567132803381, 'nbw': -68.307424939006026, 'one': -76.399591508624894, 'hook': -83.066548300054095, 'inverter': -27.390222629375618, 'died': -40.917202309630412, 'wait': -73.02847158223706})
+
 These are the probability results for the tweet with words: no, one, showed, rittenhouse, square, protest, hashtags associated = iranelection
 {'square': -91.856207672843368, 'showed': -36.269927742033403, 'no': -4.9904325866537365, 'rittenhouse': -64.063067707438393, 'one': -8.4767877766284201, 'protest': -119.64934763824834}
 ('pp09', {'square': -71.899348254115793, 'showed': -26.560996282112349, 'no': -1.9459101480553131, 'rittenhouse': -49.230172268114075, 'one': -3.8918202961106263, 'protest': -94.568524240117512})
@@ -2145,6 +2182,7 @@ Max is: |||fb||| with sum of -188.39814496 for {'square': -47.296477028876353, '
 Average of the summations is: -270.840830622
 This is the probability result for the TARGET:
 ('fb', {'square': -47.296477028876353, 'showed': -13.239297608071528, 'no': -4.5875152506243708, 'rittenhouse': -40.629520237447146, 'one': -7.9586351770122112, 'protest': -74.686699658251968})
+
 These are the probability results for the tweet with words: why, i, install, whs, virtual, machine, hashtags associated = vmware, fail
 {'i': -7.4959585235142638, 'virtual': -70.152112581782802, 'machine': -77.221986709241378, 'install': -35.289098488919244, 'whs': -63.082238454324226, 'why': -5.6835797670886814}
 ('20', {'i': -2.8903717563961644, 'virtual': -70.435447674919558, 'machine': -92.950472981094023, 'install': -25.405397062570628, 'whs': -47.920422368745093, 'why': -1.7917594682280549})
@@ -2203,6 +2241,7 @@ Max is: |||iphone||| with sum of -201.501389277 for {'i': -4.8223459652475098, '
 Average of the summations is: -279.829080686
 This is the probability result for the TARGET:
 ('fb', {'i': -6.5270842242118121, 'virtual': -67.974486274392248, 'machine': -73.25514870545156, 'install': -33.917306853587434, 'whs': -61.307529482963048, 'why': -5.2806624310593158})
+
 These are the probability results for the tweet with words: sf, ton, fun, hashtags associated = wordcamp
 {'fun': -60.017096729581851, 'ton': -55.586279930809965, 'sf': -27.793139965404983}
 ('cricket', {'fun': -48.901251622256822, 'ton': -46.416344973468824, 'sf': -23.208172486734412})
@@ -2261,6 +2300,7 @@ Max is: |||wordcamp||| with sum of -56.7093206771 for {'fun': -28.70123392857496
 Average of the summations is: -118.127547223
 This is the probability result for the TARGET:
 ('squarespace', {'fun': -37.493238981349769, 'ton': -32.827444173795243, 'sf': -6.0520891679244171})
+
 These are the probability results for the tweet with words: thanks, shawneda, making, sound, cool, amp, sweet, lol, i, think, im, ice, cold, times, too, hashtags associated = followfriday
 {'sound': -63.788491981642046, 'too': -155.51402213635077, 'ice': -95.342774726953579, 'i': -81.287767699079026, 'sweet': -75.295886572146586, 'lol': -79.475388942653439, 'shawneda': -28.925477888778488, 'im': -88.966047779554955, 'thanks': -1.1323379233735071, 'amp': -70.790961801226473, 'making': -35.995352016237064, 'cold': -123.13591469235857, 'times': -150.92905465776354, 'think': -85.585053105235318, 'cool': -68.025152765985581}
 ('imu', {'sound': -70.48756367655858, 'too': -235.93937484154034, 'ice': -188.25451854360801, 'i': -141.26280942573561, 'sweet': -117.47927279443095, 'lol': -140.28198017305721, 'shawneda': -24.882148919306079, 'im': -165.45181116498176, 'thanks': -2.0794415406798357, 'amp': -94.676565415804717, 'making': -47.684856297932328, 'cold': -211.05722592223427, 'times': -233.85993330086052, 'think': -164.06551680436186, 'cool': -93.290271055184832})
@@ -2319,6 +2359,7 @@ Max is: |||fb||| with sum of -1127.70837825 for {'sound': -64.425479389170718, '
 Average of the summations is: -1687.66173215
 This is the probability result for the TARGET:
 ('fb', {'sound': -64.425479389170718, 'too': -112.97206544396316, 'ice': -97.247861186524929, 'i': -84.949546922919168, 'sweet': -78.134780626338909, 'lol': -83.703125129766676, 'shawneda': -31.977737879999989, 'im': -91.679516683097162, 'thanks': -4.5875152506243708, 'amp': -72.566436122911142, 'making': -37.035256759795097, 'cold': -102.12305850955941, 'times': -108.09686812092868, 'think': -88.72613195739666, 'cool': -69.482998268965829})
+
 These are the probability results for the tweet with words: sports, sorry, getting, around, everyone, phone, acting, hashtags associated = ff
 {'everyone': -27.827511387739499, 'around': -24.254144820777711, 'getting': -18.57056505368903, 'sports': -7.0698741274585721, 'phone': -55.620651353144481, 'acting': -83.413791318549471, 'sorry': -11.500690926230458}
 ('fiestamovement', {'everyone': -72.989575793749523, 'around': -70.686990701755477, 'getting': -47.661139771815016, 'sports': -23.025850929940457, 'phone': -96.015426723689984, 'acting': -119.04127765363044, 'sorry': -46.051701859880914})
@@ -2377,6 +2418,7 @@ Max is: |||ff||| with sum of -156.394386388 for {'everyone': -23.347154068390736
 Average of the summations is: -447.910078763
 This is the probability result for the TARGET:
 ('fb', {'everyone': -25.487021422884922, 'around': -21.122649723549763, 'getting': -16.535134472925392, 'sports': -6.6669567914292065, 'phone': -29.851393122220081, 'acting': -57.241615751595702, 'sorry': -12.640766402798468})
+
 These are the probability results for the tweet with words: the, sound, children, playing, basketball, across, street, driving, nuts, yes, i, still, migraine, hashtags associated = fb
 {'sound': -33.071254624468835, 'yes': -212.87123038381441, 'basketball': -116.45067452068378, 'driving': -199.8300944168987, 'i': -214.68360914023998, 'still': -219.67404172689371, 'nuts': -206.89996854435728, 'children': -60.864394589873818, 'migraine': -247.46718169229868, 'street': -172.03695445149373, 'the': -5.278114659063851, 'playing': -88.657534555278801, 'across': -144.24381448608875}
 ('palmpre', {'sound': -5.2781146572305166, 'yes': -192.17669998972389, 'basketball': -75.365084156915529, 'driving': -145.45205365660053, 'i': -192.73631577753432, 'still': -216.098638944096, 'nuts': -168.81437682316221, 'children': -28.640437823792187, 'migraine': -239.46096211065768, 'street': -122.08973049003886, 'the': -2.6390573286152583, 'playing': -52.002760990353856, 'across': -98.727407323477195})
@@ -2435,6 +2477,7 @@ Max is: |||fb||| with sum of -1089.73939969 for {'sound': -30.966136968401052, '
 Average of the summations is: -1649.27065903
 This is the probability result for the TARGET:
 ('fb', {'sound': -30.966136968401052, 'yes': -120.77850967923486, 'basketball': -70.591660892633641, 'driving': -87.819942546431477, 'i': -122.02493147238735, 'still': -125.35968375460564, 'nuts': -115.21016517580709, 'children': -58.356359597776674, 'migraine': -132.02664054603486, 'street': -82.539280115372165, 'the': -3.5759143390254362, 'playing': -63.924704101204441, 'across': -76.565470504002903})
+
 These are the probability results for the tweet with words: setting, etsy, shop, prints, sale, originals, want, hashtags associated = etsy
 {'shop': -62.656154058268534, 'prints': -90.449294023673517, 'originals': -146.03557395448348, 'sale': -118.24243398907851, 'setting': -27.793139965404983, 'want': -150.70755281005279, 'etsy': -34.863014092863551}
 ('mcrchat', {'shop': -71.442924870914183, 'prints': -95.257233161218906, 'originals': -142.88584974182837, 'sale': -119.07154145152363, 'setting': -23.814308290304727, 'want': -145.97689219418669, 'etsy': -47.628616580609453})
@@ -2493,6 +2536,7 @@ Max is: |||etsy||| with sum of -332.339437876 for {'shop': -23.913742186859579, 
 Average of the summations is: -646.761596773
 This is the probability result for the TARGET:
 ('iphone', {'shop': -56.292811344027328, 'prints': -81.964837071351909, 'originals': -112.58562268805466, 'sale': -86.913596960730075, 'setting': -4.9487598893781684, 'want': -115.92494466579872, 'etsy': -30.620785616702747})
+
 These are the probability results for the tweet with words: cmon, guys, mama, needs, new, iphone, mine, stolen, hashtags associated = squarespace
 {'needs': -65.774784468607223, 'cmon': -27.793139965404983, 'mine': -81.098302821916121, 'stolen': -108.8914427873211, 'iphone': -75.414723054827434, 'mama': -59.398057521208592, 'new': -69.443461215370306, 'guys': -31.60491755580361}
 ('facebook', {'needs': -73.260152398798354, 'cmon': -23.495854559186192, 'mine': -123.02445023841054, 'stolen': -146.52030479759674, 'iphone': -99.528595679224338, 'mama': -70.487563677558569, 'new': -76.032741120038139, 'guys': -46.991709118372384})
@@ -2551,6 +2595,7 @@ Max is: |||follow||| with sum of -462.525355121 for {'needs': -35.27361047285195
 Average of the summations is: -630.045276565
 This is the probability result for the TARGET:
 ('fb', {'needs': -64.93630501284504, 'cmon': -27.390222629375618, 'mine': -78.203773497826262, 'stolen': -84.870730289255462, 'iphone': -72.635428994398495, 'mama': -60.061107689810555, 'new': -68.271057295063329, 'guys': -32.670885060434934})
+
 These are the probability results for the tweet with words: hi, guys, hope, good, weekend, thanx, love, hashtags associated = followfriday
 {'good': -15.393007380031861, 'love': -26.131558255138238, 'guys': -8.5790666257631543, 'hi': -4.7672890353645263, 'thanx': -23.780182997983687, 'weekend': -18.907533446972447, 'hope': -12.214953549704322}
 ('tweetie', {'good': -51.909406415476042, 'love': -102.02705336205734, 'guys': -26.504009351738741, 'hi': -23.613637594842576, 'thanx': -99.136681605161186, 'weekend': -75.523044010318614, 'hope': -50.117646946581317})
@@ -2609,6 +2654,7 @@ Max is: |||ff||| with sum of -104.312655465 for {'good': -14.961254776144941, 'l
 Average of the summations is: -368.767163655
 This is the probability result for the TARGET:
 ('followfriday', {'good': -15.393007380031861, 'love': -26.131558255138238, 'guys': -8.5790666257631543, 'hi': -4.7672890353645263, 'thanx': -23.780182997983687, 'weekend': -18.907533446972447, 'hope': -12.214953549704322})
+
 These are the probability results for the tweet with words: happy, friday, go, now, hashtags associated = ff
 {'go': -13.000313973498304, 'now': -16.668990720261387, 'friday': -7.8763499942379021, 'happy': -3.8509983035503716}
 ('eu09', {'go': -52.799100574647596, 'now': -56.583290207565859, 'friday': -28.29164510378293, 'happy': -3.7841896329182609})
@@ -2667,6 +2713,7 @@ Max is: |||flylady||| with sum of -35.9289182394 for {'go': -10.75511886474284, 
 Average of the summations is: -113.529431068
 This is the probability result for the TARGET:
 ('followfriday', {'go': -13.000313973498304, 'now': -16.668990720261387, 'friday': -7.8763499942379021, 'happy': -3.8509983035503716})
+
 These are the probability results for the tweet with words: i, feel, overwhelmed, hoping, i, can, get, work, done, please, make, day, better, hashtags associated = squarespace
 {'hoping': -41.548042400300375, 'get': -51.966779924781193, 'i': -43.360421156725955, 'make': -70.399359237208216, 'work': -56.328603852070884, 'please': -66.037535309918525, 'day': -74.101937535645831, 'better': -80.478664483044454, 'feel': -6.6850283074368235, 'done': -61.452567831331287, 'can': -48.032400012295248, 'overwhelmed': -34.478168272841806}
 ('xboxe3', {'hoping': -53.785770644856299, 'get': -60.382006427926974, 'i': -54.964425641135449, 'make': -137.25816652409048, 'work': -63.234637857506961, 'please': -112.58365696856264, 'day': -161.93267607961832, 'better': -186.60718563514615, 'feel': -25.853164551806984, 'done': -87.909147413034802, 'can': -57.817057070715435, 'overwhelmed': -50.527674107334818})
@@ -2725,6 +2772,7 @@ Max is: |||squarespace||| with sum of -539.636829151 for {'hoping': -36.88795915
 Average of the summations is: -943.193966852
 This is the probability result for the TARGET:
 ('fb', {'hoping': -38.792504176455253, 'get': -46.956107271867232, 'i': -40.038925969607746, 'make': -63.139628893074068, 'work': -49.711041058848295, 'please': -58.870567373534143, 'day': -65.51612624434118, 'better': -69.544025707083705, 'feel': -5.4284719357103697, 'done': -53.813048493739039, 'can': -43.872669417921912, 'overwhelmed': -32.818694565085991})
+
 These are the probability results for the tweet with words: made, smile, makin, g, huge, list, hashtags associated = followfriday
 {'huge': -53.028114039039657, 'made': -5.9712618394571289, 'g': -25.234974073634675, 'list': -57.53303880995977, 'makin': -18.165099946176102, 'smile': -11.09522581871753}
 ('3', {'huge': -96.433314352296691, 'made': -23.431316038048621, 'g': -73.00199831424807, 'list': -119.86463039034531, 'makin': -49.570682276199449, 'smile': -26.139366238150831})
@@ -2783,6 +2831,7 @@ Max is: |||followfriday||| with sum of -171.027714527 for {'huge': -53.028114039
 Average of the summations is: -393.237364074
 This is the probability result for the TARGET:
 ('followfriday', {'huge': -53.028114039039657, 'made': -5.9712618394571289, 'g': -25.234974073634675, 'list': -57.53303880995977, 'makin': -18.165099946176102, 'smile': -11.09522581871753})
+
 These are the probability results for the tweet with words: misses, someone, alot, hashtags associated = fb
 {'misses': -27.793139965404983, 'someone': -33.071254624468835, 'alot': -40.141128751927411}
 ('f1', {'misses': -25.459464285340907, 'someone': -50.918928570681814, 'alot': -76.378392856022714})
@@ -2841,6 +2890,7 @@ Max is: |||fb||| with sum of -33.7634161268 for {'misses': -5.9738096113692611, 
 Average of the summations is: -112.78200354
 This is the probability result for the TARGET:
 ('fb', {'misses': -5.9738096113692611, 'someone': -10.561324861993633, 'alot': -17.22828165342284})
+
 These are the probability results for the tweet with words: have, take, iphone, repair, today, the, little, silver, button, side, just, fell, day, hashtags associated = fb
 {'repair': -42.962507638891381, 'little': -56.899731631388718, 'just': -143.54236316626969, 'button': -112.48601156219868, 'day': -175.0380814301123, 'side': -140.27915152760366, 'fell': -171.33550313167467, 'take': -9.1981058340292687, 'have': -3.5145260669405873, 'the': -52.132442596024191, 'silver': -84.692871596793708, 'today': -46.854327936960338, 'iphone': -15.169367673486398}
 ('peterfacinelli', {'repair': -75.582092428243939, 'little': -106.88443983703884, 'just': -182.06106715734128, 'button': -155.38369256016398, 'day': -230.56031988046644, 'side': -179.63331892172656, 'fell': -206.31069351890386, 'take': -27.08283970511879, 'have': -24.249626361562573, 'the': -82.634813475476264, 'silver': -131.1340661986014, 'today': -79.108452951860102, 'iphone': -51.332466066681363})
@@ -2912,6 +2962,7 @@ This is the probability result for the TARGET:
 
 
 INCORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~
+
 These are the probability results for the tweet with words: otherwise, big, deal, now, might, future, hashtags associated = bing
 {'deal': -60.710243910070368, 'big': -32.917103944665385, 'future': -97.855640389327135, 'now': -64.378920656833458, 'might': -70.062500423922145, 'otherwise': -27.793139965404983}
 ('quote', {'deal': -47.802639334255382, 'big': -24.59446684752097, 'future': -96.703890956512211, 'now': -71.010811820989801, 'might': -94.218984307724213, 'otherwise': -23.208172486734412})
@@ -2970,6 +3021,7 @@ Max is: |||mw2||| with sum of -161.290664651 for {'deal': -28.863435592385787, '
 Average of the summations is: -348.21999438
 This is the probability result for the TARGET:
 ('squarespace', {'deal': -38.879533341719657, 'big': -32.827444173795243, 'future': -51.68869331702782, 'now': -41.887100072873032, 'might': -46.329751329163351, 'otherwise': -26.775355005870829})
+
 These are the probability results for the tweet with words: sure, awesome, just, made, lol, hashtags associated = andyhurleyday
 {'awesome': -8.4359657821276102, 'sure': -4.7672890353645263, 'lol': -21.849941630757623, 'just': -11.699177420793641, 'made': -17.67043926025077}
 ('xboxe3', {'awesome': -27.52714098510782, 'sure': -24.674509555527838, 'lol': -79.728791525743475, 'just': -30.379772414687807, 'made': -55.054281970215641})
@@ -3028,6 +3080,7 @@ Max is: |||musicmonday||| with sum of -60.5783898678 for {'awesome': -8.43554920
 Average of the summations is: -166.640898667
 This is the probability result for the TARGET:
 ('followfriday', {'awesome': -8.4359657821276102, 'sure': -4.7672890353645263, 'lol': -21.849941630757623, 'just': -11.699177420793641, 'made': -17.67043926025077})
+
 These are the probability results for the tweet with words: good, worrying, updated, since, tear, gas, 25mins, ago, s, also, can, use, search, httpbitlyuhqrz, hashtags associated = iranelections
 {'ago': -155.18488962426815, 'updated': -58.764333761137507, 'good': -3.1780538303275376, 'httpbitlyuhqrz': -210.31273385991923, 'tear': -92.528735565999625, 'search': -182.51959389451426, 'since': -64.735595600594635, 'gas': -120.3218755314046, 'use': -175.44971976705568, 'also': -165.3173046956619, 's': -160.64532584009262, 'can': -169.98928355123121, '25mins': -148.11501549680958, 'worrying': -30.971193795732521}
 ('140conf', {'ago': -153.91996491096461, 'updated': -52.105953394587658, 'good': -3.0910424528583156, 'httpbitlyuhqrz': -279.54828471814631, 'tear': -80.397598498370598, 'search': -255.04082924728161, 'since': -55.890143027505921, 'gas': -104.90505396923527, 'use': -230.53337377641694, 'also': -202.93487585269395, 's': -178.42742038182928, 'can': -206.02591830555227, '25mins': -129.41250944009994, 'worrying': -27.598497923722984})
@@ -3086,6 +3139,7 @@ Max is: |||iranelection||| with sum of -963.927468676 for {'ago': -82.4081010110
 Average of the summations is: -1918.60019034
 This is the probability result for the TARGET:
 ('iranelection', {'ago': -82.408101011095866, 'updated': -14.067452037939455, 'good': -3.7256934270699857, 'httpbitlyuhqrz': -153.70125352317854, 'tear': -45.825623666815275, 'search': -127.46053478976741, 'since': -19.584904933404161, 'gas': -51.343076562279983, 'use': -101.21981605635629, 'also': -93.44300680202528, 's': -87.925553906560566, 'can': -96.395510340951532, '25mins': -77.583795295691104, 'worrying': -9.2431463225346935})
+
 These are the probability results for the tweet with words: i, think, im, going, miss, tonight, hashtags associated = masterchef
 {'i': -1.8123787564255824, 'tonight': -25.257863511188333, 'going': -14.162637692470803, 'im': -9.4906588369015097, 'miss': -19.286601671731205, 'think': -6.1096641625818737}
 ('chesterday', {'i': -2.5389738707249423, 'tonight': -61.480289160189741, 'going': -12.758585166844153, 'im': -9.1209990081177672, 'miss': -37.119437163516949, 'think': -6.1765600294513279})
@@ -3144,6 +3198,7 @@ Max is: |||lost||| with sum of -43.4036677339 for {'i': -1.2878542881816384, 'to
 Average of the summations is: -99.5945404288
 This is the probability result for the TARGET:
 ('fb', {'i': -1.2464217931524963, 'tonight': -18.730203975557064, 'going': -10.979786699604411, 'im': -7.9763915533304921, 'miss': -15.00768616234693, 'think': -5.0230068276299829})
+
 These are the probability results for the tweet with words: wish, time, celebrate, alas, going, see, fightstar, tonight, instead, dont, dvds, neways, hashtags associated = starwarsday
 {'neways': -175.89415330155023, 'tonight': -109.05849687221931, 'dont': -120.30787337074028, 'dvds': -148.10101333614526, 'wish': -5.9712618394571289, 'fightstar': -103.08723503276218, 'see': -75.294095067357205, 'going': -70.526806031992678, 'time': -10.268547245613419, 'instead': -115.02975871167644, 'alas': -65.854827176423385, 'celebrate': -38.061687211018402}
 ('transformers', {'neways': -208.01050616025432, 'tonight': -117.95040493555648, 'dont': -162.98045554790539, 'dvds': -185.49548085407986, 'wish': -22.515025306174465, 'fightstar': -95.435379629382012, 'see': -72.920354323207548, 'going': -71.128594854979497, 'time': -24.306784774402519, 'instead': -140.46543024173093, 'alas': -69.336835386751446, 'celebrate': -46.821810080576981})
@@ -3202,6 +3257,7 @@ Max is: |||fb||| with sum of -766.817125013 for {'neways': -144.0138787933443, '
 Average of the summations is: -1144.68365574
 This is the probability result for the TARGET:
 ('fb', {'neways': -144.0138787933443, 'tonight': -78.78989170813081, 'dont': -89.233433534593061, 'dvds': -116.62365616396868, 'wish': -4.7210466432310358, 'fightstar': -75.067373894920678, 'see': -47.677151265545064, 'going': -43.843407817230897, 'time': -7.4759804302120969, 'instead': -83.665089031165294, 'alas': -40.84001267095698, 'celebrate': -34.866203059587718})
+
 These are the probability results for the tweet with words: hey, do, know, many, seasons, jonas, going, do, love, melissa, uk, xxx, hashtags associated = jonaslive
 {'do': -85.158914824502517, 'love': -87.510290081657061, 'many': -18.523929090724636, 'xxx': -128.75003112191925, 'hey': -3.8509983035503716, 'going': -78.782187877103894, 'jonas': -74.110209021534601, 'know': -14.162105163434942, 'uk': -122.37330417452063, 'seasons': -46.317069056129618, 'melissa': -115.30343004706205}
 ('bones', {'do': -143.52275720206543, 'love': -145.92065247386381, 'many': -71.761378601032717, 'xxx': -215.28413580309814, 'hey': -2.3978952717983706, 'going': -120.40159609232066, 'jonas': -118.00370082052228, 'know': -48.640217491287935, 'uk': -192.16297469335336, 'seasons': -94.882539710777507, 'melissa': -169.04181358360859})
@@ -3260,6 +3316,7 @@ Max is: |||140conf||| with sum of -709.028283098 for {'do': -70.621436451237457,
 Average of the summations is: -1153.72829357
 This is the probability result for the TARGET:
 ('followfriday', {'do': -85.158914824502517, 'love': -87.510290081657061, 'many': -18.523929090724636, 'xxx': -128.75003112191925, 'hey': -3.8509983035503716, 'going': -78.782187877103894, 'jonas': -74.110209021534601, 'know': -14.162105163434942, 'uk': -122.37330417452063, 'seasons': -46.317069056129618, 'melissa': -115.30343004706205})
+
 These are the probability results for the tweet with words: rewriting, drafts, lost, you, know, much, sucks, hashtags associated = wordpress, blog
 {'drafts': -55.586279930809965, 'lost': -83.379419896214955, 'sucks': -120.40509518419569, 'rewriting': -27.793139965404983, 'much': -92.611955218790698, 'know': -89.872814430631621, 'you': -85.938434518145684}
 ('flylady', {'drafts': -49.349019111055675, 'lost': -53.300262828637102, 'sucks': -131.27503521280204, 'rewriting': -24.674509555527838, 'much': -106.6005256572742, 'know': -81.92601610174637, 'you': -57.251506546218529})
@@ -3318,6 +3375,7 @@ Max is: |||140tc||| with sum of -332.417394531 for {'drafts': -44.66540749876102
 Average of the summations is: -480.102805674
 This is the probability result for the TARGET:
 ('fb', {'drafts': -54.780445258751236, 'lost': -59.25017747373311, 'sucks': -76.71771460683523, 'rewriting': -27.390222629375618, 'much': -71.437052175775918, 'know': -67.98897120825491, 'you': -63.719909688714985})
+
 These are the probability results for the tweet with words: i, missed, rampage, last, night, oh, well, , better, late, never, hashtags associated = ontd, fuqtwitter, ohnotheydidnt, ohyeswedid
 {'': -55.64560904359454, 'late': -66.453152789765056, 'last': -39.314450179678204, 'missed': -6.3973462350128205, 'rampage': -34.190486200417801, 'oh': -49.716528817907218, 'i': -1.8123787564255824, 'never': -71.913589005589529, 'well': -54.013814224063509, 'better': -62.02233599099317, 'night': -45.285712019135332}
 ('lofnotc', {'': -104.4704822732722, 'late': -152.84848575276447, 'last': -51.645913638551818, 'missed': -3.2679101590595505, 'rampage': -27.456911898805686, 'oh': -78.202038992096234, 'i': -0.90078654526126689, 'never': -156.31422165456419, 'well': -102.39104073184237, 'better': -128.65948401301833, 'night': -54.013037252350102})
@@ -3376,6 +3434,7 @@ Max is: |||fb||| with sum of -267.729698836 for {'': -31.494681599927311, 'late'
 Average of the summations is: -678.062946147
 This is the probability result for the TARGET:
 ('fb', {'': -31.494681599927311, 'late': -40.397778385704314, 'last': -17.186849158359212, 'missed': -7.2202314045217575, 'rampage': -13.887188195950964, 'oh': -25.83863151580637, 'i': -1.2464217931524963, 'never': -44.867510600686188, 'well': -29.509856034631586, 'better': -35.522581062669829, 'night': -20.557969084747054})
+
 These are the probability results for the tweet with words: hmm, lose, lose, started, promising, sports, night, hashtags associated = pens, cavs
 {'lose': -83.379419896214955, 'started': -111.17255986161993, 'night': -152.00683579394061, 'sports': -146.03557395448348, 'hmm': -27.793139965404983, 'promising': -138.96569982702491}
 ('140conf', {'lose': -73.52236641259401, 'started': -98.029821883458681, 'night': -150.82892245810629, 'sports': -147.04473282518802, 'hmm': -24.50745547086467, 'promising': -122.53727735432335})
@@ -3434,6 +3493,7 @@ Max is: |||charitytuesday||| with sum of -313.286762924 for {'lose': -28.1779857
 Average of the summations is: -504.638154267
 This is the probability result for the TARGET:
 ('squarespace', {'lose': -38.879533341719657, 'started': -44.931622509644072, 'night': -103.4358094013087, 'sports': -98.482332521385729, 'hmm': -26.775355005870829, 'promising': -71.706977515514893})
+
 These are the probability results for the tweet with words: alright, wanted, go, outside, denied, hashtags associated = meowmonday
 {'alright': -7.0698741274585721, 'go': -18.570565054117601, 'outside': -25.640439181576173, 'wanted': -13.446601074857199, 'denied': -53.43357914698116}
 ('ontd', {'alright': -24.278613898435825, 'go': -52.112575857361065, 'outside': -76.391189755796887, 'wanted': -48.557227796871651, 'denied': -100.66980365423271})
@@ -3492,6 +3552,7 @@ Max is: |||followfriday||| with sum of -118.161058585 for {'alright': -7.0698741
 Average of the summations is: -267.771086975
 This is the probability result for the TARGET:
 ('followfriday', {'alright': -7.0698741274585721, 'go': -18.570565054117601, 'outside': -25.640439181576173, 'wanted': -13.446601074857199, 'denied': -53.43357914698116})
+
 These are the probability results for the tweet with words: get, fatty, hashtags associated = facup
 {'fatty': -31.727519877890927, 'get': -3.9343799124859444}
 ('twittertakeover', {'fatty': -26.898093064856756, 'get': -2.7408400234252008})
@@ -3550,6 +3611,7 @@ Max is: |||shaunjumpnow||| with sum of -6.06842558624 for {'fatty': -4.276666117
 Average of the summations is: -29.3579504162
 This is the probability result for the TARGET:
 ('followfriday', {'fatty': -31.727519877890927, 'get': -3.9343799124859444})
+
 These are the probability results for the tweet with words: oh, i, wish, i, wordcamp, chicago, right, now, hashtags associated = wcchicago
 {'right': -53.251674171233432, 'wordcamp': -41.819976116485165, 'i': -14.026836151080179, 'wish': -12.214457394654596, 'chicago': -48.889850243943741, 'oh': -4.4308167987718852, 'now': -56.920350917996515}
 ('cws', {'right': -74.712113791435613, 'wordcamp': -50.405329017033097, 'i': -27.890303710858628, 'wish': -26.098544242630574, 'chicago': -72.920354323207562, 'oh': -1.7917594682280549, 'now': -75.810726079603725})
@@ -3608,6 +3670,7 @@ Max is: |||fb||| with sum of -217.45449002 for {'right': -50.040635043898092, 'w
 Average of the summations is: -296.336781899
 This is the probability result for the TARGET:
 ('fb', {'right': -50.040635043898092, 'wordcamp': -39.88477528997096, 'i': -12.494552660595344, 'wish': -11.248130867442848, 'chicago': -45.858584901340222, 'oh': -5.2806624310593158, 'now': -52.647148825763637})
+
 These are the probability results for the tweet with words: , hashtags associated = sebday
 {}
 ('apprentice', {})
@@ -3666,6 +3729,7 @@ Max is: |||apprentice||| with sum of 0.0 for {}
 Average of the summations is: 0.0
 This is the probability result for the TARGET:
 ('followfriday', {})
+
 These are the probability results for the tweet with words: shit, sucks, hashtags associated = 3turnoffwords
 {'sucks': -34.169866912803613, 'shit': -6.3767269473986268}
 ('trackle', {'sucks': -50.331834186873451, 'shit': -25.165917093436725})
@@ -3724,6 +3788,7 @@ Max is: |||xa||| with sum of -4.8283137343 for {'sucks': -3.2188758228682004, 's
 Average of the summations is: -43.5229102673
 This is the probability result for the TARGET:
 ('fb', {'sucks': -11.254472042428578, 'shit': -5.9738096113692611})
+
 These are the probability results for the tweet with words: thank, you, hashtags associated = followfriday
 {'you': -4.4471052000916025, 'thank': -1.8880905781608694}
 ('dontyouhate', {'you': -27.051797681353584, 'thank': -24.436837903650719})
@@ -3782,6 +3847,7 @@ Max is: |||maternalhealth||| with sum of -2.05572501356 for {'you': -1.832581462
 Average of the summations is: -25.709077486
 This is the probability result for the TARGET:
 ('followfriday', {'you': -4.4471052000916025, 'thank': -1.8880905781608694})
+
 These are the probability results for the tweet with words: committee, , me, hashtags associated = followfriday, bloggerprom
 {'': -29.424934784936013, 'me': -33.604437155442866, 'committee': -27.793139965404983}
 ('wwdc', {'': -25.519056382293151, 'me': -28.610098834651467, 'committee': -23.814308290304727})
@@ -3840,6 +3906,7 @@ Max is: |||f1||| with sum of -44.1706432246 for {'': -6.9874902459176571, 'me': 
 Average of the summations is: -80.8324669183
 This is the probability result for the TARGET:
 ('followfriday', {'': -29.424934784936013, 'me': -33.604437155442866, 'committee': -27.793139965404983})
+
 These are the probability results for the tweet with words: palms, sweaty, , going, wire, i, like, hashtags associated = pakcricket
 {'': -57.218074750340996, 'wire': -89.683193571315272, 'like': -95.164249074503942, 'palms': -27.793139965404983, 'i': -91.495572327740859, 'sweaty': -55.586279930809965, 'going': -61.890053605910289}
 ('redsox', {'': -49.946171705061467, 'wire': -76.335864229120304, 'like': -79.36323358697463, 'palms': -23.556479181002626, 'i': -77.223167423978353, 'sweaty': -47.112958362005251, 'going': -52.779385048117682})
@@ -3898,6 +3965,7 @@ Max is: |||lofnotc||| with sum of -375.104956467 for {'': -29.734179182975698, '
 Average of the summations is: -422.967308547
 This is the probability result for the TARGET:
 ('fb', {'': -56.765270824046965, 'wire': -66.435622761750082, 'like': -70.981705517310829, 'palms': -27.390222629375618, 'i': -67.682044554902575, 'sweaty': -54.780445258751236, 'going': -59.768665970320882})
+
 These are the probability results for the tweet with words: oi, vey, another, wicket, down, go, proteas, hashtags associated = t20
 {'oi': -27.793139965404983, 'wicket': -88.252069447226191, 'down': -116.04520941263118, 'another': -60.458929481821208, 'go': -121.16917339189158, 'vey': -55.586279930809965, 'proteas': -148.96231335729655}
 ('happybdaykrisallen', {'oi': -24.157253041431556, 'wicket': -96.629012165726223, 'down': -120.78626520715778, 'another': -72.471759124294664, 'go': -122.61081449900882, 'vey': -48.314506082863112, 'proteas': -146.76806754044037})
@@ -3956,6 +4024,7 @@ Max is: |||newo||| with sum of -426.117974868 for {'oi': -22.669175986001722, 'w
 Average of the summations is: -548.604902459
 This is the probability result for the TARGET:
 ('fb', {'oi': -27.390222629375618, 'wicket': -86.535039587462009, 'down': -91.815702018521321, 'another': -59.144816958086395, 'go': -95.115362980929575, 'vey': -54.780445258751236, 'proteas': -122.50558561030519})
+
 These are the probability results for the tweet with words: i, go, work, hashtags associated = inaperfectworld
 {'i': -1.8123787564255824, 'go': -6.9363427356859839, 'work': -11.298166662975678}
 ('140conf', {'i': -0.95097628980322124, 'go': -25.458431760667892, 'work': -29.242621393586152})
@@ -4014,6 +4083,7 @@ Max is: |||sad||| with sum of -7.64833550918 for {'i': -0.47000362904573545, 'go
 Average of the summations is: -21.4586369309
 This is the probability result for the TARGET:
 ('fb', {'i': -1.2464217931524963, 'go': -4.5460827555607466, 'work': -7.3010165425418077})
+
 These are the probability results for the tweet with words: course, am, know, already, hashtags associated = noundiessunday
 {'course': -5.9712618394571289, 'already': -43.159217933172528, 'am': -33.764401804862111, 'know': -37.698781717348055}
 ('hoppusday', {'course': -24.436837903650719, 'already': -77.024085776656477, 'am': -48.873675807301439, 'know': -73.310513710952165})
@@ -4072,6 +4142,7 @@ Max is: |||squarespace||| with sum of -50.345699014 for {'course': -4.9534768799
 Average of the summations is: -166.804897794
 This is the probability result for the TARGET:
 ('fb', {'course': -5.9738096113692611, 'already': -21.274199622073553, 'am': -11.947619222738522, 'know': -16.216680742278449})
+
 These are the probability results for the tweet with words: , allow, lts, nonlts, upgrade, , used, try, run, version, servers, comp, not, anymore, hashtags associated = ubuntu
 {'': -114.43614950068198, 'lts': -57.218074750340996, 'upgrade': -112.80435468115095, 'run': -154.9827433606342, 'version': -182.77588332603918, 'anymore': -271.61573943807861, 'comp': -238.36216325684913, 'servers': -210.56902329144415, 'try': -149.29916359354553, 'used': -142.22928946608695, 'allow': -29.424934784936013, 'not': -243.8225994726736, 'nonlts': -85.011214715745979}
 ('communityone', {'': -92.549690820390239, 'lts': -46.27484541019512, 'upgrade': -90.94025290895614, 'run': -159.54780206853175, 'version': -181.88050581791225, 'anymore': -250.48805497748785, 'comp': -226.54591331667325, 'servers': -204.21320956729275, 'try': -137.21509831915125, 'used': -114.88239456977075, 'allow': -23.94214166081461, 'not': -228.15535122810735, 'nonlts': -68.607549159575626})
@@ -4130,6 +4201,7 @@ Max is: |||fail||| with sum of -1223.22715171 for {'': -63.692379092987657, 'lts
 Average of the summations is: -1760.61595581
 This is the probability result for the TARGET:
 ('fail', {'': -63.692379092987657, 'lts': -32.395495690494549, 'upgrade': -62.132640849136131, 'run': -99.584382343978987, 'version': -104.64062814832729, 'anymore': -165.21353075361191, 'comp': -156.19965143291674, 'servers': -130.42013979062202, 'try': -94.52813653963068, 'used': -89.471890735282372, 'allow': -6.6159840481998327, 'not': -160.15728494926361, 'nonlts': -58.175007332789264})
+
 These are the probability results for the tweet with words: , hashtags associated = followfriday
 {}
 ('apprentice', {})
@@ -4188,6 +4260,7 @@ Max is: |||apprentice||| with sum of 0.0 for {}
 Average of the summations is: 0.0
 This is the probability result for the TARGET:
 ('followfriday', {})
+
 These are the probability results for the tweet with words: watching, greek, i, believe, season, ends, tonight, hashtags associated = bsb
 {'ends': -140.77807858345048, 'watching': -27.793139965404983, 'i': -57.398658687235546, 'season': -112.9849386180455, 'tonight': -146.74934042290761, 'greek': -55.586279930809965, 'believe': -85.191798652640529}
 ('mmwanted', {'ends': -122.30936022398184, 'watching': -24.278613898435825, 'i': -49.473518528674376, 'season': -98.030746325546019, 'tonight': -125.17156110441131, 'greek': -48.557227796871651, 'believe': -73.752132427110197})
@@ -4246,6 +4319,7 @@ Max is: |||trackle||| with sum of -230.289432916 for {'ends': -64.41355975569578
 Average of the summations is: -418.990342409
 This is the probability result for the TARGET:
 ('fb', {'ends': -49.156003295333704, 'watching': -4.1020074348907469, 'i': -32.738651857418859, 'season': -43.875340864274392, 'tonight': -52.878521108543836, 'greek': -31.492230064266366, 'believe': -38.306996360846625})
+
 These are the probability results for the tweet with words: you, late, thanks, trying, o, invented, time, httpbitlynpmkk, 12, hashtags associated = rikatuesday, charitytuesday
 {'invented': -91.501589240291082, 'o': -63.708449274886092, 'late': -6.9898314207026182, '12': -130.66188873931094, 'thanks': -8.1221693440761253, 'time': -95.798874646447373, 'you': -2.559014621930733, 'trying': -35.91530930948111, 'httpbitlynpmkk': -123.59201461185236}
 ('bing', {'invented': -81.48305245704843, 'o': -57.54091079523382, 'late': -27.161017485682809, '12': -153.30947744249227, 'thanks': -30.379893309551008, 'time': -105.42519411886303, 'you': -3.2188758238682005, 'trying': -33.598769133419211, 'httpbitlynpmkk': -129.36733578067765})
@@ -4304,6 +4378,7 @@ Max is: |||squarespace||| with sum of -342.633775564 for {'invented': -50.744231
 Average of the summations is: -610.602619286
 This is the probability result for the TARGET:
 ('fb', {'invented': -52.017523672616647, 'o': -24.62730104324103, 'late': -9.3449295380163608, '12': -88.136489700342594, 'thanks': -13.932444788640732, 'time': -54.77245745959771, 'you': -4.4697322149818763, 'trying': -18.653491431871768, 'httpbitlynpmkk': -82.162680088973332})
+
 These are the probability results for the tweet with words: thanks, hashtags associated = followfriday
 {'thanks': -1.1323379233735071}
 ('eric', {'thanks': -2.9957322725539908})
@@ -4362,6 +4437,7 @@ Max is: |||ff||| with sum of -0.931179344362 for {'thanks': -0.93117934436165584
 Average of the summations is: -3.72836635106
 This is the probability result for the TARGET:
 ('followfriday', {'thanks': -1.1323379233735071})
+
 These are the probability results for the tweet with words: the, today, i, susan, boyle, gets, booted, you, think, spat, dummy, hashtags associated = news, paps
 {'dummy': -163.87418769612887, 'spat': -136.0810477307239, 'susan': -38.775453678963373, 'i': -10.982313713558392, 'think': -108.28790776531892, 'today': -9.1699349571328099, 'the': -5.278114659063851, 'gets': -73.638467771826924, 'you': -103.99062235916263, 'boyle': -66.568593644368349, 'booted': -101.4316077372319}
 ('peterfacinelli', {'dummy': -181.28787726886421, 'spat': -157.03825090730163, 'susan': -32.2637585758726, 'i': -8.014132214310024, 'think': -132.78862454573905, 'today': -7.052721047232323, 'the': -3.5263605236161615, 'gets': -80.763011298997753, 'you': -129.26226402212291, 'boyle': -56.513384937435177, 'booted': -105.01263766056033})
@@ -4420,6 +4496,7 @@ Max is: |||bgt||| with sum of -531.320916279 for {'dummy': -124.64820827571626, 
 Average of the summations is: -874.698770309
 This is the probability result for the TARGET:
 ('bgt', {'dummy': -124.64820827571626, 'spat': -99.154257814304174, 'susan': -13.196634464265284, 'i': -10.505391381604454, 'think': -73.66030735289209, 'today': -9.54136924693133, 'the': -4.770684623465665, 'gets': -41.669510080748303, 'you': -70.835532877624601, 'boyle': -16.175559619336227, 'booted': -67.163460542160379})
+
 These are the probability results for the tweet with words: cold, one, youve, earned, it, hashtags associated = hhrs
 {'earned': -66.142509248243215, 'cold': -27.793139965404983, 'youve': -38.349369282838239, 'it': -69.84508754668083, 'one': -31.279495155379667}
 ('writechat', {'earned': -74.882012831231009, 'cold': -23.901319667294356, 'youve': -50.980693163936657, 'it': -77.366919480519016, 'one': -27.079373496642301})
@@ -4478,6 +4555,7 @@ Max is: |||awesome||| with sum of -133.108961934 for {'earned': -49.542282801177
 Average of the summations is: -245.937447374
 This is the probability result for the TARGET:
 ('followfriday', {'earned': -66.142509248243215, 'cold': -27.793139965404983, 'youve': -38.349369282838239, 'it': -69.84508754668083, 'one': -31.279495155379667})
+
 These are the probability results for the tweet with words: , hashtags associated = ff
 {}
 ('apprentice', {})
@@ -4536,6 +4614,7 @@ Max is: |||apprentice||| with sum of 0.0 for {}
 Average of the summations is: 0.0
 This is the probability result for the TARGET:
 ('followfriday', {})
+
 These are the probability results for the tweet with words: thnx, 4, t, movie, info, like, said, unlikely, able, watch, here, else, youtube, thanne, sharanam, hashtags associated = mallu
 {'info': -50.153742623267192, 'said': -58.812851956684014, 'like': -53.822419370030275, 'movie': -43.777015675868569, 'thnx': -5.278114659063851, 'sharanam': -194.96907146413389, 'able': -114.39913188749398, 'youtube': -139.38279153332394, 'here': -126.34165556640824, 'else': -132.31291740586536, 'watch': -120.37039372695111, '4': -8.9140015830050192, 'unlikely': -86.605991922089004, 'thanne': -167.17593149872891, 't': -36.70714154841}
 ('', {'info': -99.372247676807291, 'said': -105.96392140681596, 'like': -102.66808454181162, 'movie': -75.353144973856558, 'thnx': -24.01910270295074, 'sharanam': -298.11674303042184, 'able': -154.00212681271742, 'youtube': -250.07853762452035, 'here': -202.04033221861889, 'else': -226.05943492156962, 'watch': -178.02122951566815, '4': -27.314939567955069, 'unlikely': -129.98302410976669, 'thanne': -274.09764032747108, 't': -51.334042270905812})
@@ -4594,6 +4673,7 @@ Max is: |||followfriday||| with sum of -1339.02317242 for {'info': -50.153742623
 Average of the summations is: -2130.81591548
 This is the probability result for the TARGET:
 ('followfriday', {'info': -50.153742623267192, 'said': -58.812851956684014, 'like': -53.822419370030275, 'movie': -43.777015675868569, 'thnx': -5.278114659063851, 'sharanam': -194.96907146413389, 'able': -114.39913188749398, 'youtube': -139.38279153332394, 'here': -126.34165556640824, 'else': -132.31291740586536, 'watch': -120.37039372695111, '4': -8.9140015830050192, 'unlikely': -86.605991922089004, 'thanne': -167.17593149872891, 't': -36.70714154841})
+
 These are the probability results for the tweet with words: anyone, else, spotted, me, the, trancecat, , httptinyurlcomdk5yrb, see, image, mrraaaauwww, seen, , hashtags associated = asot400
 {'spotted': -38.888365784122513, 'me': -43.067868154629366, '': -173.92614829713835, 'mrraaaauwww': -165.91762653020871, 'image': -138.12448656480373, 'else': -11.09522581871753, 'anyone': -5.1239639792604015, 'httptinyurlcomdk5yrb': -105.56405756403421, 'see': -110.33134659939874, 'seen': -172.29435347760733, 'the': -48.345982813693219, 'trancecat': -76.139122779098201}
 ('sytycd', {'spotted': -72.835841695307479, 'me': -76.391189755796887, '': -210.61935712981378, 'mrraaaauwww': -183.47854235094849, 'image': -159.19992845251267, 'else': -48.557227796871651, 'anyone': -24.278613898435825, 'httptinyurlcomdk5yrb': -131.36596649358742, 'see': -134.92131455407684, 'seen': -207.75715624938431, 'the': -79.946537816286295, 'trancecat': -104.22515171472212})
@@ -4652,6 +4732,7 @@ Max is: |||140conf||| with sum of -735.510948114 for {'spotted': -10.65942171869
 Average of the summations is: -1264.20560973
 This is the probability result for the TARGET:
 ('fb', {'spotted': -38.08507888397591, 'me': -42.26712902653378, '': -169.87428525339652, 'mrraaaauwww': -161.22250289667159, 'image': -133.83228026729597, 'else': -10.694856254600296, 'anyone': -4.7210466432310358, 'httptinyurlcomdk5yrb': -102.60831418960618, 'see': -106.44205763792034, 'seen': -167.8894596881008, 'the': -45.843043365559218, 'trancecat': -73.23326599493484})
+
 These are the probability results for the tweet with words: yet, another, api, pep8, compliant, or, pythonic, all, cant, help, voice, concern, hashtags associated = google
 {'pythonic': -126.88912080309953, 'help': -144.14749946856688, 'all': -131.39404557401963, 'cant': -138.4639197014782, 'or': -99.095980837694555, 'pep8': -65.331579032832451, 'compliant': -93.124718998237427, 'api': -37.538439067427461, 'another': -9.7452991020224822, 'voice': -171.94063943397185, 'yet': -4.8726495510112411, 'concern': -199.73377939937683}
 ('startrek', {'pythonic': -143.29594642839393, 'help': -192.86662870459338, 'all': -166.72726246644254, 'cant': -169.43531266654475, 'or': -119.86463039034531, 'pep8': -73.00199831424807, 'compliant': -96.433314352296691, 'api': -49.570682276199449, 'another': -26.139366238150831, 'voice': -216.29794474264202, 'yet': -2.70805020010221, 'concern': -239.72926078069065})
@@ -4710,6 +4791,7 @@ Max is: |||twitter||| with sum of -988.121994862 for {'pythonic': -89.5279826234
 Average of the summations is: -1432.20923628
 This is the probability result for the TARGET:
 ('iranelection', {'pythonic': -121.51523362003857, 'help': -132.65149190662828, 'all': -125.93407422750184, 'cant': -129.84208921133245, 'or': -95.274514886627458, 'pep8': -63.516343257751643, 'compliant': -89.757061991162757, 'api': -37.275624524340529, 'another': -11.034905790929415, 'voice': -136.08950326128814, 'yet': -5.5174528954647073, 'concern': -162.33022199469926})
+
 These are the probability results for the tweet with words: know, quotyou, rightquotjust, saying, hunkahunka, lol, hashtags associated = 3hotwords
 {'saying': -66.590533970754478, 'hunkahunka': -94.383673936159454, 'lol': -98.563176306666307, 'quotyou': -31.727519877890927, 'know': -3.9343799124859444, 'rightquotjust': -59.52065984329591}
 ('asot400', {'saying': -80.015114109776917, 'hunkahunka': -105.74901524081957, 'lol': -131.48291637186225, 'quotyou': -28.547311847691589, 'know': -2.8134107166489248, 'rightquotjust': -54.281212978734253})
@@ -4768,6 +4850,7 @@ Max is: |||robotpickuplines||| with sum of -249.419770265 for {'saying': -53.429
 Average of the summations is: -355.585750568
 This is the probability result for the TARGET:
 ('followfriday', {'saying': -66.590533970754478, 'hunkahunka': -94.383673936159454, 'lol': -98.563176306666307, 'quotyou': -31.727519877890927, 'know': -3.9343799124859444, 'rightquotjust': -59.52065984329591})
+
 These are the probability results for the tweet with words: bah, concentrated, effort, foes, lyxanda, esmoves, killed, hashtags associated = spymaster
 {'concentrated': -55.586279930809965, 'foes': -111.17255986161993, 'lyxanda': -138.96569982702491, 'esmoves': -166.75883979242988, 'effort': -83.379419896214955, 'killed': -194.55197975783486, 'bah': -27.793139965404983}
 ('mileymonday', {'concentrated': -48.92187091045956, 'foes': -97.843741820919121, 'lyxanda': -122.30467727614891, 'esmoves': -146.7656127313787, 'effort': -73.382806365689333, 'killed': -171.22654818660848, 'bah': -24.46093545522978})
@@ -4826,6 +4909,7 @@ Max is: |||os3||| with sum of -485.357847707 for {'concentrated': -24.3067847744
 Average of the summations is: -669.301554629
 This is the probability result for the TARGET:
 ('fb', {'concentrated': -54.780445258751236, 'foes': -88.837624679556058, 'lyxanda': -116.22784730893167, 'esmoves': -143.61806993830729, 'effort': -61.447402050180443, 'killed': -171.0082925676829, 'bah': -27.390222629375618})
+
 These are the probability results for the tweet with words: yeahmetric, not, metro, station, hashtags associated = fail
 {'not': -33.253576181229455, 'station': -68.116590274093014, 'metro': -61.046716146634438, 'yeahmetric': -27.793139965404983}
 ('nhl', {'not': -25.328436021934504, 'station': -71.380137881815415, 'metro': -48.354286951874961, 'yeahmetric': -23.025850929940457})
@@ -4884,6 +4968,7 @@ Max is: |||apprentice||| with sum of -136.1556817 for {'not': -26.79169142485718
 Average of the summations is: -182.655422681
 This is the probability result for the TARGET:
 ('followfriday', {'not': -33.253576181229455, 'station': -68.116590274093014, 'metro': -61.046716146634438, 'yeahmetric': -27.793139965404983})
+
 These are the probability results for the tweet with words: kim, jong, il, httptinyurlcomad5z3j, awww, yeah, hashtags associated = 3hotwords
 {'yeah': -101.54451984239105, 'httptinyurlcomad5z3j': -89.350681735672083, 'awww': -96.420555863130659, 'jong': -33.764401804862111, 'il': -61.557541770267093, 'kim': -5.9712618394571289}
 ('sanctuarysunday', {'yeah': -119.00602532850127, 'httptinyurlcomad5z3j': -93.152860777631787, 'awww': -116.44107597203973, 'jong': -46.576430388815893, 'il': -69.864645583223847, 'kim': -23.288215194407947})
@@ -4942,6 +5027,7 @@ Max is: |||followfriday||| with sum of -388.608962856 for {'yeah': -101.54451984
 Average of the summations is: -480.774728452
 This is the probability result for the TARGET:
 ('followfriday', {'yeah': -101.54451984239105, 'httptinyurlcomad5z3j': -89.350681735672083, 'awww': -96.420555863130659, 'jong': -33.764401804862111, 'il': -61.557541770267093, 'kim': -5.9712618394571289})
+
 These are the probability results for the tweet with words: reading, zora, neal, hurstons, their, eyes, were, watching, god, first, time, 11th, grade, crying, great, read, hashtags associated = iremember
 {'hurstons': -89.350681735672083, 'crying': -278.43837548786934, 'watching': -179.79997575934559, 'grade': -250.64523552246436, 'god': -185.48355552643426, 'time': -195.05895559165441, 'neal': -61.557541770267093, 'eyes': -144.93696166648203, 'read': -286.06341105378954, 'their': -117.14382170107706, 'great': -281.19076150277829, 'zora': -33.764401804862111, 'were': -152.00683579394061, '11th': -222.85209555705939, 'reading': -5.9712618394571289, 'first': -190.7616701854981}
 ('thesims3', {'hurstons': -89.33081499752204, 'crying': -271.21132081543425, 'watching': -178.66162999504405, 'grade': -248.87861706605375, 'god': -200.99433374442455, 'time': -204.21320956729275, 'neal': -66.998111248141527, 'eyes': -133.99622249628305, 'read': -315.8767283141953, 'their': -111.66351874690255, 'great': -293.54402456481478, 'zora': -44.66540749876102, 'were': -156.32892624566355, '11th': -226.54591331667325, 'reading': -22.33270374938051, 'first': -202.60377165585865})
@@ -5000,6 +5086,7 @@ Max is: |||fb||| with sum of -2266.54042005 for {'hurstons': -88.837624679556058
 Average of the summations is: -2791.87808699
 This is the probability result for the TARGET:
 ('fb', {'hurstons': -88.837624679556058, 'crying': -206.48151887758422, 'watching': -153.69388698456729, 'grade': -199.81456208615501, 'god': -158.9745494156266, 'time': -165.75738266535018, 'neal': -61.447402050180443, 'eyes': -143.61806993830729, 'read': -215.25108427068312, 'their': -116.22784730893167, 'great': -209.97042183962381, 'zora': -34.057179420804822, 'were': -149.59187954967655, '11th': -193.14760529472579, 'reading': -6.6669567914292065, 'first': -163.00244887836911})
+
 These are the probability results for the tweet with words: everyones, getting, new, iphone, please, give, one, i, need, it, hashtags associated = trackle
 {'give': -54.211884136931403, 'i': -59.510618083331671, 'getting': -34.863014092863551, 'please': -49.087920157671, 'it': -67.718121152689392, 'one': -57.698239326906091, 'iphone': -44.502952679083762, 'need': -64.015542854251777, 'new': -38.531690839626634, 'everyones': -27.793139965404983}
 ('musicmonday', {'give': -133.08185987509393, 'i': -138.58621532481988, 'getting': -51.961522417948387, 'please': -107.10109866611973, 'it': -167.33956525595053, 'one': -136.7299173344876, 'iphone': -81.120337457145524, 'need': -164.56697653379408, 'new': -55.139576248171331, 'everyones': -25.980761208974194})
@@ -5058,6 +5145,7 @@ Max is: |||squarespace||| with sum of -184.654823815 for {'give': -20.2804400496
 Average of the summations is: -753.481533106
 This is the probability result for the TARGET:
 ('squarespace', {'give': -20.280440049602134, 'i': -24.095832576974782, 'getting': -10.024736795418999, 'please': -17.172789859896788, 'it': -30.365200177652824, 'one': -23.197035002553925, 'iphone': -14.21174314437614, 'need': -27.203482766680128, 'new': -12.744621454132497, 'everyones': -5.3589419878644717})
+
 These are the probability results for the tweet with words: hope, evryone, fun, today, mollyd, take, care, grandma, pawty, hashtags associated = pawpawty
 {'evryone': -31.429026889346151, 'pawty': -135.19139059688925, 'hope': -3.6358869239411677, 'grandma': -107.39825063148427, 'fun': -35.859843688118033, 'mollyd': -67.544803951591973, 'care': -79.605110666079284, 'today': -39.75166398618699, 'take': -73.228383718680661}
 ('nba', {'evryone': -47.335409632225705, 'pawty': -170.8696644890629, 'hope': -23.667704816112852, 'grandma': -147.20195967295004, 'fun': -50.279848610392143, 'mollyd': -97.615258242617841, 'care': -123.53425485683718, 'today': -73.947553426504996, 'take': -99.866550040724334})
@@ -5116,6 +5204,7 @@ Max is: |||asylm||| with sum of -497.909228084 for {'evryone': -28.5473118468027
 Average of the summations is: -700.382035475
 This is the probability result for the TARGET:
 ('fb', {'evryone': -32.265419952410099, 'pawty': -130.69042216983749, 'hope': -4.8751973230344845, 'grandma': -103.30019954046188, 'fun': -36.367427387300843, 'mollyd': -66.313732944915969, 'care': -75.909976911086261, 'today': -38.923510315540348, 'take': -70.341632407658494})
+
 These are the probability results for the tweet with words: yup, orange, straw, ex, red, curles, , hashtags associated = marsiscoming, marsiscoming, marsiscoming, marsiscoming, marsiscoming, marsiscoming
 {'': -168.39063461196091, 'curles': -166.75883979242988, 'yup': -27.793139965404983, 'straw': -83.379419896214955, 'ex': -111.17255986161993, 'orange': -55.586279930809965, 'red': -138.96569982702491}
 ('inaperfectworld', {'': -153.55611611468132, 'curles': -150.32399506339644, 'yup': -25.05399917723274, 'straw': -75.161997531698219, 'ex': -100.21599670893096, 'orange': -50.107998354465479, 'red': -125.2699958861637})
@@ -5174,6 +5263,7 @@ Max is: |||vegas||| with sum of -452.285022644 for {'': -101.71237673088935, 'cu
 Average of the summations is: -612.189113029
 This is the probability result for the TARGET:
 ('fb', {'': -123.78101737765516, 'curles': -121.79619181235944, 'yup': -27.390222629375618, 'straw': -61.447402050180443, 'ex': -88.837624679556058, 'orange': -34.057179420804822, 'red': -94.405969182983824})
+
 These are the probability results for the tweet with words: tall, thick, woman, high, heels, hashtags associated = myweakness
 {'high': -66.681505749527503, 'tall': -27.793139965404983, 'thick': -55.586279930809965, 'woman': -60.710243910070368, 'heels': -94.474645714932478}
 ('bradiewebb', {'high': -97.843741820919121, 'tall': -24.46093545522978, 'thick': -48.92187091045956, 'woman': -73.382806365689333, 'heels': -122.30467727614891})
@@ -5232,6 +5322,7 @@ Max is: |||fb||| with sum of -262.571602752 for {'high': -66.504920929975555, 't
 Average of the summations is: -353.275445039
 This is the probability result for the TARGET:
 ('followfriday', {'high': -66.681505749527503, 'tall': -27.793139965404983, 'thick': -55.586279930809965, 'woman': -60.710243910070368, 'heels': -94.474645714932478})
+
 These are the probability results for the tweet with words: thanks, , e3, , love, hashtags associated = musicmonday
 {'': -32.18906752784055, 'love': -34.540442784995101, 'thanks': -1.1323379233735071, 'e3': -30.557272708309519}
 ('justsayin', {'': -25.774723123562918, 'love': -27.384161034997017, 'thanks': -1.6094379114341002, 'e3': -24.858432392188764})
@@ -5290,6 +5381,7 @@ Max is: |||e3||| with sum of -34.4162784717 for {'': -9.2846114598096907, 'love'
 Average of the summations is: -96.7239058121
 This is the probability result for the TARGET:
 ('e3', {'': -9.2846114598096907, 'love': -13.362148903215409, 'thanks': -4.770684623465665, 'e3': -6.9988334852153598})
+
 These are the probability results for the tweet with words: , hashtags associated = followfriday
 {}
 ('apprentice', {})
@@ -5348,6 +5440,7 @@ Max is: |||apprentice||| with sum of 0.0 for {}
 Average of the summations is: 0.0
 This is the probability result for the TARGET:
 ('followfriday', {})
+
 These are the probability results for the tweet with words: happy, birthday, hashtags associated = followfriday
 {'birthday': -10.920872431008943, 'happy': -3.8509983035503716}
 ('bacon', {'birthday': -23.783536631304639, 'happy': -0.9808292526783926})
@@ -5406,6 +5499,7 @@ Max is: |||tetris||| with sum of -2.74887219412 for {'birthday': -1.832581462748
 Average of the summations is: -26.7019923243
 This is the probability result for the TARGET:
 ('followfriday', {'birthday': -10.920872431008943, 'happy': -3.8509983035503716})
+
 These are the probability results for the tweet with words: maybe, i, start, saving, 4, vikings, jersey, httptinyurlcomc2ocw5, hashtags associated = fb
 {'httptinyurlcomc2ocw5': -127.76484152489982, 'saving': -40.749534704743716, 'vikings': -72.178561594089871, 'i': -7.4959585235142638, 'maybe': -5.6835797670886814, 'start': -12.956394739338736, '4': -44.385421628684881, 'jersey': -99.971701559494846}
 ('cgft', {'httptinyurlcomc2ocw5': -144.97766243397643, 'saving': -50.523112054606145, 'vikings': -97.750387244291289, 'i': -3.2958368649209953, 'maybe': -2.8903717568961644, 'start': -26.909474459763572, '4': -74.136749649448717, 'jersey': -121.36402483913386})
@@ -5464,6 +5558,7 @@ Max is: |||goodsex||| with sum of -355.461484607 for {'httptinyurlcomc2ocw5': -1
 Average of the summations is: -527.224345851
 This is the probability result for the TARGET:
 ('followfriday', {'httptinyurlcomc2ocw5': -127.76484152489982, 'saving': -40.749534704743716, 'vikings': -72.178561594089871, 'i': -7.4959585235142638, 'maybe': -5.6835797670886814, 'start': -12.956394739338736, '4': -44.385421628684881, 'jersey': -99.971701559494846})
+
 These are the probability results for the tweet with words: , got, 35, followers, makes, sad, hashtags associated = followfriday
 {'': -1.631794819531029, '35': -33.929859555856126, 'sad': -71.545259664268599, 'followers': -37.780857859406495, 'got': -6.1367195904511416, 'makes': -43.752119698863623}
 ('smx', {'': -1.3862943606198903, '35': -26.268443279925972, 'sad': -73.953299577858303, 'followers': -28.347884820605806, 'got': -3.465735901299726, 'makes': -51.150592199232051})
@@ -5522,6 +5617,7 @@ Max is: |||twitter||| with sum of -145.667538807 for {'': -1.3682758555457841, '
 Average of the summations is: -227.644665836
 This is the probability result for the TARGET:
 ('fb', {'': -1.9848255652957274, '35': -12.274216711383097, 'sad': -49.00936887866397, 'followers': -39.664439340758719, 'got': -5.6072599199538917, 'makes': -45.232783844186486})
+
 These are the probability results for the tweet with words: hows, swim, inside, going, enjoy, view, via, hashtags associated = joomla
 {'swim': -34.169866912803613, 'hows': -6.3767269473986268, 'via': -84.060418483894452, 'inside': -41.239741040262189, 'enjoy': -50.583698751400775, 'going': -45.911719895831482, 'view': -78.376838716805764}
 ('clothdiapers', {'swim': -49.387115500997062, 'hows': -24.693557750498531, 'via': -151.03302612754186, 'inside': -74.080673251495597, 'enjoy': -101.6459106265448, 'going': -76.952352876046277, 'view': -126.33946837704333})
@@ -5580,6 +5676,7 @@ Max is: |||followfriday||| with sum of -340.719010748 for {'swim': -34.169866912
 Average of the summations is: -530.479093569
 This is the probability result for the TARGET:
 ('fb', {'swim': -54.780445258751236, 'hows': -27.390222629375618, 'via': -79.951857902711708, 'inside': -59.83796413854634, 'enjoy': -68.409703788248024, 'going': -62.841359284820257, 'view': -75.076660579677224})
+
 These are the probability results for the tweet with words: called, , i, love, it, but, called, famous, vadewale, always, impress, hashtags associated = vadapav, pune, fail, vadapav
 {'': -29.424934784936013, 'vadewale': -125.66111957982244, 'love': -33.588688798516145, 'i': -31.237313541361594, 'always': -129.89778036416598, 'impress': -157.69092032957096, 'it': -37.29126709695376, 'but': -42.281699683607499, 'famous': -97.867979614417465, 'called': -70.074839649012489}
 ('wcchicago', {'': -23.921938954372092, 'vadewale': -123.2089620660347, 'love': -27.813759251232717, 'i': -25.174701922617459, 'always': -146.57128523259638, 'impress': -169.93360839915806, 'it': -29.759669399788031, 'but': -53.121992566349704, 'famous': -99.846638899473035, 'called': -76.484315732911369})
@@ -5638,6 +5735,7 @@ Max is: |||tcot||| with sum of -369.799886937 for {'': -6.2758375781484519, 'vad
 Average of the summations is: -677.993035544
 This is the probability result for the TARGET:
 ('fb', {'': -7.5531700687234906, 'vadewale': -81.065923392336785, 'love': -12.758498453136317, 'i': -8.799591861875987, 'always': -85.94112071537127, 'impress': -113.33134334474688, 'it': -16.247401415175911, 'but': -20.71713363015779, 'famous': -53.675700762961171, 'called': -26.285478133585553})
+
 These are the probability results for the tweet with words: it, piggish, came, got, free, pic, w, olivia, book, signed, joseph, kanon, time, hashtags associated = bea09
 {'kanon': -221.48419856144696, 'w': -82.518498734422067, 'pic': -76.547236894964939, 'it': -3.7025782984376154, 'free': -70.170509947566316, 'book': -138.10477866523203, 'olivia': -110.31163869982706, 'signed': -165.89791863063701, 'piggish': -31.495718263842598, 'time': -225.78148396760326, 'got': -63.793783000167693, 'came': -59.28885822924758, 'joseph': -193.69105859604198}
 ('awaresg', {'kanon': -243.07378044008527, 'w': -124.23483906673607, 'pic': -100.46705079206623, 'it': -2.3513752566634776, 'free': -76.699262517396406, 'book': -171.77041561607575, 'olivia': -148.00262734140591, 'signed': -195.53820389074559, 'piggish': -26.11916353133331, 'time': -246.11830287680868, 'got': -73.65474008067298, 'came': -49.88695180600314, 'joseph': -219.30599216541543})
@@ -5696,6 +5794,7 @@ Max is: |||iphone||| with sum of -1079.80512699 for {'kanon': -180.9521249794767
 Average of the summations is: -1529.33999792
 This is the probability result for the TARGET:
 ('fb', {'kanon': -193.84383414215222, 'w': -78.309134013280499, 'pic': -73.433936690246014, 'it': -3.4889029620395942, 'free': -46.0437140608704, 'book': -111.67316625402538, 'olivia': -105.69935664265611, 'signed': -139.06338888340099, 'piggish': -30.87912559141521, 'time': -196.59876792913329, 'got': -40.475369557442633, 'came': -36.852935202784472, 'joseph': -166.4536115127766})
+
 These are the probability results for the tweet with words: blocked, twitter, nevermind, hashtags associated = marsiscoming, marsiscoming, marsiscoming, marsiscoming, marsiscoming, marsiscoming, marsiscoming
 {'twitter': -31.101813978146737, 'nevermind': -58.89495394355172, 'blocked': -27.793139965404983}
 ('lost', {'twitter': -27.45785749591936, 'nevermind': -51.548419162852241, 'blocked': -24.090561666932885})
@@ -5754,6 +5853,7 @@ Max is: |||twitter||| with sum of -34.4991342807 for {'twitter': -3.227174627166
 Average of the summations is: -97.8620808437
 This is the probability result for the TARGET:
 ('fb', {'twitter': -31.659284148915546, 'nevermind': -38.326240940344753, 'blocked': -27.390222629375618})
+
 These are the probability results for the tweet with words: assignment, assignment, assignment, hashtags associated = trackle
 {'assignment': -83.379419896214955}
 ('apprentice', {'assignment': -72.920354326207558})

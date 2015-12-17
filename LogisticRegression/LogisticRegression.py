@@ -94,6 +94,13 @@ def main():
 	weights = sess.run(W)
 	for i in range(len(data.test_set.inputs())):
 
+		correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
+		one_accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+		one_accuracy = sess.run(one_accuracy, feed_dict={x: data.test_set.inputs(), y: data.test_set.targets()})
+
+		print(one_accuracy)
+		exit()
+
 		is_correct_prediction = False
 		tweet = getWords(data.test_set.inputs()[i], tweet_vocabulary)
 		hashtags = getWords(data.test_set.targets()[i], hashtag_vocabulary)
@@ -107,12 +114,12 @@ def main():
 				is_correct_prediction = True
 				break
 
-		print("This is a {} prediction".format(is_correct_prediction))
+		print("This is a {} prediction\t The correct hashtag(s) are: {}".format(is_correct_prediction, hashtags))
 		output_str = ''
 		for word in tweet:
-			output_str += '\t' + word
+			output_str += '\t' + word.ljust(10)
 
-		print("Tweet Words: " + output_str)
+		print("Tweet Words: ".ljust(10) + output_str)
 		print("Hashtags")
 
 		# Get the weight values
@@ -120,12 +127,19 @@ def main():
 			output_str = ''
 			for k in range(len(data.test_set.inputs()[i])):
 				if data.test_set.inputs()[i][k] > 0:
-					output_str += '\t' + '%.2f' % weights[k][top_prediction_probability_indexes[j]]
-			print(predicted_hashtags[j] + output_str)
+					output_str += '\t' + '%.2f'.ljust(10) % weights[k][top_prediction_probability_indexes[j]]
+			print(predicted_hashtags[j].ljust(10) + output_str)
+
+		print("Correct Hashtags")
+		for j in range(len(hashtags)):
+			hashtag_index = hashtag_vocabulary.index(hashtags[j])
+			output_str = ''
+			for k in range(len(data.test_set.inputs()[i])):
+				if data.test_set.inputs()[i][k] > 0:
+					output_str += '\t' + '%.2f'.ljust(10) % weights[k][hashtag_index]
+			print(hashtags[j].ljust(10) + output_str)
 
 		print("\n")
-		if i>50:
-			break
 	exit()
 
 	print("ONE PREDICTION \t TRAIN \t VALID \t TEST \t COST \t EPOCH")
