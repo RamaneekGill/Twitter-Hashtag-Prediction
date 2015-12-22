@@ -68,3 +68,12 @@
 	TODO:
 	Consider mechanical turk ~150-200 people
 	Write the report, only include the analysis for log reg and naive bayes
+
+
+### TODO:
+	- Maybe word2vec
+	- Insights via predicted hashtag -> top m words associated -> top n hashtags associated
+		- Try to find #show -> soyouthinkyoucandance, hellskitchen -> #sucks, #awesome
+	- Outputting predictions for naive bayes and logistic regression for mechanical turk
+		- get n tweets
+			- get top 5 out of 500 predictions from each model
