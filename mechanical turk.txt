@@ -1,0 +1,46 @@
+Tweet: thinking, great, race, rip, silverstone
+	Target: f1
+	Log Reg: f1, fb, nascar, followfriday, maxout
+	Naive Bayes: thinking, squarespace, iranelection, f1, followfriday
+
+Tweet: thank, lovely, mention
+	Target: followfriday
+	Log Reg: followfriday, ff, ecomonday, samesexsunday, follow
+	Naive Bayes: mention, bsb, iranelection, fb, followfriday
+
+Tweet: dude, thanks, karma, back, atcha
+	Target: followfriday
+	Log Reg: followfriday, ff, follow, followfridays, sanctuarysundays
+	Naive Bayes: back, zenjar, hhrs, follow, followfriday
+
+Tweet: blowin, wind, bob, dylan
+	Target: musicmonday
+	Log Reg: fb, sebday, myweakness, followfriday, delongeday
+	Naive Bayes: followfriday, dontyouhate, musicmonday, ff, fb
+
+Tweet: cbc, quotannouncers, goal, lead, champs, as, head, tv, timeout, nice, go, wings
+	Target: redwings
+	Log Reg: redwings, nhl, f1, fb, pens
+	Naive Bayes: followfriday, e3, iranelection, f1, redwings
+
+Tweet: i, believe, will, find, channels, prodcasting, sports, channels, league, days
+	Target: obama, egypt
+	Log Reg: egypt, obama, wwdc, iranelection, f1
+	Naive Bayes: channels, fail, f1, fb, obama
+
+
+Tweet: yup, orange, straw, ex, red, curles
+	Target: marsiscoming
+	Log Reg: myweakness, marsiscoming, iremember, 3hotwords, f1
+	Naive Bayes: iphone, f1, myweakness, vegas, marsiscoming
+
+Tweet: theme  screen, startup, android, cool, google, sony
+	Target: android, google
+	Log Reg: google, bing, e3, musicmonday, ff
+	Naive Bayes: ff, google, fb, squarespace, tweetdeck
+
+Both log reg and naive bayes got this wrong:
+	Tweet: omg, kiss, award, classic
+		Target: mtvmovieawards
+		Log Reg: musicmonday, marsiscoming, andyhurleyday, 30secondstomars, followfriday
+		Naive Bayes: ff, followfriday, iremember, musicmonday, fb

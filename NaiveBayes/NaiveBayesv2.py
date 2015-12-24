@@ -50,22 +50,6 @@ def main():
 	naiveBayes.setAlpha(BEST_ALPHA)
 	# naiveBayes.testAgainst(naiveBayes.testSet)
 
-	# Save the train, test, and validation set
-	# The train set is 85%, test set is 5%, validation set is 10% of dataset
-	# print("Saving train set")
-	# output = open('trainset.pkl', 'wb')
-	# pickle.dump(naiveBayes.trainSet, output)
-	#
-	# print("Train set saved")
-
-	# np.savetxt('training_set_inputs', naiveBayes.trainSetTweets(), delimiter=',')
-	# np.savetxt('test_set_inputs', naiveBayes.validationSetTweets(), delimiter=',')
-	# np.savetxt('validation_set_inputs', naiveBayes.testSetTweets(), delimiter=',')
-	# np.savetxt('training_set_targets', naiveBayes.trainSetTweets(), delimiter=',')
-	# np.savetxt('test_set_targets', naiveBayes.validationSetTweets(), delimiter=',')
-	# np.savetxt('validation_set_targets', naiveBayes.testSetTweets(), delimiter=',')
-
-
 	naiveBayes.testAgainst(naiveBayes.testSet)
 	print('CORRECT PREDICTIONS~~~~~~~~~~~~~~~~~~~~~~~~~')
 	naiveBayes.getProbabilityResults(naiveBayes.correctPredictions)
@@ -102,18 +86,18 @@ def main():
 	# plt.title('Accuracy when Varying Number of Hashtags Predicted Contain Target Hashtag')
 	# plt.show()
 
-	print('Generating graph for varying number of hashtags to predict')
-	accuracies = []
-	for numHashtags in CONST_HASHTAGS_TO_PREDICT:
-		naiveBayes.setHashtagsToPredict(numHashtags)
-		naiveBayes.testAgainst(naiveBayes.testSet)
-		accuracy = naiveBayes.getAccuracy()
-		accuracies.append(accuracy)
-	plt.plot(CONST_HASHTAGS_TO_PREDICT, accuracies)
-	plt.xlabel('Number Of Hashtags To Predict')
-	plt.ylabel('Accuracy')
-	plt.title('Accuracy when Varying Number of Hashtags to Predict')
-	plt.show()
+	# print('Generating graph for varying number of hashtags to predict')
+	# accuracies = []
+	# for numHashtags in CONST_HASHTAGS_TO_PREDICT:
+	# 	naiveBayes.setHashtagsToPredict(numHashtags)
+	# 	naiveBayes.testAgainst(naiveBayes.testSet)
+	# 	accuracy = naiveBayes.getAccuracy()
+	# 	accuracies.append(accuracy)
+	# plt.plot(CONST_HASHTAGS_TO_PREDICT, accuracies)
+	# plt.xlabel('Number Of Hashtags To Predict')
+	# plt.ylabel('Accuracy')
+	# plt.title('Accuracy when Varying Number of Hashtags to Predict')
+	# plt.show()
 
 	# print('Generating graph for epsilon accuracies')
 	# epsilonAccuracies = []
@@ -323,11 +307,11 @@ class NaiveBayes:
 
 			if len(set(hashtags).intersection(topProbabilities)) > 0:
 				hits += 1
-				if len(self.correctPredictions) < 50:
-					self.correctPredictions.append(tweet)
+				# if len(self.correctPredictions) < 50:
+				self.correctPredictions.append(tweet)
 			else:
-				if len(self.incorrectPredictions) < 50:
-					self.incorrectPredictions.append(tweet)
+				# if len(self.incorrectPredictions) < 50:
+				self.incorrectPredictions.append(tweet)
 
 		self.accuracy = hits/i
 		self.time = time.time() - self.time
@@ -367,7 +351,7 @@ class NaiveBayes:
 					probPerWord[hashtag][word] = prob
 				probabilitiesMappedToHashtagsToPredict[hashtag] = self.alpha*log(self.hashtagCounts[hashtag]) + (1-self.alpha)*prob - log(len(self.trainSet))
 
-			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-50:])
+			topProbabilities = map(operator.itemgetter(0), sorted(probabilitiesMappedToHashtagsToPredict.items(), key=operator.itemgetter(1))[-5:])
 			print('These are the probability results for the tweet with words: {}, hashtags associated = {}'.format(', '.join(words), ', '.join(hashtags)))
 
 			medianIndex = int(len(topProbabilities)/2)
