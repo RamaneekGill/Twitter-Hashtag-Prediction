@@ -1,0 +1,11 @@
+semester two notes:
+
+Feb 11 2016:
+	find 100 tweets where hashtag prediction is usually correct
+	find 100 random tweets
+	get original tweet
+	hashtag predictions
+	correct hashtag
+	progammatically discover these
+
+	create quiz for guessing which is naive bayes and which is logistic
