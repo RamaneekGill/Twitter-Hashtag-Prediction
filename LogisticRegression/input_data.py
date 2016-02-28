@@ -93,6 +93,7 @@ def read_data_sets(debug_mode=False):
   # Read csv and get inputs and targets for train, validation, and test set
   import parse_csv
   train_inputs, train_targets, validation_inputs, validation_targets, test_inputs, test_targets = parse_csv.read_dataset()
+  raw_test_input = parse_csv.raw_test_input()
 
   print("Training set size: %d \t Validation set size: %d \t Test set size: %d" % (len(train_inputs), len(validation_inputs), len(test_inputs)))
 
@@ -121,4 +122,4 @@ def read_data_sets(debug_mode=False):
   print('Finished setting up data! Took {} seconds'.format(time.time() - start))
   test = DataSet(train_inputs, train_targets)
 
-  return len(tweet_vocabulary), len(hashtag_vocabulary), data_sets, tweet_vocabulary, hashtag_vocabulary
+  return len(tweet_vocabulary), len(hashtag_vocabulary), data_sets, tweet_vocabulary, hashtag_vocabulary, raw_test_input

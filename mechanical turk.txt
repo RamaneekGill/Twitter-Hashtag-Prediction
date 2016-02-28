@@ -18,6 +18,7 @@ Tweet: blowin, wind, bob, dylan
 	Log Reg: fb, sebday, myweakness, followfriday, delongeday
 	Naive Bayes: followfriday, dontyouhate, musicmonday, ff, fb
 
+Tweet: CBC  &quot;announcers &quot;2 Goal lead for the champs&quot; (as we head to TV timeout)  Nice   GO WINGS!  #redwings (via @seanmhair); need CBC in HD!
 Tweet: cbc, quotannouncers, goal, lead, champs, as, head, tv, timeout, nice, go, wings
 	Target: redwings
 	Log Reg: redwings, nhl, f1, fb, pens

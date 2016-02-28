@@ -86,6 +86,35 @@ def splitInputsTargets(dataset):
 
 	return inputs, targets
 
+def splitInputsTargetsRAW(dataset):
+	inputs = []
+	targets = []
+	indexes_to_remove = []
+
+	for i in range(len(dataset)):
+		inputs.append([])
+		targets.append([])
+
+		for word in dataset[i].split():
+			if word.startswith('#') and len(word) > 2:
+				# word = stripPunctuationAndCreateList(word)
+				if word:
+					targets[i].append(word)
+				continue
+			else:
+				# word = stripPunctuationAndCreateList(word)
+				if word:
+					inputs[i].append(word)
+
+		if not targets[i]: # no predictable hashtags
+			indexes_to_remove.append(i)
+
+	for i in indexes_to_remove[::-1]:
+		targets.pop(i)
+		inputs.pop(i)
+
+	return inputs, targets
+
 def stripPunctuationAndCreateList(word, strip_stopwords=False):
 	word = word.lower().translate(string.maketrans("",""), string.punctuation)
 
@@ -115,7 +144,35 @@ def removeDataNotPredicting(inputs, targets, hashtags_to_keep):
 
 	return new_inputs, new_targets
 
+def raw_test_input():
+	NUM_HASHTAGS = 500
 
+	# read csv
+	filename = '../training.1600000.processed.noemoticon.csv'
+	corpus = read_csv(filename)
+	corpus.columns = ["1", "2", "3", "4", "5", "tweet"]
+	corpus = corpus["tweet"]
+
+	# filter out tweets without a hashtag
+	dataset = [tweet for tweet in corpus if '#' in tweet]
+
+	# split dataset into train, test, validation set
+	validation_ratio = 0.1
+	test_ratio = 0.1 # Therefore train ratio is 0.8
+	validation_set, dataset = splitDataset(dataset, validation_ratio)
+	test_set, train_set = splitDataset(dataset, test_ratio)
+
+	# strip out hashtags in to seperate target lists
+	train_inputs, train_targets = splitInputsTargetsRAW(train_set)
+	validation_inputs, validation_targets = splitInputsTargetsRAW(validation_set)
+	test_inputs, test_targets = splitInputsTargetsRAW(test_set)
+
+	popular_hashtags = getPopularHashtags(NUM_HASHTAGS, train_targets)
+	train_inputs, train_targets = removeDataNotPredicting(train_inputs, train_targets, popular_hashtags)
+	validation_inputs, validation_targets = removeDataNotPredicting(validation_inputs, validation_targets, popular_hashtags)
+	test_inputs, test_targets = removeDataNotPredicting(test_inputs, test_targets, popular_hashtags)
+
+	return test_inputs
 
 
 # hashtags_associated = []

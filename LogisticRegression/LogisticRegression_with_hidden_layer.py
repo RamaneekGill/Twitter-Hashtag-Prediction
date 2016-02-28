@@ -48,8 +48,8 @@ def main():
 	W_hidden = tf.Variable(tf.random_normal([numWords, NUM_HIDDEN_UNITS], stddev=0.01)) # weights matrix
 	W = tf.Variable(tf.random_normal([NUM_HIDDEN_UNITS, numHashtags], stddev=0.01)) # weights matrix
 	b = tf.Variable(tf.zeros([numHashtags])) # bias
-	hidden = tf.nn.sigmoid(tf.matmul(x, W_hidden))
-	activation = tf.nn.softmax(tf.matmul(hidden, W) + b) # the predictions
+	hidden = tf.nn.sigmoid(tf.matmul(x, W_hidden))# USE TANH, or relu
+	activation = tf.nn.softmax(tf.matmul(hidden, W) + b) # the predictions #make it linear
 	# choose between sigmoid and softmax
 
 	# Specify the cost and optimization
